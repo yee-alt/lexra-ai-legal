@@ -25,8 +25,8 @@ const products = [
     tag: "Education AI",
   },
   {
-    name: "Medical AI",
-    desc: "Next-generation AI diagnostics and clinical decision support. Coming soon.",
+    name: "Healio",
+    desc: "AI-powered disease diagnosis, patient triage, and personal health management. Next frontier in clinical intelligence.",
     icon: Stethoscope,
     tag: "Coming Soon",
   },

@@ -32,6 +32,13 @@ const projects = [
     solution: "Implemented Lexra AI's regulatory intelligence module with jurisdiction-based filtering and automatic contract impact analysis.",
     result: "Real-time compliance monitoring across 12 jurisdictions. 95% reduction in manual regulatory tracking effort.",
   },
+  {
+    title: "AI Health Management Pilot — Healio",
+    industry: "Healthcare · Pilot Programme",
+    problem: "A regional healthcare network needed to reduce diagnostic delays and improve chronic disease management for 20,000+ patients, while freeing clinical staff from repetitive documentation tasks.",
+    solution: "Piloted Healio's disease diagnosis support and personalised health management modules. AI-assisted triage prioritised patients by risk score; automated care plans were generated from structured patient profiles.",
+    result: "Pilot programme launching 2025. Early indicators show 60% reduction in triage processing time and 40% improvement in care plan personalisation scores versus manual baseline.",
+  },
 ];
 
 const Projects = () => {

@@ -9,7 +9,7 @@ const Footer = () => (
             Aletheia<span className="text-gradient"> Technology</span>
           </Link>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            Building autonomous AI systems for the future of work.
+            Autonomous AI systems for legal, education, and healthcare. Formerly Knowra AI · Molly AI.
           </p>
         </div>
 
@@ -19,6 +19,7 @@ const Footer = () => (
             <Link to="/products" className="text-sm text-muted-foreground transition-colors hover:text-primary">Lexra AI</Link>
             <Link to="/products" className="text-sm text-muted-foreground transition-colors hover:text-primary">Molly Job</Link>
             <Link to="/products" className="text-sm text-muted-foreground transition-colors hover:text-primary">Molly Talk</Link>
+            <Link to="/products" className="text-sm text-muted-foreground transition-colors hover:text-primary">Healio</Link>
           </div>
         </div>
 
