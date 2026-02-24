@@ -12,6 +12,7 @@ const products = [
     desc: "A complete legal operating system. AI-powered contract analysis, smart comparison, regulatory intelligence, and litigation management — built for modern law firms and corporate legal departments.",
     icon: Scale,
     tag: "Legal AI",
+    video: "/lexra-demo.mp4",
     features: [
       { icon: FileText, title: "AI Contract Analysis", desc: "Upload contracts for instant executive summaries, risk scoring, missing clauses, and regulatory exposure." },
       { icon: Shield, title: "Smart Comparison", desc: "Compare contract versions in seconds — structural, risk, and financial differences with AI explanations." },
@@ -25,6 +26,7 @@ const products = [
     id: "mollyjob",
     name: "Molly Job",
     tagline: "AI Career Intelligence",
+    video: undefined,
     desc: "AI-powered career coaching platform. Resume optimization, mock interviews with real-time feedback, and intelligent job matching — helping candidates land their dream roles faster.",
     icon: GraduationCap,
     tag: "Education AI",
@@ -39,6 +41,7 @@ const products = [
     id: "mollytalk",
     name: "Molly Talk",
     tagline: "AI Communication Coach",
+    video: undefined,
     desc: "Conversational AI for language learning and communication development. Practice real conversations, get instant feedback, and build confidence in any language.",
     icon: Brain,
     tag: "Education AI",
@@ -53,6 +56,7 @@ const products = [
     id: "healio",
     name: "Healio",
     tagline: "AI-Powered Disease Diagnosis & Health Management",
+    video: undefined,
     desc: "Healio brings clinical intelligence to patients and providers. AI-assisted disease diagnosis, personalised health management plans, chronic condition monitoring, and patient triage — built with the same explainability and governance standards we established in legal AI.",
     icon: Stethoscope,
     tag: "Coming Soon",
@@ -110,6 +114,33 @@ const Products = () => {
                 {product.desc}
               </motion.p>
             </motion.div>
+
+            {product.video && (
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={fadeUp}
+                custom={3}
+                className="mt-12 overflow-hidden rounded-2xl border border-border bg-card"
+              >
+                <div className="px-4 pt-3 pb-2 flex items-center gap-2 border-b border-border">
+                  <span className="inline-block rounded-full bg-primary/10 px-3 py-1 font-display text-xs font-medium text-primary">
+                    Product Demo
+                  </span>
+                  <span className="text-xs text-muted-foreground">Lexra AI in action</span>
+                </div>
+                <video
+                  src={product.video}
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full max-h-[520px] object-cover"
+                />
+              </motion.div>
+            )}
 
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {product.features.map((feature, i) => (
