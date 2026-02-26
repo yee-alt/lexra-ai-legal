@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agent Memory Management — Deep Dive</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --ink: #0f0f14;
+  --paper: #faf9f6;
+  --accent: #1a1a2e;
+  --gold: #c9a84c;
+  --gold-light: #e8d5a3;
+  --rust: #c0392b;
+  --teal: #1a6b5e;
+  --blue-ink: #1e3a5f;
+  --muted: #6b6560;
+  --border: #e0ddd6;
+  --code-bg: #1a1a2e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #d4d0c8;
+  font-family: 'DM Sans', sans-serif;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.article-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+  background: var(--paper);
+  box-shadow: 0 4px 60px rgba(0,0,0,0.2), 0 1px 0 rgba(0,0,0,0.05);
+  position: relative;
+}
+
+/* ─── COVER ─── */
+.cover {
+  background: var(--accent);
+  padding: 72px 72px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-texture {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg, transparent, transparent 40px,
+    rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px
+  ),
+  repeating-linear-gradient(
+    90deg, transparent, transparent 40px,
+    rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px
+  );
+}
+
+.cover-accent-line {
+  position: absolute;
+  top: 0; left: 72px; right: 72px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), transparent 60%);
+}
+
+.series-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  opacity: 0.9;
+}
+
+.cover h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 58px;
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: 20px;
+  max-width: 600px;
+  position: relative;
+  z-index: 1;
+}
+
+.cover h1 em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.cover-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+  max-width: 520px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 40px;
+}
+
+.cover-meta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 24px;
+}
+
+.episode-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 48px;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.episode-meta {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+.episode-meta strong {
+  display: block;
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+/* Decorative brain diagram */
+.cover-diagram {
+  position: absolute;
+  right: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 220px;
+  opacity: 0.12;
+}
+
+/* ─── BODY ─── */
+.article-body {
+  padding: 0 72px 72px;
+}
+
+/* Section */
+.section {
+  padding-top: 56px;
+}
+
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 34px;
+  color: var(--accent);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--accent);
+  margin-bottom: 12px;
+  margin-top: 36px;
+}
+
+p {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: #3a3630;
+  margin-bottom: 16px;
+}
+
+strong { color: var(--accent); font-weight: 600; }
+
+/* ─── PULL QUOTE ─── */
+.pull-quote {
+  border-left: 3px solid var(--gold);
+  padding: 16px 28px;
+  margin: 32px 0;
+  background: rgba(201,168,76,0.06);
+}
+
+.pull-quote p {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--blue-ink);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ─── ARCHITECTURE BOX ─── */
+.arch-box {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin: 32px 0;
+  overflow: hidden;
+}
+
+.arch-header {
+  background: var(--accent);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.arch-header span {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--gold-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.arch-body {
+  padding: 24px;
+  background: #f5f3ee;
+}
+
+/* Memory type cards */
+.memory-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 32px 0;
+}
+
+.mem-card {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.mem-card-header {
+  padding: 14px 18px 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.mem-icon {
+  width: 36px; height: 36px;
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.mem-card-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+
+.mem-card-subtitle {
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+.mem-card-body {
+  padding: 0 18px 16px;
+  border-top: 1px solid var(--border);
+  background: #faf9f6;
+}
+
+.mem-detail {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+
+.score-formula {
+  font-family: 'DM Mono', monospace;
+  font-size: 11.5px;
+  background: var(--code-bg);
+  color: #a5f3fc;
+  padding: 8px 12px;
+  border-radius: 3px;
+  margin-top: 8px;
+}
+
+/* Color variants */
+.card-w .mem-card-header { background: #eff6ff; }
+.card-w .mem-icon { background: #dbeafe; }
+.card-w .mem-card-subtitle { color: #3b82f6; }
+
+.card-e .mem-card-header { background: #f5f3ff; }
+.card-e .mem-icon { background: #ede9fe; }
+.card-e .mem-card-subtitle { color: #8b5cf6; }
+
+.card-s .mem-card-header { background: #fff0f6; }
+.card-s .mem-icon { background: #fce7f3; }
+.card-s .mem-card-subtitle { color: #ec4899; }
+
+.card-p .mem-card-header { background: #ecfdf5; }
+.card-p .mem-icon { background: #d1fae5; }
+.card-p .mem-card-subtitle { color: #059669; }
+
+/* ─── CODE BLOCK ─── */
+.code-wrap {
+  margin: 28px 0;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #2a2a3e;
+}
+
+.code-titlebar {
+  background: #12121f;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.code-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em;
+}
+
+.code-dots { display: flex; gap: 6px; }
+.code-dots span {
+  width: 10px; height: 10px; border-radius: 50%;
+}
+.d1 { background: #ff5f57; }
+.d2 { background: #febc2e; }
+.d3 { background: #28c840; }
+
+pre {
+  background: var(--code-bg);
+  padding: 20px 24px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12.5px;
+  line-height: 1.8;
+  overflow-x: auto;
+  margin: 0;
+}
+
+.c-comment { color: #4b5680; }
+.c-key { color: #818cf8; }
+.c-str { color: #86efac; }
+.c-var { color: #fde68a; }
+.c-fn { color: #c084fc; }
+.c-num { color: #fb923c; }
+.c-op { color: #94a3b8; }
+.c-white { color: #e2e8f0; }
+
+/* ─── SCORING TABLE ─── */
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13.5px;
+}
+
+.score-table th {
+  text-align: left;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: var(--gold-light);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.score-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: #3a3630;
+  vertical-align: top;
+}
+
+.score-table tr:nth-child(even) td { background: #f5f3ee; }
+
+.score-table td:first-child {
+  font-family: 'DM Serif Display', serif;
+  font-size: 15px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.score-table td:last-child {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #1a6b5e;
+}
+
+/* ─── FLOW DIAGRAM ─── */
+.flow-diagram {
+  margin: 32px 0;
+  padding: 28px;
+  background: #f5f3ee;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.flow-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.flow-steps {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.flow-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.flow-step:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  font-size: 18px;
+  z-index: 1;
+}
+
+.step-box {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 14px 10px;
+  margin: 0 16px;
+}
+
+.step-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 6px;
+}
+
+.step-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.step-detail {
+  font-size: 10.5px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ─── CALLOUT BOX ─── */
+.callout {
+  border-radius: 4px;
+  padding: 20px 24px;
+  margin: 28px 0;
+  display: flex;
+  gap: 16px;
+}
+
+.callout-insight {
+  background: rgba(30,58,95,0.07);
+  border: 1px solid rgba(30,58,95,0.15);
+}
+
+.callout-warn {
+  background: rgba(192,57,43,0.06);
+  border: 1px solid rgba(192,57,43,0.2);
+}
+
+.callout-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.callout-text {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #3a3630;
+  margin: 0;
+}
+
+.callout-text strong { color: var(--blue-ink); }
+
+/* ─── COMPARISON ─── */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.compare-col {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.compare-col-header {
+  padding: 12px 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.compare-col-header.green { background: #ecfdf5; color: #065f46; }
+.compare-col-header.amber { background: #fffbeb; color: #92400e; }
+
+.compare-items {
+  padding: 12px 16px;
+  list-style: none;
+}
+
+.compare-items li {
+  font-size: 13.5px;
+  color: #3a3630;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+}
+
+.compare-items li:last-child { border-bottom: none; }
+.compare-items li::before { margin-right: 8px; }
+.compare-col:first-child .compare-items li::before { content: '✓'; color: #059669; }
+.compare-col:last-child .compare-items li::before { content: '✗'; color: #dc2626; }
+
+/* ─── DIVIDER ─── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 48px 0;
+}
+
+.ornament {
+  text-align: center;
+  margin: 40px 0;
+  color: var(--gold);
+  font-size: 20px;
+  letter-spacing: 16px;
+}
+
+/* ─── FOOTER ─── */
+.article-footer {
+  background: var(--accent);
+  padding: 40px 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.footer-cta h4 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.footer-cta p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: rgba(201,168,76,0.15);
+  color: var(--gold-light);
+  border: 1px solid rgba(201,168,76,0.3);
+}
+
+/* ─── INLINE HIGHLIGHT ─── */
+code {
+  font-family: 'DM Mono', monospace;
+  font-size: 12.5px;
+  background: rgba(30,58,95,0.08);
+  color: var(--blue-ink);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.highlight-box {
+  background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.03));
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 4px;
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+
+.highlight-box p {
+  margin: 0;
+  font-size: 14.5px;
+  color: var(--blue-ink);
+}
+</style>
+</head>
+<body>
+
+<div class="article-wrapper">
+
+  <!-- ═══════════════ COVER ═══════════════ -->
+  <div class="cover">
+    <div class="cover-texture"></div>
+    <div class="cover-accent-line"></div>
+
+    <svg class="cover-diagram" viewBox="0 0 220 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="110" cy="130" rx="90" ry="110" stroke="white" stroke-width="1"/>
+      <path d="M110 20 Q160 60 155 130 Q160 200 110 240" stroke="white" stroke-width="0.8"/>
+      <path d="M20 130 Q60 80 110 85 Q160 80 200 130" stroke="white" stroke-width="0.8"/>
+      <path d="M35 90 Q80 110 110 100 Q140 110 185 90" stroke="white" stroke-width="0.6"/>
+      <path d="M25 160 Q70 145 110 155 Q150 145 195 160" stroke="white" stroke-width="0.6"/>
+      <circle cx="110" cy="130" r="4" fill="white" opacity="0.6"/>
+      <circle cx="75" cy="95" r="3" fill="white" opacity="0.4"/>
+      <circle cx="145" cy="95" r="3" fill="white" opacity="0.4"/>
+      <circle cx="65" cy="155" r="3" fill="white" opacity="0.4"/>
+      <circle cx="155" cy="155" r="3" fill="white" opacity="0.4"/>
+      <line x1="110" y1="130" x2="75" y2="95" stroke="white" stroke-width="0.5" opacity="0.3"/>
+      <line x1="110" y1="130" x2="145" y2="95" stroke="white" stroke-width="0.5" opacity="0.3"/>
+      <line x1="110" y1="130" x2="65" y2="155" stroke="white" stroke-width="0.5" opacity="0.3"/>
+      <line x1="110" y1="130" x2="155" y2="155" stroke="white" stroke-width="0.5" opacity="0.3"/>
+    </svg>
+
+    <p class="series-label">· Aletheia Training · Episode 1 of 100 · 100 Questions to Become an AI Agent Engineer ·</p>
+    <h1>How AI Agents<br><em>Remember</em><br>Things</h1>
+    <p class="cover-sub">A deep dive into the 4-layer memory architecture behind production AI agents — from ephemeral working memory to knowledge graphs, with real scoring formulas and consolidation mechanics.</p>
+
+    <div class="cover-meta">
+      <div>
+        <div class="episode-num">001</div>
+      </div>
+      <div class="episode-meta">
+        <strong>Memory & Retrieval Systems</strong>
+        Working Memory · Episodic · Semantic · Perceptual<br>
+        TTL · Qdrant · Neo4j · Consolidation
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ BODY ═══════════════ -->
+  <div class="article-body">
+
+    <!-- THE PROBLEM -->
+    <div class="section">
+      <p class="section-label">The Core Problem</p>
+      <h2>LLMs Are Stateless.<br>That's a Feature — and a Bug.</h2>
+
+      <p>Every API call to a large language model is, by design, a fresh computation. The model has no memory of your last message, your user's preferences, or what happened three conversations ago. This is great for scalability. It's terrible for building agents that are supposed to learn, personalize, and improve over time.</p>
+
+      <p>There are two root problems that every serious agent engineer must solve:</p>
+
+      <div class="compare-grid">
+        <div class="compare-col">
+          <div class="compare-col-header green">What We Need</div>
+          <ul class="compare-items">
+            <li>Remember past conversations</li>
+            <li>Track user preferences</li>
+            <li>Learn from failures</li>
+            <li>Maintain consistency across sessions</li>
+            <li>Access external knowledge</li>
+          </ul>
+        </div>
+        <div class="compare-col">
+          <div class="compare-col-header amber">Default LLM Behavior</div>
+          <ul class="compare-items">
+            <li>Each call is stateless</li>
+            <li>No persistent user model</li>
+            <li>No feedback loop</li>
+            <li>Context window only</li>
+            <li>Frozen training knowledge</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pull-quote">
+        <p>"The difference between a chatbot and an agent isn't reasoning — it's memory. Memory is what makes behavior compoundable."</p>
+      </div>
+
+      <p>The solution is a structured memory architecture. Not just a conversation buffer, but a layered system inspired by how human cognition actually works — drawing from decades of cognitive science research on how the brain stores, retrieves, and forgets information.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- COGNITIVE FOUNDATION -->
+    <div class="section">
+      <p class="section-label">Cognitive Science Foundation</p>
+      <h2>The Human Brain Has 4 Memory Systems. So Should Your Agent.</h2>
+
+      <p>Atkinson & Shiffrin's multi-store model of human memory (1968) remains one of the most influential frameworks in cognitive psychology. It describes memory not as a single system but as a hierarchy of specialized stores — each with different capacity, duration, and function.</p>
+
+      <p>When we map these to the challenges of agent engineering, the correspondence is surprisingly direct:</p>
+
+      <div class="arch-box">
+        <div class="arch-header">
+          <span>Human → Agent Memory Mapping</span>
+        </div>
+        <div class="arch-body">
+          <table class="score-table">
+            <thead>
+              <tr>
+                <th>Human Memory</th>
+                <th>Duration</th>
+                <th>Agent Equivalent</th>
+                <th>Storage Backend</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sensory Memory</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:#6b6560">0.5–3 sec</td>
+                <td>Input preprocessing</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:var(--teal)">In-flight buffer</td>
+              </tr>
+              <tr>
+                <td>Working Memory</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:#6b6560">15–30 sec</td>
+                <td>Session context window</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:var(--teal)">In-memory + TTL</td>
+              </tr>
+              <tr>
+                <td>Episodic Memory</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:#6b6560">Days → years</td>
+                <td>Interaction history</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:var(--teal)">SQLite + Qdrant</td>
+              </tr>
+              <tr>
+                <td>Semantic Memory</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:#6b6560">Permanent</td>
+                <td>Knowledge & concepts</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:var(--teal)">Neo4j + Qdrant</td>
+              </tr>
+              <tr>
+                <td>Procedural Memory</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:#6b6560">Permanent</td>
+                <td>Skills / tool usage</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:var(--teal)">Fine-tuning / RLHF</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p>The key insight: <strong>different information has different lifespans and access patterns.</strong> Mixing everything into one flat store (like a naive conversation buffer) leads to slow retrieval, noise, and missed context. Specialized stores with intelligent routing is the production-grade approach.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 4 MEMORY TYPES -->
+    <div class="section">
+      <p class="section-label">Architecture Deep Dive</p>
+      <h2>The 4 Memory Types: Implementation Details</h2>
+
+      <p>Here is the full picture of the layered memory system. Each type has a distinct role, retrieval strategy, and scoring formula:</p>
+
+      <div class="memory-cards">
+
+        <!-- Working -->
+        <div class="mem-card card-w">
+          <div class="mem-card-header">
+            <div class="mem-icon">⚡</div>
+            <div>
+              <div class="mem-card-title">Working Memory</div>
+              <div class="mem-card-subtitle">TTL-MANAGED · IN-MEMORY</div>
+            </div>
+          </div>
+          <div class="mem-card-body">
+            <p class="mem-detail">Stores current session context. Capacity-limited (default 50 items). Automatically expired. No disk I/O — pure RAM for maximum speed.</p>
+            <p class="mem-detail"><strong>Retrieval:</strong> TF-IDF vectorization + keyword fallback. Prioritizes recency and importance.</p>
+            <div class="score-formula">score = (vec×0.7 + kw×0.3) × decay × (0.8 + imp×0.4)</div>
+          </div>
+        </div>
+
+        <!-- Episodic -->
+        <div class="mem-card card-e">
+          <div class="mem-card-header">
+            <div class="mem-icon">📅</div>
+            <div>
+              <div class="mem-card-title">Episodic Memory</div>
+              <div class="mem-card-subtitle">SQLITE + QDRANT · PERSISTENT</div>
+            </div>
+          </div>
+          <div class="mem-card-body">
+            <p class="mem-detail">Long-term event log. Stores what happened, when, and in which session. Supports time-range filtering and session-level replay.</p>
+            <p class="mem-detail"><strong>Retrieval:</strong> Structured pre-filter (time/importance) + dense vector search.</p>
+            <div class="score-formula">score = (vec×0.8 + recency×0.2) × (0.8 + imp×0.4)</div>
+          </div>
+        </div>
+
+        <!-- Semantic -->
+        <div class="mem-card card-s">
+          <div class="mem-card-header">
+            <div class="mem-icon">🧠</div>
+            <div>
+              <div class="mem-card-title">Semantic Memory</div>
+              <div class="mem-card-subtitle">NEO4J + QDRANT · KNOWLEDGE GRAPH</div>
+            </div>
+          </div>
+          <div class="mem-card-body">
+            <p class="mem-detail">Abstract knowledge, concepts, facts. Auto-extracts entities and relations, builds a knowledge graph. Enables multi-hop reasoning.</p>
+            <p class="mem-detail"><strong>Retrieval:</strong> Vector search + graph traversal (Neo4j Cypher) merged and re-ranked.</p>
+            <div class="score-formula">score = (vec×0.7 + graph×0.3) × (0.8 + imp×0.4)</div>
+          </div>
+        </div>
+
+        <!-- Perceptual -->
+        <div class="mem-card card-p">
+          <div class="mem-card-header">
+            <div class="mem-icon">👁</div>
+            <div>
+              <div class="mem-card-title">Perceptual Memory</div>
+              <div class="mem-card-subtitle">MULTI-MODAL · CLIP / CLAP</div>
+            </div>
+          </div>
+          <div class="mem-card-body">
+            <p class="mem-detail">Images (CLIP), audio (CLAP), text. Per-modality vector stores to avoid dimension mismatch. Supports cross-modal retrieval.</p>
+            <p class="mem-detail"><strong>Retrieval:</strong> Same-modality dense search + time decay fusion.</p>
+            <div class="score-formula">score = (vec×0.8 + recency×0.2) × (0.8 + imp×0.4)</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="callout callout-insight">
+        <div class="callout-icon">💡</div>
+        <p class="callout-text">Notice that all four scoring formulas share a common structure: <strong>(semantic_relevance × weights) × importance_multiplier</strong>. The importance multiplier is always in the range [0.8, 1.2] — deliberately narrow. This ensures importance <em>adjusts</em> the ranking rather than <em>dominating</em> it. A highly important but irrelevant memory should never outrank a highly relevant one.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- CODE SECTION -->
+    <div class="section">
+      <p class="section-label">Code: The MemoryTool API</p>
+      <h2>A Unified Interface Over All 4 Layers</h2>
+
+      <p>In production, you don't want agents calling four different memory systems with four different APIs. The <code>MemoryTool</code> provides a single <code>execute(action, **kwargs)</code> interface. Here are the most important operations:</p>
+
+      <h3>1. Adding Memories</h3>
+      <p>Every memory type gets the same <code>"add"</code> action. The <code>memory_type</code> parameter routes to the right backend:</p>
+
+      <div class="code-wrap">
+        <div class="code-titlebar">
+          <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+          <span class="code-title">memory_tool.py — add operations</span>
+        </div>
+        <pre><span class="c-comment"># ── Working Memory: fast, temporary, session-scoped ──────────────────</span>
+<span class="c-var">memory_tool</span>.<span class="c-fn">execute</span>(<span class="c-str">"add"</span>,
+    <span class="c-var">content</span>=<span class="c-str">"User asked about Python decorators"</span>,
+    <span class="c-var">memory_type</span>=<span class="c-str">"working"</span>,
+    <span class="c-var">importance</span>=<span class="c-num">0.6</span>
+)
+
+<span class="c-comment"># ── Episodic Memory: concrete events with timestamps ─────────────────</span>
+<span class="c-var">memory_tool</span>.<span class="c-fn">execute</span>(<span class="c-str">"add"</span>,
+    <span class="c-var">content</span>=<span class="c-str">"User Zhang San completed their first ML project"</span>,
+    <span class="c-var">memory_type</span>=<span class="c-str">"episodic"</span>,
+    <span class="c-var">importance</span>=<span class="c-num">0.9</span>,
+    <span class="c-var">event_type</span>=<span class="c-str">"milestone"</span>,
+    <span class="c-var">session_id</span>=<span class="c-str">"session_20240315"</span>
+)
+
+<span class="c-comment"># ── Semantic Memory: abstract facts & knowledge ───────────────────────</span>
+<span class="c-var">memory_tool</span>.<span class="c-fn">execute</span>(<span class="c-str">"add"</span>,
+    <span class="c-var">content</span>=<span class="c-str">"User prefers concise answers with code examples"</span>,
+    <span class="c-var">memory_type</span>=<span class="c-str">"semantic"</span>,
+    <span class="c-var">importance</span>=<span class="c-num">0.85</span>,
+    <span class="c-var">knowledge_type</span>=<span class="c-str">"user_preference"</span>
+)</pre>
+      </div>
+
+      <h3>2. Searching Across Memory</h3>
+      <p>Retrieval supports single-type or multi-type queries, with a minimum importance filter to cut noise:</p>
+
+      <div class="code-wrap">
+        <div class="code-titlebar">
+          <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+          <span class="code-title">memory_tool.py — search operations</span>
+        </div>
+        <pre><span class="c-comment"># Basic cross-memory search</span>
+<span class="c-var">results</span> = <span class="c-var">memory_tool</span>.<span class="c-fn">execute</span>(<span class="c-str">"search"</span>,
+    <span class="c-var">query</span>=<span class="c-str">"Python learning progress"</span>,
+    <span class="c-var">limit</span>=<span class="c-num">5</span>
+)
+
+<span class="c-comment"># Scoped to a single memory type</span>
+<span class="c-var">results</span> = <span class="c-var">memory_tool</span>.<span class="c-fn">execute</span>(<span class="c-str">"search"</span>,
+    <span class="c-var">query</span>=<span class="c-str">"user milestones"</span>,
+    <span class="c-var">memory_type</span>=<span class="c-str">"episodic"</span>,   <span class="c-comment"># only look in episodic</span>
+    <span class="c-var">limit</span>=<span class="c-num">3</span>
+)
+
+<span class="c-comment"># Multi-type with importance filter (removes noise)</span>
+<span class="c-var">results</span> = <span class="c-var">memory_tool</span>.<span class="c-fn">execute</span>(<span class="c-str">"search"</span>,
+    <span class="c-var">query</span>=<span class="c-str">"function definition syntax"</span>,
+    <span class="c-var">memory_types</span>=[<span class="c-str">"semantic"</span>, <span class="c-str">"episodic"</span>],
+    <span class="c-var">min_importance</span>=<span class="c-num">0.5</span>          <span class="c-comment"># skip low-value memories</span>
+)</pre>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- CONSOLIDATION -->
+    <div class="section">
+      <p class="section-label">The Most Important Mechanic</p>
+      <h2>Consolidation: Promoting Short-Term to Long-Term</h2>
+
+      <p>This is where the cognitive science analogy becomes engineering gold. In humans, sleep is when the hippocampus replays the day's experiences and consolidates important ones into the neocortex for long-term storage. In your agent, consolidation is a deliberate operation you trigger — or schedule — to do the same thing.</p>
+
+      <div class="flow-diagram">
+        <p class="flow-title">Memory Consolidation Flow</p>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="step-box">
+              <div class="step-num">STEP 01</div>
+              <div class="step-label">Accumulate</div>
+              <div class="step-detail">Events fill working memory during session</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="step-box">
+              <div class="step-num">STEP 02</div>
+              <div class="step-label">Score</div>
+              <div class="step-detail">Each item evaluated: importance × frequency</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="step-box">
+              <div class="step-num">STEP 03</div>
+              <div class="step-label">Promote</div>
+              <div class="step-detail">Items above threshold → episodic or semantic</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="step-box">
+              <div class="step-num">STEP 04</div>
+              <div class="step-label">Forget</div>
+              <div class="step-detail">Low-importance items TTL-expired or pruned</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-titlebar">
+          <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+          <span class="code-title">memory_tool.py — consolidation & forgetting</span>
+        </div>
+        <pre><span class="c-comment"># Promote important working memory → episodic (end of session)</span>
+<span class="c-var">memory_tool</span>.<span class="c-fn">execute</span>(<span class="c-str">"consolidate"</span>,
+    <span class="c-var">from_type</span>=<span class="c-str">"working"</span>,
+    <span class="c-var">to_type</span>=<span class="c-str">"episodic"</span>,
+    <span class="c-var">importance_threshold</span>=<span class="c-num">0.7</span>   <span class="c-comment"># only what matters survives</span>
+)
+
+<span class="c-comment"># Distill repeated episodic patterns → semantic (weekly job)</span>
+<span class="c-var">memory_tool</span>.<span class="c-fn">execute</span>(<span class="c-str">"consolidate"</span>,
+    <span class="c-var">from_type</span>=<span class="c-str">"episodic"</span>,
+    <span class="c-var">to_type</span>=<span class="c-str">"semantic"</span>,
+    <span class="c-var">importance_threshold</span>=<span class="c-num">0.8</span>
+)
+
+<span class="c-comment"># ── 3 forgetting strategies ───────────────────────────────────────────</span>
+
+<span class="c-comment"># Strategy 1: Prune low-importance junk</span>
+<span class="c-var">memory_tool</span>.<span class="c-fn">execute</span>(<span class="c-str">"forget"</span>,
+    <span class="c-var">strategy</span>=<span class="c-str">"importance_based"</span>, <span class="c-var">threshold</span>=<span class="c-num">0.2</span>)
+
+<span class="c-comment"># Strategy 2: Time-based cleanup (stale context)</span>
+<span class="c-var">memory_tool</span>.<span class="c-fn">execute</span>(<span class="c-str">"forget"</span>,
+    <span class="c-var">strategy</span>=<span class="c-str">"time_based"</span>, <span class="c-var">max_age_days</span>=<span class="c-num">30</span>)
+
+<span class="c-comment"># Strategy 3: Capacity management (keep the best N)</span>
+<span class="c-var">memory_tool</span>.<span class="c-fn">execute</span>(<span class="c-str">"forget"</span>,
+    <span class="c-var">strategy</span>=<span class="c-str">"capacity_based"</span>, <span class="c-var">threshold</span>=<span class="c-num">0.3</span>)</pre>
+      </div>
+
+      <div class="callout callout-warn">
+        <div class="callout-icon">⚠️</div>
+        <p class="callout-text"><strong>Don't just delete from the SQL/SQLite store.</strong> If you're using a vector database (Qdrant) and a graph database (Neo4j), forgetting requires deleting from all three stores in a coordinated transaction. Partial deletes create orphaned vectors that pollute future searches and slowly degrade retrieval quality.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- SEMANTIC MEMORY DEEP DIVE -->
+    <div class="section">
+      <p class="section-label">Advanced: Semantic Memory</p>
+      <h2>Knowledge Graphs Change What's Possible</h2>
+
+      <p>Most people stop at vector search. Semantic memory in a mature system goes further: it builds a <strong>knowledge graph</strong> as a side effect of storing memories. When you add "Zhang San is a Python developer who works on ML pipelines," the system extracts:</p>
+
+      <div class="arch-box">
+        <div class="arch-header">
+          <span>Auto-extracted Knowledge Graph Entities & Relations</span>
+        </div>
+        <div class="arch-body">
+          <table class="score-table">
+            <thead>
+              <tr>
+                <th>Entity</th>
+                <th>Type</th>
+                <th>Relation</th>
+                <th>Target</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Zhang San</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:#6b6560">PERSON</td>
+                <td>IS_A</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:var(--teal)">Python Developer</td>
+              </tr>
+              <tr>
+                <td>Zhang San</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:#6b6560">PERSON</td>
+                <td>WORKS_ON</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:var(--teal)">ML Pipelines</td>
+              </tr>
+              <tr>
+                <td>ML Pipelines</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:#6b6560">CONCEPT</td>
+                <td>RELATED_TO</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:var(--teal)">Python</td>
+              </tr>
+              <tr>
+                <td>Python Developer</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:#6b6560">ROLE</td>
+                <td>USES</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;color:var(--teal)">Python Language</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p>Now when a user asks <em>"What tools does Zhang San use?"</em> — the graph traversal finds the answer through two hops, even if those exact words were never stored together as a single memory. <strong>This is the key power vector search alone can never provide.</strong></p>
+
+      <p>The combined retrieval score reflects this dual architecture:</p>
+
+      <div class="highlight-box">
+        <p><strong>Semantic Memory Score</strong> = (vector_similarity × 0.7 + graph_proximity × 0.3) × (0.8 + importance × 0.4)</p>
+      </div>
+
+      <p>The 70/30 split between vector and graph is intentional: vector search handles semantic similarity well for direct queries; graph search shines for indirect, relational queries. Together they cover what neither does alone.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- PRACTICAL SETUP -->
+    <div class="section">
+      <p class="section-label">Putting It Together</p>
+      <h2>Wiring It Into Your Agent in 10 Lines</h2>
+
+      <p>The entire memory system is exposed as a <code>MemoryTool</code> that slots into any agent's tool registry. No need to touch the agent class itself:</p>
+
+      <div class="code-wrap">
+        <div class="code-titlebar">
+          <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+          <span class="code-title">app.py — full agent setup with memory</span>
+        </div>
+        <pre><span class="c-key">from</span> <span class="c-white">hello_agents</span> <span class="c-key">import</span> <span class="c-white">SimpleAgent</span>, <span class="c-white">HelloAgentsLLM</span>, <span class="c-white">ToolRegistry</span>
+<span class="c-key">from</span> <span class="c-white">hello_agents.tools</span> <span class="c-key">import</span> <span class="c-white">MemoryTool</span>
+
+<span class="c-var">llm</span> = <span class="c-fn">HelloAgentsLLM</span>()
+<span class="c-var">agent</span> = <span class="c-fn">SimpleAgent</span>(<span class="c-var">name</span>=<span class="c-str">"Memory Agent"</span>, <span class="c-var">llm</span>=<span class="c-var">llm</span>)
+
+<span class="c-comment"># One line to add all 4 memory layers</span>
+<span class="c-var">memory_tool</span> = <span class="c-fn">MemoryTool</span>(
+    <span class="c-var">user_id</span>=<span class="c-str">"user_42"</span>,              <span class="c-comment"># isolates this user's memories</span>
+    <span class="c-var">memory_types</span>=[                   <span class="c-comment"># choose which layers to enable</span>
+        <span class="c-str">"working"</span>, <span class="c-str">"episodic"</span>, <span class="c-str">"semantic"</span>
+    ]
+)
+
+<span class="c-var">registry</span> = <span class="c-fn">ToolRegistry</span>()
+<span class="c-var">registry</span>.<span class="c-fn">register_tool</span>(<span class="c-var">memory_tool</span>)
+<span class="c-var">agent</span>.<span class="c-var">tool_registry</span> = <span class="c-var">registry</span>
+
+<span class="c-comment"># Now the agent can remember across sessions</span>
+<span class="c-var">agent</span>.<span class="c-fn">run</span>(<span class="c-str">"Remember: I prefer Python examples over pseudocode"</span>)
+<span class="c-comment"># → stores to semantic memory, importance auto-scored</span>
+
+<span class="c-var">agent</span>.<span class="c-fn">run</span>(<span class="c-str">"How do I write a decorator?"</span>)
+<span class="c-comment"># → retrieves user preference, formats response accordingly</span></pre>
+      </div>
+
+      <div class="callout callout-insight">
+        <div class="callout-icon">🔑</div>
+        <p class="callout-text"><strong>The user_id parameter is your isolation mechanism.</strong> All four memory backends (in-memory store, SQLite, Qdrant, Neo4j) are namespaced by user_id. This means you can run a single agent serving thousands of users, each with their own fully isolated memory state — without any application-level partitioning logic.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- KEY TAKEAWAYS -->
+    <div class="section">
+      <p class="section-label">Key Takeaways</p>
+      <h2>What You Should Walk Away Knowing</h2>
+
+      <p><strong>1. Don't conflate context window with memory.</strong> The context window is not memory — it's the current computation. Memory is what persists between computations. If you're only passing chat history into the context, you're not building memory, you're building a longer prompt.</p>
+
+      <p><strong>2. Each memory type serves a different access pattern.</strong> Working memory is for speed (current task). Episodic is for events (what happened). Semantic is for knowledge (what's true). Perceptual is for modalities (what was seen/heard). Using the wrong layer for the wrong data creates retrieval noise.</p>
+
+      <p><strong>3. The importance score is not optional.</strong> Every memory should carry an importance float in [0.0, 1.0]. This single number enables forgetting, consolidation, and noise filtering — the three operations that keep your memory system from becoming a garbage dump over time.</p>
+
+      <p><strong>4. Consolidation is scheduled work, not reactive work.</strong> Build consolidation triggers into your agent's lifecycle: on session end, daily, or after N interactions. Treat it like a database maintenance job, not a user-facing feature.</p>
+
+      <p><strong>5. Vector search + graph traversal > vector search alone.</strong> For any memory system that needs to reason about relationships (not just similarity), a knowledge graph backend pays for its complexity within weeks of deployment.</p>
+    </div>
+
+    <div class="ornament">· · ·</div>
+
+  </div><!-- /.article-body -->
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <div class="article-footer">
+    <div class="footer-cta">
+      <h4>Next up: Episode 2 — RAG Architecture</h4>
+      <p>MQE · HyDE · Hybrid Retrieval · MarkItDown<br>
+      How agents retrieve knowledge they weren't trained on.</p>
+    </div>
+    <div>
+      <div class="tags-row">
+        <span class="tag">#AIAgents</span>
+        <span class="tag">#LLMOps</span>
+        <span class="tag">#RAG</span>
+        <span class="tag">#VectorDB</span>
+        <span class="tag">#KnowledgeGraph</span>
+        <span class="tag">#MLEngineering</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.article-wrapper -->
+</body>
+</html>
