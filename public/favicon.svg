@@ -1,11 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#7C3AED"/>
-      <stop offset="1" stop-color="#06B6D4"/>
+    <linearGradient id="bg" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5B6CFF"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="16" y1="14" x2="48" y2="50" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#EAF6FF" stop-opacity="0.9"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="14" fill="#0B0B14"/>
-  <rect x="6" y="6" width="52" height="52" rx="12" fill="url(#g)"/>
-  <path d="M32 15L46 49H39.4L36.6 42H27.4L24.6 49H18L32 15ZM34.3 36.4L32 30.4L29.7 36.4H34.3Z" fill="white"/>
+  <rect x="6" y="6" width="52" height="52" rx="14" fill="#090C18"/>
+  <rect x="8" y="8" width="48" height="48" rx="12" fill="url(#bg)"/>
+  <path d="M32 17L45.5 47H40.4L37.6 40.4H26.4L23.6 47H18.5L32 17ZM35.9 36L32 26.9L28.1 36H35.9Z" fill="url(#glow)"/>
+  <circle cx="49" cy="15" r="2" fill="#FFFFFF" fill-opacity="0.8"/>
 </svg>
