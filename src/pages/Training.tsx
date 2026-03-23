@@ -15,7 +15,16 @@ const episodes = [
     tags: ["Memory & Retrieval", "Working Memory", "Episodic", "Semantic", "Qdrant", "Neo4j"],
     href: "/training/episode-01-agent-memory.html",
   },
-  // Future episodes (02–100) will be added here as HTML files
+  {
+    id: "episode-02-agent-evaluation",
+    number: "02",
+    title: "Evaluating an AI Sales Intelligence Agent",
+    subtitle: "Enterprise AI Evaluation — Case Study",
+    description: "How to evaluate an enterprise AI pipeline end-to-end — from raw data ingestion and retrieval quality to source trustworthiness, traceability, and report usefulness.",
+    tags: ["Evaluation", "Enterprise AI", "RAG", "Retrieval", "Grounding", "Metrics"],
+    href: "/training/episode-02-agent-evaluation.html",
+  },
+  // Future episodes (03–100) will be added here as HTML files
 ];
 
 const Training = () => {

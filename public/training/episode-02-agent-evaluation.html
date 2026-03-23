@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluating an AI Sales Intelligence Agent — Yiman Huang</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --paper: #f5f2eb;
+    --accent: #c0392b;
+    --muted: #6b6456;
+    --rule: #d6cebc;
+    --code-bg: #1a1a1a;
+    --code-fg: #e8e0d0;
+    --highlight: #f0ece0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.85;
+    min-height: 100vh;
+  }
+
+  /* ─── MASTHEAD ─── */
+  header {
+    border-bottom: 3px double var(--ink);
+    padding: 48px 0 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: repeating-linear-gradient(90deg, var(--accent) 0, var(--accent) 12px, transparent 12px, transparent 18px);
+  }
+
+  .pub-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+
+  .blog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 72px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    max-width: 800px;
+    margin: 0 auto 28px;
+    padding: 0 24px;
+  }
+
+  .blog-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 540px;
+    margin: 0 auto 40px;
+    padding: 0 24px;
+  }
+
+  .byline-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--rule);
+    background: var(--highlight);
+    padding: 14px 24px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+
+  .byline-bar span strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .dot { color: var(--rule); }
+
+  /* ─── LAYOUT ─── */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ─── ARTICLE ─── */
+  article {
+    padding: 64px 0 100px;
+  }
+
+  /* Lead paragraph */
+  .lead {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--ink);
+    border-left: 4px solid var(--accent);
+    padding-left: 24px;
+    margin-bottom: 48px;
+  }
+
+  /* Regular prose */
+  p {
+    margin-bottom: 24px;
+    color: #2a2420;
+  }
+
+  /* ─── SECTION HEADINGS ─── */
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 64px 0 20px;
+    position: relative;
+    padding-top: 24px;
+  }
+
+  h2::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: var(--accent);
+    position: absolute;
+    top: 0; left: 0;
+  }
+
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 40px 0 12px;
+  }
+
+  /* ─── PULLQUOTE ─── */
+  blockquote {
+    border: none;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 32px 36px;
+    margin: 48px 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.55;
+    position: relative;
+  }
+
+  blockquote::after {
+    content: '\201D';
+    position: absolute;
+    bottom: -20px; right: 28px;
+    font-size: 120px;
+    line-height: 1;
+    color: var(--accent);
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* ─── SECTION BOXES ─── */
+  .eval-section {
+    background: var(--highlight);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--ink);
+    padding: 28px 32px;
+    margin: 40px 0;
+  }
+
+  .eval-section .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .eval-section h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+
+  .eval-section p {
+    font-size: 15.5px;
+    margin-bottom: 0;
+    color: #3a3028;
+  }
+
+  /* ─── METADATA GRID ─── */
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin: 36px 0;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+
+  .meta-item {
+    background: var(--highlight);
+    padding: 16px 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+  }
+
+  .meta-item .key {
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .meta-item .val {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ─── INLINE CODE ─── */
+  code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13.5px;
+    background: var(--code-bg);
+    color: #7ec8a0;
+    padding: 2px 7px;
+    border-radius: 2px;
+  }
+
+  /* ─── LIST ─── */
+  ul, ol {
+    padding-left: 24px;
+    margin-bottom: 24px;
+  }
+
+  li {
+    margin-bottom: 8px;
+    color: #2a2420;
+  }
+
+  li::marker {
+    color: var(--accent);
+  }
+
+  /* ─── DIVIDER ─── */
+  .rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 56px 0;
+  }
+
+  .rule-double {
+    border: none;
+    border-top: 3px double var(--rule);
+    margin: 64px 0 48px;
+  }
+
+  /* ─── CRITERIA SUMMARY TABLE ─── */
+  .criteria-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 36px 0;
+    font-size: 14.5px;
+  }
+
+  .criteria-table thead tr {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .criteria-table th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  .criteria-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+
+  .criteria-table tr:nth-child(even) td {
+    background: var(--highlight);
+  }
+
+  .criteria-table .tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+    background: var(--accent);
+    color: white;
+  }
+
+  .criteria-table .tag.tech { background: #2c5f8a; }
+  .criteria-table .tag.biz { background: #4a7c59; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 3px double var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    padding: 48px 28px;
+    text-align: center;
+  }
+
+  footer .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  footer .footer-role {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #9a9080;
+    margin-bottom: 24px;
+  }
+
+  footer .footer-note {
+    font-size: 14px;
+    color: #7a7060;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  /* ─── FADE IN ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  header, article > .container > * {
+    animation: fadeUp 0.6s ease both;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .meta-grid { grid-template-columns: 1fr; }
+    .byline-bar { flex-direction: column; gap: 6px; }
+    h2 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header>
+  <div class="pub-label">Case Study &nbsp;·&nbsp; Enterprise AI Evaluation</div>
+  <h1 class="blog-title">Evaluating an <em>AI Sales Intelligence Agent</em> Built for ThyssenKrupp</h1>
+  <p class="subtitle">How I approached end-to-end evaluation across data quality, retrieval, source trustworthiness, and report usefulness</p>
+  <div class="byline-bar">
+    <span><strong>Yiman Huang</strong></span>
+    <span class="dot">·</span>
+    <span>December 10, 2025</span>
+    <span class="dot">·</span>
+    <span>RAG · Enterprise AI · Evaluation</span>
+    <span class="dot">·</span>
+    <span>~18 min read</span>
+  </div>
+</header>
+
+<!-- ══════════════ ARTICLE ══════════════ -->
+<article>
+<div class="container">
+
+  <p class="lead">
+    Evaluating an enterprise AI pipeline is not the same as benchmarking a chatbot. This case study walks through how I evaluated an AI Sales Intelligence Agent — from raw data ingestion all the way to the generated customer report that a sales rep reads before a meeting.
+  </p>
+
+  <p>
+    Rather than asking "how good is the LLM output?" I asked: <strong>how well does the entire system transform fragmented, heterogeneous enterprise data into a trustworthy and actionable customer intelligence report?</strong> The distinction matters more than it might seem.
+  </p>
+
+  <hr class="rule">
+
+  <h2>Context: The Problem Being Solved</h2>
+
+  <p>
+    At ThyssenKrupp, customer intelligence was scattered across CRM systems, email threads, order histories, account notes, and public web sources. Before any important customer meeting, a sales employee had to manually collect and reconcile information across all of these — a slow, inconsistent, and cognitively expensive process.
+  </p>
+
+  <p>
+    The AI Sales Intelligence Agent was designed to automate that consolidation: given a customer query, it would retrieve and synthesize internal and external signals into a structured, readable briefing. The final deliverable was not a single Q&A response, but a <strong>customer intelligence report</strong> — something a sales person could rely on to prepare for a call or account review.
+  </p>
+
+  <blockquote>
+    "Give me a short briefing on this customer before tomorrow's meeting."<br>
+    <small style="font-size:14px; font-style:normal; font-family:'IBM Plex Mono',monospace; opacity:0.7; display:block; margin-top:12px;">— A representative real-world query the system was designed to handle</small>
+  </blockquote>
+
+  <p>
+    Because the output was a report — not a one-liner — the evaluation had to match that scope. Evaluation started at the data layer, not the generation layer.
+  </p>
+
+  <hr class="rule">
+
+  <h2>Evaluation Framework Overview</h2>
+
+  <p>I structured evaluation across nine interconnected dimensions. Each dimension targeted a distinct failure mode that is specific to enterprise AI pipelines operating over heterogeneous, fragmented, and differently trustworthy data sources.</p>
+
+  <table class="criteria-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Dimension</th>
+        <th>Focus</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Source trustworthiness</td>
+        <td>Internal and external data quality</td>
+        <td><span class="tag tech">Technical</span></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Source verifiability</td>
+        <td>Traceability from report to evidence</td>
+        <td><span class="tag tech">Technical</span></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Heterogeneous data handling</td>
+        <td>Preprocessing, schema interpretation</td>
+        <td><span class="tag tech">Technical</span></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Metadata design & chunking</td>
+        <td>Source-aware indexing strategy</td>
+        <td><span class="tag tech">Technical</span></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Retrieval relevance</td>
+        <td>Ranking quality in realistic scenarios</td>
+        <td><span class="tag tech">Technical</span></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Report quality</td>
+        <td>Accuracy, completeness, structure</td>
+        <td><span class="tag biz">Business</span></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Grounding & trust</td>
+        <td>User-facing verifiability</td>
+        <td><span class="tag biz">Business</span></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Workflow efficiency</td>
+        <td>Time saved, system switching reduced</td>
+        <td><span class="tag biz">Business</span></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Robustness</td>
+        <td>Noisy, imperfect, real-world data</td>
+        <td><span class="tag tech">Technical</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="rule">
+
+  <!-- SECTION 1 -->
+  <div class="eval-section">
+    <div class="section-num">Dimension 01</div>
+    <h4>Data Source Trustworthiness and External Data Control</h4>
+    <p>The pipeline needed to handle two fundamentally different data worlds: structured internal systems and the open web. These required different trust models.</p>
+  </div>
+
+  <p>Internal data sources included CRM records, email communication, order and quotation history, cross-departmental notes, and records transferred through <strong>Power Automate</strong> automation pipelines. These were generally trusted but varied in freshness and completeness.</p>
+
+  <p>External data sources posed a harder challenge. I used <strong>Firecrawl</strong> as the crawl and ingestion layer — but critically, Firecrawl was only the data collection mechanism, not an intelligence layer. Raw crawled content was never fed directly into the retrieval pipeline. Instead, I built a filtering and scoring layer on top of the raw crawl output.</p>
+
+  <h3>The Hybrid Source Strategy</h3>
+
+  <p>I implemented a hybrid trust architecture for external content:</p>
+
+  <ul>
+    <li><strong>Tier 1 — High-trust domains:</strong> official company websites, investor relations pages, press releases, and verified financial platforms such as <code>finanz.de</code></li>
+    <li><strong>Tier 2 — Controlled dynamic crawling:</strong> supplementary external signals from recognizable media and industry publications, subject to scoring</li>
+    <li><strong>Tier 3 — Filtered or excluded:</strong> SEO-heavy content, duplicated summaries, generic third-party aggregators, and content with weak entity matching</li>
+  </ul>
+
+  <p>Each external document was enriched with metadata before ingestion:</p>
+
+  <div class="meta-grid">
+    <div class="meta-item"><span class="key">Field</span><span class="val">source_domain</span></div>
+    <div class="meta-item"><span class="key">Field</span><span class="val">source_type</span></div>
+    <div class="meta-item"><span class="key">Field</span><span class="val">timestamp</span></div>
+    <div class="meta-item"><span class="key">Field</span><span class="val">content_type</span></div>
+    <div class="meta-item"><span class="key">Field</span><span class="val">confidence_score</span></div>
+    <div class="meta-item"><span class="key">Field</span><span class="val">relevance_score</span></div>
+  </div>
+
+  <p>These fields served dual roles: pre-filtering low-confidence documents before indexing, and boosting high-confidence sources during retrieval ranking.</p>
+
+  <p>I also cross-validated important external signals against internal enterprise data. If an external article reported a major customer expansion or funding event, I checked whether corresponding signals existed in CRM activity, account notes, or order history. This significantly reduced the risk of surfacing misleading external content in the final report.</p>
+
+  <hr class="rule">
+
+  <!-- SECTION 2 -->
+  <div class="eval-section">
+    <div class="section-num">Dimension 02</div>
+    <h4>Source Verifiability and Traceability</h4>
+    <p>In a sales context, it is not enough that the agent produces a plausible summary. The sales user must be able to trace every key claim back to its origin.</p>
+  </div>
+
+  <p>I designed the pipeline so that retrieved chunks retained source references throughout the entire flow — not just for logging, but as a first-class output feature. When the generated report made a claim such as:</p>
+
+  <ul>
+    <li>a recent customer expansion or restructuring</li>
+    <li>a financing event or strategic acquisition</li>
+    <li>a drop or increase in order activity</li>
+    <li>an unresolved internal account issue</li>
+  </ul>
+
+  <p>…the system could trace that statement back to its specific source: a CRM entry, a company's investor relations page, an email thread, or a public financial news article.</p>
+
+  <p>I treated <strong>source-grounding as a core quality criterion</strong>, not an optional feature. A report can sound convincing while being poorly grounded. Evaluating only fluency or surface plausibility would miss this failure mode entirely. In enterprise environments, users must be able to verify key statements — otherwise adoption fails even when generation quality is high.</p>
+
+  <hr class="rule">
+
+  <!-- SECTION 3 -->
+  <div class="eval-section">
+    <div class="section-num">Dimension 03</div>
+    <h4>Handling Heterogeneous Internal Data</h4>
+    <p>Enterprise AI systems often fail not at retrieval, but earlier — when they incorrectly flatten semantically distinct source types into generic text before indexing.</p>
+  </div>
+
+  <p>Each internal data source carried different semantics:</p>
+
+  <ul>
+    <li><strong>CRM data</strong> was structured, entity-anchored, and tied to defined business objects</li>
+    <li><strong>Email threads</strong> were unstructured, often noisy, but rich in customer relationship context</li>
+    <li><strong>Order and quotation data</strong> reflected transactional behavior and commercial trends</li>
+    <li><strong>Cross-departmental notes</strong> contained fragmented but important business context</li>
+    <li><strong>Power Automate transfers</strong> arrived as structured or semi-structured payloads where meaning was encoded in field names, schemas, and format patterns</li>
+  </ul>
+
+  <p>Power Automate-transferred records required particular care. Depending on field patterns and schema structure, a single pipeline could carry very different business objects — customer master data, opportunity updates, activity logs, transactional records, or externally synchronized event records. Each required different preprocessing rules.</p>
+
+  <p>My preprocessing pipeline included schema normalization, field mapping to a unified internal representation, timestamp standardization, source tagging, metadata enrichment, cross-system entity linking, and normalization of naming inconsistencies. If a record's business meaning was misunderstood at this stage, even a strong retrieval strategy would later surface misleading or incomplete information.</p>
+
+  <hr class="rule">
+
+  <!-- SECTION 4 -->
+  <div class="eval-section">
+    <div class="section-num">Dimension 04</div>
+    <h4>Metadata Design and Source-Aware Chunking</h4>
+    <p>Metadata was not an optional enhancement — it was the central mechanism for controlling retrieval quality in a fragmented enterprise environment.</p>
+  </div>
+
+  <p>Each chunk stored in the retrieval system included:</p>
+
+  <div class="meta-grid">
+    <div class="meta-item"><span class="key">Field</span><span class="val">source_system</span></div>
+    <div class="meta-item"><span class="key">Field</span><span class="val">source_type</span></div>
+    <div class="meta-item"><span class="key">Field</span><span class="val">document_type</span></div>
+    <div class="meta-item"><span class="key">Field</span><span class="val">customer_id / account_id</span></div>
+    <div class="meta-item"><span class="key">Field</span><span class="val">timestamp / recency</span></div>
+    <div class="meta-item"><span class="key">Field</span><span class="val">business_context</span></div>
+    <div class="meta-item"><span class="key">Field</span><span class="val">entity_references</span></div>
+    <div class="meta-item"><span class="key">Field</span><span class="val">confidence_level</span></div>
+  </div>
+
+  <p>This was essential because chunks with similar surface text could have very different value depending on origin. A CRM owner note, an automated operational update, and a public news article might all reference the same customer — but they should not be treated equally during retrieval ranking or final summarization.</p>
+
+  <h3>Chunking Strategy by Source Type</h3>
+  <ul>
+    <li>CRM and transactional data → compact, semantically dense representation</li>
+    <li>Email threads → segmented to preserve conversational context and next-step relevance</li>
+    <li>External web content → chunked with stronger weighting on recency and source credibility</li>
+    <li>Power Automate records → processed according to schema and business meaning, not a generic chunking rule</li>
+  </ul>
+
+  <p>This source-aware chunking strategy measurably improved retrieval precision and reduced noise in downstream generation.</p>
+
+  <hr class="rule">
+
+  <!-- SECTION 5 -->
+  <div class="eval-section">
+    <div class="section-num">Dimension 05</div>
+    <h4>Retrieval Relevance in Real Sales Scenarios</h4>
+    <p>Retrieval was evaluated using realistic sales workflows — not generic benchmark questions detached from the actual use case.</p>
+  </div>
+
+  <p>For a representative query like <em>"Give me a short briefing on this customer before tomorrow's meeting,"</em> I evaluated whether the system could retrieve and combine:</p>
+
+  <ul>
+    <li>recent CRM updates and account notes</li>
+    <li>order or quotation activity trends</li>
+    <li>unresolved issues or important context from email threads</li>
+    <li>recent external company developments</li>
+    <li>signals suggesting risk, opportunity, or strategic change</li>
+  </ul>
+
+  <p>Evaluation questions included: Were the most relevant records ranked first? Did the system miss critical internal context? Did it overemphasize noisy or duplicated content? Did metadata filtering improve precision? Did external signals complement internal knowledge in a meaningful way?</p>
+
+  <h3>Retrieval Strategy Comparison</h3>
+  <p>I compared three retrieval configurations:</p>
+  <ol>
+    <li>Vector search only</li>
+    <li>Keyword / lexical search only</li>
+    <li>Hybrid retrieval combining vector search, keyword retrieval, and metadata filtering</li>
+  </ol>
+
+  <p><strong>Hybrid retrieval performed best across all scenarios.</strong> Enterprise customer data is too heterogeneous for any single retrieval method to work consistently across CRM records, email threads, transactional data, and external web content simultaneously.</p>
+
+  <hr class="rule">
+
+  <!-- SECTION 6 -->
+  <div class="eval-section">
+    <div class="section-num">Dimension 06</div>
+    <h4>Generated Customer Report Quality</h4>
+    <p>Since the final output was a full customer intelligence report — not a single answer — quality evaluation had to operate at the report level, not the sentence level.</p>
+  </div>
+
+  <p>The core question was whether the generated report could serve as a reliable decision-support artifact for sales preparation. I evaluated reports against five properties:</p>
+
+  <ul>
+    <li><strong>Accurate</strong> — correctly reflecting both internal and external data, no hallucinated claims</li>
+    <li><strong>Complete</strong> — covering the most important aspects of the customer situation</li>
+    <li><strong>Structured</strong> — easy to consume before a meeting, not a wall of text</li>
+    <li><strong>Grounded</strong> — traceable to specific, reliable source evidence</li>
+    <li><strong>Actionable</strong> — helping the sales user identify next steps, risks, or opportunities</li>
+  </ul>
+
+  <p>I also checked for failure modes specific to enterprise data: mixing up similar customers or accounts, over-representing noisy external content at the expense of internal context, and generating plausible-sounding summaries that were weakly grounded or impossible to trace.</p>
+
+  <hr class="rule">
+
+  <!-- SECTION 7 -->
+  <div class="eval-section">
+    <div class="section-num">Dimension 07</div>
+    <h4>Grounding, Trust, and Usability</h4>
+    <p>Beyond technical correctness, I evaluated whether the generated report was usable and trusted by end users — because in enterprise systems, trust is often the difference between adoption and non-adoption.</p>
+  </div>
+
+  <p>A linguistically polished output is not useful if sales users feel they still need to re-check everything manually. I assessed whether the report reflected the customer situation credibly, whether users could verify key statements, whether the structure allowed for quick consumption before a meeting, and whether the report reduced uncertainty rather than amplifying it.</p>
+
+  <p>The goal was not to generate fluent text. The goal was to generate a report that sales users would <strong>actually rely on</strong> as a first briefing layer — and would feel confident enough to act on.</p>
+
+  <hr class="rule">
+
+  <!-- SECTION 8 -->
+  <div class="eval-section">
+    <div class="section-num">Dimension 08</div>
+    <h4>Workflow Efficiency and Business Impact</h4>
+    <p>A major success metric was whether the agent reduced the amount of manual work required for customer preparation.</p>
+  </div>
+
+  <p>Before the system, a typical pre-meeting preparation involved opening several disconnected systems, reading through email threads, manually interpreting order activity, and combining external and internal signals by hand. I evaluated whether the system measurably reduced:</p>
+
+  <ul>
+    <li>time spent on customer preparation before sales meetings</li>
+    <li>manual switching between disconnected tools</li>
+    <li>repetitive information lookup across systems</li>
+    <li>cognitive load from fragmented and inconsistent customer data</li>
+  </ul>
+
+  <p>The goal was not narrow task automation — it was to reduce fragmentation and improve the speed and clarity of decision-making for the sales team.</p>
+
+  <hr class="rule">
+
+  <!-- SECTION 9 -->
+  <div class="eval-section">
+    <div class="section-num">Dimension 09</div>
+    <h4>Robustness Under Real-World Enterprise Conditions</h4>
+    <p>A system that works only on clean demo data is not useful in enterprise practice.</p>
+  </div>
+
+  <p>I evaluated robustness against scenarios including:</p>
+
+  <ul>
+    <li>inconsistent customer naming across CRM and other systems</li>
+    <li>incomplete or partially outdated records</li>
+    <li>noisy or overly long email threads with low signal-to-noise ratio</li>
+    <li>schema variations in Power Automate automation pipelines</li>
+    <li>duplicated external articles covering the same event from different angles</li>
+    <li>conflicting signals between internal and external sources</li>
+    <li>multiple sources describing the same customer development differently</li>
+  </ul>
+
+  <p>This mattered because real enterprise data is never clean. I needed confidence that the pipeline could still produce reliable retrieval results and useful reports under realistic variability — not just when conditions were ideal.</p>
+
+  <hr class="rule-double">
+
+  <h2>Overall Evaluation Philosophy</h2>
+
+  <p>I evaluated this system as a <strong>full enterprise AI decision-support pipeline</strong>, not as a language model application. The LLM was only one component — and arguably not the most fragile one.</p>
+
+  <p>The pipeline's real challenges were upstream: interpreting heterogeneous data correctly, controlling source trustworthiness, building a metadata layer that made retrieval reliable across fundamentally different source types, and ensuring that generated reports were grounded in traceable evidence rather than plausible inference.</p>
+
+  <p>I considered the system successful only if it achieved both goals simultaneously:</p>
+
+  <ol>
+    <li><strong>Technical quality</strong> — strong data handling, retrieval precision, source grounding, and accurate report generation</li>
+    <li><strong>Business value</strong> — measurably reducing information fragmentation and helping sales teams make faster, better-informed decisions</li>
+  </ol>
+
+  <blockquote>
+    What mattered most was not whether the model could generate a polished summary — it was whether the full system could transform fragmented cross-source customer data into a trustworthy, verifiable, and genuinely useful intelligence report for real sales work.
+  </blockquote>
+
+  <p>
+    Enterprise AI evaluation that focuses only on generation quality misses most of the real failure modes. The data layer, the preprocessing strategy, the metadata design, and the retrieval architecture are where customer-facing quality is actually determined — long before the LLM is involved.
+  </p>
+
+</div>
+</article>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-name">Yiman Huang</div>
+  <div class="footer-role">AI Engineer &nbsp;·&nbsp; Enterprise AI Systems</div>
+  <p class="footer-note">Writing about AI system design, enterprise data pipelines, and what real-world evaluation actually looks like.</p>
+</footer>
+
+</body>
+</html>
