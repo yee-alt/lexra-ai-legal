@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五个月德语冲关法</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Bebas+Neue&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Barlow+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0d0d0d;
+  --white: #f5f5f0;
+  --gray-1: #1a1a1a;
+  --gray-2: #2e2e2e;
+  --gray-3: #5a5a5a;
+  --gray-4: #8a8a8a;
+  --gray-5: #c8c8c0;
+  --gray-6: #e8e8e0;
+  --red: #e63020;
+  --red-dark: #b52418;
+  --red-pale: #fdf0ee;
+  --blue: #1a3a8f;
+  --blue-mid: #2850c8;
+  --blue-pale: #eef2fc;
+  --yellow: #f5c800;
+  --yellow-pale: #fffbea;
+  --green: #1a6b3c;
+  --green-mid: #2a9050;
+  --green-pale: #eef7f2;
+  --orange: #e07820;
+  --orange-pale: #fef4e8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--black);
+  font-family: 'Noto Sans SC', sans-serif;
+  padding: 48px 24px 80px;
+  position: relative;
+}
+
+/* Grid texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* PAGE HEADER */
+.site-header {
+  max-width: 980px;
+  margin: 0 auto 60px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding-bottom: 28px;
+}
+
+.header-left {}
+
+.header-overline {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: var(--red);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.header-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  color: var(--white);
+  letter-spacing: 3px;
+  line-height: 0.95;
+  display: block;
+}
+
+.header-title em {
+  color: var(--yellow);
+  font-style: normal;
+}
+
+.header-right {
+  text-align: right;
+}
+
+.header-de-word {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 80px;
+  color: rgba(255,255,255,0.04);
+  letter-spacing: 2px;
+  line-height: 1;
+  display: block;
+}
+
+.header-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 8px;
+  display: block;
+}
+
+/* SECTION LABEL */
+.section-label {
+  max-width: 980px;
+  margin: 40px auto 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-label-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: rgba(255,255,255,0.25);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.section-label-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+}
+
+/* ===== CARD BASE ===== */
+.card {
+  max-width: 980px;
+  margin: 0 auto 24px;
+  background: var(--white);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* Bauhaus accent bar top */
+.card-bar {
+  height: 6px;
+  width: 100%;
+}
+
+.bar-red { background: var(--red); }
+.bar-blue { background: var(--blue); }
+.bar-yellow { background: var(--yellow); }
+.bar-green { background: var(--green); }
+.bar-black { background: var(--black); }
+
+.card-inner {
+  padding: 32px 36px 36px;
+}
+
+/* CARD HEADER */
+.card-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  gap: 16px;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.card-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--gray-3);
+  letter-spacing: 2px;
+}
+
+.card-chip {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+}
+
+.chip-red { background: var(--red); color: white; }
+.chip-blue { background: var(--blue); color: white; }
+.chip-yellow { background: var(--yellow); color: var(--black); }
+.chip-green { background: var(--green); color: white; }
+.chip-black { background: var(--black); color: white; }
+.chip-orange { background: var(--orange); color: white; }
+
+.card-title-zh {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--black);
+  line-height: 1.25;
+}
+
+.card-title-de {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-3);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.card-head-deco {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 64px;
+  line-height: 1;
+  color: rgba(0,0,0,0.05);
+  letter-spacing: 2px;
+  text-align: right;
+  user-select: none;
+}
+
+/* ===== UTIL COMPONENTS ===== */
+.row { display: flex; gap: 10px; }
+.col { flex: 1; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+
+.divider { height: 1px; background: rgba(0,0,0,0.07); margin: 20px 0; }
+
+.label-row {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray-3);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.label-row::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(0,0,0,0.08);
+}
+
+.highlight-box {
+  padding: 14px 16px;
+  border-left: 3px solid;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--gray-2);
+}
+
+.highlight-red { border-color: var(--red); background: var(--red-pale); }
+.highlight-blue { border-color: var(--blue); background: var(--blue-pale); }
+.highlight-yellow { border-color: var(--yellow); background: var(--yellow-pale); }
+.highlight-green { border-color: var(--green); background: var(--green-pale); }
+
+.highlight-box strong { font-weight: 700; color: var(--black); }
+
+/* ===== CARD 00: OVERVIEW ===== */
+.timeline-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.timeline-month {
+  padding: 18px 14px;
+  position: relative;
+  border-right: 1px solid rgba(0,0,0,0.08);
+}
+
+.timeline-month:last-child { border-right: none; }
+
+.month-m1 { background: #fdf0ee; }
+.month-m2 { background: #fffbea; }
+.month-m3 { background: #eef2fc; }
+.month-m4 { background: #eef7f2; }
+.month-m5 { background: var(--black); }
+
+.tm-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  line-height: 1;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.month-m1 .tm-num { color: var(--red); }
+.month-m2 .tm-num { color: #b89000; }
+.month-m3 .tm-num { color: var(--blue-mid); }
+.month-m4 .tm-num { color: var(--green-mid); }
+.month-m5 .tm-num { color: var(--white); }
+
+.tm-level {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.month-m1 .tm-level { color: var(--red); }
+.month-m2 .tm-level { color: #b89000; }
+.month-m3 .tm-level { color: var(--blue-mid); }
+.month-m4 .tm-level { color: var(--green-mid); }
+.month-m5 .tm-level { color: var(--yellow); }
+
+.tm-title {
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.month-m5 .tm-title { color: var(--white); }
+
+.tm-focus {
+  font-size: 10px;
+  color: var(--gray-3);
+  line-height: 1.6;
+}
+
+.month-m5 .tm-focus { color: rgba(255,255,255,0.5); }
+
+.tm-tool {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  padding: 2px 6px;
+  margin-top: 6px;
+  margin-right: 2px;
+}
+
+.month-m1 .tm-tool { background: rgba(230,48,32,0.12); color: var(--red); }
+.month-m2 .tm-tool { background: rgba(245,200,0,0.2); color: #7a6400; }
+.month-m3 .tm-tool { background: rgba(26,58,143,0.1); color: var(--blue); }
+.month-m4 .tm-tool { background: rgba(26,107,60,0.1); color: var(--green); }
+.month-m5 .tm-tool { background: rgba(245,200,0,0.15); color: var(--yellow); }
+
+.overview-bottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.overview-stat {
+  background: var(--black);
+  padding: 20px 18px;
+  text-align: center;
+}
+
+.overview-stat-n {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 44px;
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-red .overview-stat-n { color: var(--red); }
+.stat-yellow .overview-stat-n { color: var(--yellow); }
+.stat-blue .overview-stat-n { color: var(--blue-mid); }
+
+.overview-stat-l {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1px;
+}
+
+.core-principle {
+  background: var(--black);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  align-items: center;
+}
+
+.principle-side {
+  padding: 0 20px;
+}
+
+.principle-side:first-child { padding-left: 0; }
+.principle-side:last-child { padding-right: 0; }
+
+.principle-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.principle-low .principle-label { color: rgba(255,255,255,0.3); }
+.principle-high .principle-label { color: var(--yellow); }
+
+.principle-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.principle-low .principle-title { color: rgba(255,255,255,0.5); }
+.principle-high .principle-title { color: var(--white); }
+
+.principle-desc {
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.principle-low .principle-desc { color: rgba(255,255,255,0.3); }
+.principle-high .principle-desc { color: rgba(255,255,255,0.65); }
+
+.principle-arrow {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--red);
+  padding: 0 16px;
+  border-left: 1px solid rgba(255,255,255,0.06);
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ===== CARD 01: A1 GROUND ZERO ===== */
+.nico-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.nico-step {
+  padding: 20px 16px;
+  position: relative;
+  background: var(--gray-6);
+  border-right: 1px solid rgba(0,0,0,0.08);
+}
+
+.nico-step:last-child { border-right: none; }
+.nico-step.active { background: var(--black); }
+
+.nico-step-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 44px;
+  color: rgba(0,0,0,0.08);
+  line-height: 1;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.nico-step.active .nico-step-num { color: rgba(255,255,255,0.06); }
+
+.nico-step-icon { font-size: 22px; margin-bottom: 8px; display: block; }
+
+.nico-step-title {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--black);
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+
+.nico-step.active .nico-step-title { color: var(--white); }
+
+.nico-step-desc {
+  font-size: 11px;
+  color: var(--gray-3);
+  line-height: 1.5;
+}
+
+.nico-step.active .nico-step-desc { color: rgba(255,255,255,0.55); }
+
+.nico-step-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  display: inline-block;
+  padding: 2px 7px;
+  margin-top: 8px;
+  background: var(--red);
+  color: white;
+}
+
+.anki-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.anki-wrong {
+  background: var(--gray-6);
+  padding: 18px;
+  border: 1px solid rgba(0,0,0,0.08);
+  position: relative;
+}
+
+.anki-right {
+  background: var(--black);
+  padding: 18px;
+}
+
+.anki-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.anki-wrong .anki-label { color: var(--gray-3); }
+.anki-right .anki-label { color: var(--yellow); }
+
+.anki-card-demo {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 12px;
+  margin-bottom: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.anki-card-demo.dark {
+  background: var(--gray-2);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.demo-word {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.anki-wrong .demo-word { color: var(--black); }
+.anki-right .demo-word { color: var(--white); }
+
+.demo-only { font-size: 11px; color: var(--gray-3); }
+.demo-example { font-size: 11px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+.demo-translation { font-size: 10px; color: var(--yellow); margin-top: 3px; }
+
+.cross-mark {
+  position: absolute;
+  top: 12px; right: 12px;
+  font-size: 18px;
+  color: var(--red);
+  font-weight: 900;
+}
+
+.check-mark {
+  float: right;
+  font-size: 16px;
+  color: var(--yellow);
+}
+
+.reverso-box {
+  background: var(--blue-pale);
+  border: 1px solid rgba(26,58,143,0.12);
+  padding: 16px 18px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.reverso-icon-big {
+  font-size: 36px;
+  line-height: 1;
+}
+
+.reverso-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+
+.reverso-desc {
+  font-size: 12px;
+  color: var(--gray-2);
+  line-height: 1.6;
+}
+
+/* ===== CARD 02: VERB CONJUGATION ===== */
+.verb-header-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.verb-stat-box {
+  padding: 16px;
+  text-align: center;
+}
+
+.verb-stat-box.dark { background: var(--black); }
+.verb-stat-box.light { background: var(--gray-6); }
+
+.vsb-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 38px;
+  line-height: 1;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.dark .vsb-num { color: var(--yellow); }
+.light .vsb-num { color: var(--black); }
+
+.vsb-label { font-size: 10px; color: var(--gray-3); letter-spacing: 0.5px; }
+.dark .vsb-label { color: rgba(255,255,255,0.4); }
+
+.tense-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.tense-card {
+  border: 1px solid rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.tense-header {
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tense-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.tense-zh { font-size: 11px; }
+
+.tense-presens .tense-header { background: var(--black); }
+.tense-presens .tense-name { color: var(--yellow); }
+.tense-presens .tense-zh { color: rgba(255,255,255,0.4); }
+
+.tense-praeteritum .tense-header { background: var(--red); }
+.tense-praeteritum .tense-name { color: white; }
+.tense-praeteritum .tense-zh { color: rgba(255,255,255,0.7); }
+
+.tense-perfekt .tense-header { background: var(--blue); }
+.tense-perfekt .tense-name { color: white; }
+.tense-perfekt .tense-zh { color: rgba(255,255,255,0.7); }
+
+.tense-body { padding: 10px 14px; background: var(--gray-6); }
+
+.conj-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  font-size: 11px;
+}
+
+.conj-row:last-child { border-bottom: none; }
+.conj-pronoun { color: var(--gray-3); font-family: 'DM Mono', monospace; font-size: 10px; }
+.conj-verb { font-weight: 700; color: var(--black); font-family: 'Barlow Condensed', sans-serif; font-size: 14px; letter-spacing: 0.5px; }
+
+.irregular-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.irr-chip {
+  padding: 10px 8px;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: var(--gray-6);
+}
+
+.irr-chip.star {
+  background: var(--black);
+  border-color: transparent;
+}
+
+.irr-de {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  display: block;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.irr-chip.star .irr-de { color: var(--yellow); }
+.irr-chip .irr-de { color: var(--black); }
+
+.irr-zh { font-size: 9px; color: var(--gray-3); display: block; }
+.irr-chip.star .irr-zh { color: rgba(255,255,255,0.4); }
+
+/* ===== CARD 03: RESOURCES MAP ===== */
+.resource-levels {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.resource-row {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 0;
+  border: 1px solid rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.resource-level-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 1px;
+  padding: 14px 0;
+}
+
+.level-a1 { background: var(--red); color: white; }
+.level-a2 { background: var(--orange); color: white; }
+.level-b1 { background: var(--yellow); color: var(--black); }
+.level-b2 { background: var(--green); color: white; }
+.level-c1 { background: var(--black); color: var(--yellow); }
+
+.resource-cards {
+  display: flex;
+  gap: 0;
+  padding: 8px;
+  background: var(--gray-6);
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.res-card {
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.08);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.res-card.featured {
+  background: var(--black);
+  border-color: transparent;
+}
+
+.res-icon { font-size: 14px; flex-shrink: 0; }
+
+.res-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.res-card .res-name { color: var(--black); }
+.res-card.featured .res-name { color: var(--white); }
+
+.res-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  padding: 1px 5px;
+  font-weight: 500;
+}
+
+.badge-free { background: rgba(26,107,60,0.15); color: var(--green); }
+.badge-paid { background: rgba(230,48,32,0.1); color: var(--red); }
+.badge-app { background: rgba(26,58,143,0.1); color: var(--blue); }
+.badge-web { background: rgba(0,0,0,0.08); color: var(--gray-2); }
+
+.two-hour-plan {
+  background: var(--black);
+  padding: 20px 22px;
+}
+
+.plan-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.plan-blocks {
+  display: flex;
+  gap: 4px;
+  height: 56px;
+}
+
+.plan-block {
+  border-radius: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10px;
+  position: relative;
+}
+
+.plan-block-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+}
+
+.plan-block-time {
+  font-size: 10px;
+  color: rgba(255,255,255,0.55);
+  margin-top: 2px;
+}
+
+/* ===== CARD 04: IMMERSION ===== */
+.immersion-vs {
+  background: var(--black);
+  padding: 22px 24px;
+  display: grid;
+  grid-template-columns: 1fr 56px 1fr;
+  gap: 0;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.imm-side { padding: 0 20px; }
+.imm-side:first-child { padding-left: 0; }
+.imm-side:last-child { padding-right: 0; }
+
+.imm-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.imm-bad .imm-label { color: rgba(255,255,255,0.25); }
+.imm-good .imm-label { color: var(--yellow); }
+
+.imm-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.imm-bad .imm-title { color: rgba(255,255,255,0.4); text-decoration: line-through; text-decoration-color: var(--red); }
+.imm-good .imm-title { color: var(--white); }
+
+.imm-desc {
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.imm-bad .imm-desc { color: rgba(255,255,255,0.25); }
+.imm-good .imm-desc { color: rgba(255,255,255,0.65); }
+
+.imm-vs-center {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--red);
+  text-align: center;
+  border-left: 1px solid rgba(255,255,255,0.06);
+  border-right: 1px solid rgba(255,255,255,0.06);
+  padding: 0 12px;
+}
+
+.daily-routine {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.routine-block {
+  padding: 16px 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.rb-1 { background: var(--red-pale); border: 1px solid rgba(230,48,32,0.12); }
+.rb-2 { background: var(--yellow-pale); border: 1px solid rgba(245,200,0,0.2); }
+.rb-3 { background: var(--blue-pale); border: 1px solid rgba(26,58,143,0.1); }
+.rb-4 { background: var(--green-pale); border: 1px solid rgba(26,107,60,0.1); }
+
+.rb-time {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.rb-1 .rb-time { color: var(--red); }
+.rb-2 .rb-time { color: #8a7000; }
+.rb-3 .rb-time { color: var(--blue-mid); }
+.rb-4 .rb-time { color: var(--green-mid); }
+
+.rb-label {
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--black);
+  margin-bottom: 4px;
+}
+
+.rb-desc { font-size: 10px; color: var(--gray-3); line-height: 1.5; }
+
+.proverb-box {
+  background: var(--black);
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.proverb-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.proverb-de {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--yellow);
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.proverb-zh {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+}
+
+/* ===== CARD 05: MONTH TIMELINE ===== */
+.month-full-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.month-full-card {
+  border: 1px solid rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.mfc-header {
+  padding: 14px 14px 12px;
+}
+
+.mfc-h-m1 { background: var(--red); }
+.mfc-h-m2 { background: var(--orange); }
+.mfc-h-m3 { background: var(--blue); }
+.mfc-h-m4 { background: var(--green); }
+.mfc-h-m5 { background: var(--black); }
+
+.mfc-month-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  color: white;
+  line-height: 1;
+  display: block;
+  opacity: 0.9;
+}
+
+.mfc-h-m5 .mfc-month-num { color: var(--yellow); }
+
+.mfc-level {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 1px;
+  display: block;
+  margin-top: 2px;
+}
+
+.mfc-h-m5 .mfc-level { color: rgba(255,255,255,0.5); }
+
+.mfc-goal {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  margin-top: 6px;
+  line-height: 1.3;
+}
+
+.mfc-body {
+  background: var(--gray-6);
+  padding: 12px;
+}
+
+.mfc-task {
+  font-size: 10px;
+  color: var(--gray-2);
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  gap: 5px;
+  line-height: 1.4;
+  align-items: flex-start;
+}
+
+.mfc-task:last-child { border-bottom: none; }
+
+.mfc-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.m1-dot { background: var(--red); }
+.m2-dot { background: var(--orange); }
+.m3-dot { background: var(--blue-mid); }
+.m4-dot { background: var(--green-mid); }
+.m5-dot { background: var(--black); }
+
+.mfc-daily {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  padding: 6px 8px;
+  margin-top: 6px;
+  text-align: center;
+}
+
+.m1-daily { background: rgba(230,48,32,0.1); color: var(--red); }
+.m2-daily { background: rgba(224,120,32,0.1); color: var(--orange); }
+.m3-daily { background: rgba(26,58,143,0.1); color: var(--blue); }
+.m4-daily { background: rgba(26,107,60,0.1); color: var(--green); }
+.m5-daily { background: var(--black); color: var(--yellow); }
+
+.strategy-shift {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  border: 1px solid rgba(0,0,0,0.1);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.strategy-early {
+  background: var(--gray-6);
+  padding: 18px 20px;
+}
+
+.strategy-late {
+  background: var(--black);
+  padding: 18px 20px;
+}
+
+.strategy-divider {
+  background: var(--red);
+  width: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.strategy-divider-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  color: white;
+  writing-mode: vertical-rl;
+  letter-spacing: 2px;
+}
+
+.strategy-period {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.strategy-early .strategy-period { color: var(--gray-3); }
+.strategy-late .strategy-period { color: var(--yellow); }
+
+.strategy-rule {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.strategy-early .strategy-rule { color: var(--black); }
+.strategy-late .strategy-rule { color: var(--white); }
+
+.strategy-why {
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--gray-3);
+}
+
+.strategy-late .strategy-why { color: rgba(255,255,255,0.5); }
+
+.strategy-bullets { list-style: none; margin-top: 8px; }
+
+.strategy-bullet {
+  font-size: 11px;
+  padding: 3px 0;
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.strategy-early .strategy-bullet { color: var(--gray-2); }
+.strategy-late .strategy-bullet { color: rgba(255,255,255,0.7); }
+
+.sb-dash { flex-shrink: 0; font-weight: 700; }
+.strategy-early .sb-dash { color: var(--gray-3); }
+.strategy-late .sb-dash { color: var(--yellow); }
+</style>
+</head>
+<body>
+
+<!-- SITE HEADER -->
+<header class="site-header">
+  <div class="header-left">
+    <span class="header-overline">Deutsch Lernen · 德语学习路线图</span>
+    <span class="header-title">五个月<em>德语</em>冲关</span>
+    <span class="header-sub">Von Null bis C1 · A Complete Roadmap · Video Reference Cards</span>
+  </div>
+  <div class="header-right">
+    <span class="header-de-word">DEUTSCH</span>
+  </div>
+</header>
+
+<!-- ===== CARD 00: 总览 ===== -->
+<div class="section-label"><div class="section-label-line"></div><span class="section-label-text">Card 00 · Overview · 总览框架</span><div class="section-label-line"></div></div>
+<div class="card">
+  <div class="card-bar bar-red"></div>
+  <div class="card-inner">
+    <div class="card-head">
+      <div>
+        <div class="card-meta">
+          <span class="card-num">00 · OVERVIEW</span>
+          <span class="card-chip chip-red">全局框架</span>
+        </div>
+        <div class="card-title-zh">五个月冲关路线图</div>
+        <div class="card-title-de">Fünf Monate — Von A1 bis C1</div>
+      </div>
+      <div class="card-head-deco">00</div>
+    </div>
+
+    <div class="label-row">核心原则：初级聚焦 vs 高级沉浸</div>
+    <div class="core-principle">
+      <div class="principle-side principle-low">
+        <div class="principle-label">A1 → B1 · 初级阶段</div>
+        <div class="principle-title">资源越少越好</div>
+        <div class="principle-desc">你在建地基。只需1-2个资源，反复消化，不要贪多</div>
+      </div>
+      <div class="principle-arrow">→</div>
+      <div class="principle-side principle-high">
+        <div class="principle-label">B2 → C1 · 高级阶段</div>
+        <div class="principle-title">尽可能多地接触真实德语</div>
+        <div class="principle-desc">像海绵一样泡在德语里——剧集、新闻、播客、报纸全开</div>
+      </div>
+    </div>
+
+    <div class="label-row">五个月分级路线</div>
+    <div class="timeline-strip">
+      <div class="timeline-month month-m1">
+        <span class="tm-num">01</span>
+        <span class="tm-level">A1</span>
+        <div class="tm-title">打地基</div>
+        <div class="tm-focus">抄台词·建词库·每天20-30分钟</div>
+        <div><span class="tm-tool">Nico's Weg</span><span class="tm-tool">Anki</span></div>
+      </div>
+      <div class="timeline-month month-m2">
+        <span class="tm-num">02</span>
+        <span class="tm-level">A2</span>
+        <div class="tm-title">建结构</div>
+        <div class="tm-focus">动词变位·发音跟读·每天30-40分钟</div>
+        <div><span class="tm-tool">Reverso</span><span class="tm-tool">Nachrichtenleicht</span></div>
+      </div>
+      <div class="timeline-month month-m3">
+        <span class="tm-num">03</span>
+        <span class="tm-level">B1</span>
+        <div class="tm-title">建语感</div>
+        <div class="tm-focus">自言自语·语言交换·碎片听力</div>
+        <div><span class="tm-tool">Easy German</span><span class="tm-tool">语言伙伴</span></div>
+      </div>
+      <div class="timeline-month month-m4">
+        <span class="tm-num">04</span>
+        <span class="tm-level">B2</span>
+        <div class="tm-title">真实沉浸</div>
+        <div class="tm-focus">德剧·每日新闻·深度对话</div>
+        <div><span class="tm-tool">ZDF/ARD</span><span class="tm-tool">德语剧集</span></div>
+      </div>
+      <div class="timeline-month month-m5">
+        <span class="tm-num">05</span>
+        <span class="tm-level">C1</span>
+        <div class="tm-title">冲击高级</div>
+        <div class="tm-focus">专业播客·朗读报纸·学术表达</div>
+        <div><span class="tm-tool">专业播客</span><span class="tm-tool">报纸朗读</span></div>
+      </div>
+    </div>
+
+    <div class="overview-bottom">
+      <div class="overview-stat stat-red">
+        <span class="overview-stat-n">5</span>
+        <span class="overview-stat-l">个月完整路线</span>
+      </div>
+      <div class="overview-stat stat-yellow">
+        <span class="overview-stat-n">20min</span>
+        <span class="overview-stat-l">每日最低投入（A1起步）</span>
+      </div>
+      <div class="overview-stat stat-blue">
+        <span class="overview-stat-n">A1→C1</span>
+        <span class="overview-stat-l">五个等级逐级击破</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CARD 01: A1 打地基 ===== -->
+<div class="section-label"><div class="section-label-line"></div><span class="section-label-text">Card 01 · Month 1 · A1 打地基</span><div class="section-label-line"></div></div>
+<div class="card">
+  <div class="card-bar bar-red"></div>
+  <div class="card-inner">
+    <div class="card-head">
+      <div>
+        <div class="card-meta">
+          <span class="card-num">01 · MONAT EINS</span>
+          <span class="card-chip chip-red">第一个月 · A1</span>
+        </div>
+        <div class="card-title-zh">Nico's Weg 抄台词法 + Anki 例句卡</div>
+        <div class="card-title-de">Grundlagen aufbauen — Build the Foundation</div>
+      </div>
+      <div class="card-head-deco">A1</div>
+    </div>
+
+    <div class="label-row">Nico's Weg 正确打开方式（四步流程）</div>
+    <div class="nico-flow">
+      <div class="nico-step">
+        <span class="nico-step-num">01</span>
+        <span class="nico-step-icon">📋</span>
+        <div class="nico-step-title">先做练习题</div>
+        <div class="nico-step-desc">不要急着看视频，先做题建立初步印象</div>
+      </div>
+      <div class="nico-step">
+        <span class="nico-step-num">02</span>
+        <span class="nico-step-icon">🎬</span>
+        <div class="nico-step-title">看视频理解</div>
+        <div class="nico-step-desc">带着做题后的问题，边看边理解语境</div>
+      </div>
+      <div class="nico-step active">
+        <span class="nico-step-num">03</span>
+        <span class="nico-step-icon">✍️</span>
+        <div class="nico-step-title">抄写台词</div>
+        <div class="nico-step-desc">把视频对话一字一句手写下来</div>
+        <span class="nico-step-tag">★ 核心动作</span>
+      </div>
+      <div class="nico-step">
+        <span class="nico-step-num">04</span>
+        <span class="nico-step-icon">🔁</span>
+        <div class="nico-step-title">消化词汇表</div>
+        <div class="nico-step-desc">看本课词汇和语法说明，不贪多</div>
+      </div>
+    </div>
+
+    <div class="label-row">Anki 建卡原则：一定要加例句</div>
+    <div class="anki-compare">
+      <div class="anki-wrong">
+        <div class="cross-mark">✗</div>
+        <div class="anki-label">❌ 错误方式</div>
+        <div class="anki-card-demo">
+          <span class="demo-word">essen</span>
+          <div class="demo-only">= 吃</div>
+        </div>
+        <div style="font-size:11px; color:var(--gray-3); margin-top:8px; line-height:1.6">孤立单词没有"挂钩"——三天后就忘了</div>
+      </div>
+      <div class="anki-right">
+        <div class="check-mark">✓</div>
+        <div class="anki-label">✅ 正确方式</div>
+        <div class="anki-card-demo dark">
+          <span class="demo-word">essen</span>
+          <div class="demo-example">Ich esse jeden Tag Reis.</div>
+          <div class="demo-translation">我每天吃米饭。</div>
+        </div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.45); margin-top:8px; line-height:1.6">有语境有记忆——单词有了「邻居」忘不了</div>
+      </div>
+    </div>
+
+    <div class="reverso-box">
+      <div class="reverso-icon-big">🔤</div>
+      <div>
+        <div class="reverso-title">Reverso — 动词变位词典（A1就要装）</div>
+        <div class="reverso-desc">完整的动词变位表 + 可收藏生词 + 在App里间隔复习。比Google翻译强在：<strong>查了能存，存了能练，练了才记住</strong></div>
+      </div>
+    </div>
+
+    <div class="highlight-box highlight-red" style="margin-top:12px">
+      📅 <strong>A1每日节奏：</strong>Nico's Weg一课（含抄台词）20分钟 + Anki复习10分钟 = 每天30分钟起步，关键是<strong>每天都做</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CARD 02: 动词变位 ===== -->
+<div class="section-label"><div class="section-label-line"></div><span class="section-label-text">Card 02 · Verb Conjugation · 动词变位</span><div class="section-label-line"></div></div>
+<div class="card">
+  <div class="card-bar bar-yellow"></div>
+  <div class="card-inner">
+    <div class="card-head">
+      <div>
+        <div class="card-meta">
+          <span class="card-num">02 · KONJUGATION</span>
+          <span class="card-chip chip-yellow">动词变位攻略</span>
+        </div>
+        <div class="card-title-zh">德语动词变位：看懂规律，举一反三</div>
+        <div class="card-title-de">Verbkonjugation — Muster erkennen</div>
+      </div>
+      <div class="card-head-deco">VERB</div>
+    </div>
+
+    <div class="verb-header-row">
+      <div class="verb-stat-box dark">
+        <span class="vsb-num">3</span>
+        <div class="vsb-label">大时态优先掌握</div>
+      </div>
+      <div class="verb-stat-box light">
+        <span class="vsb-num">规则</span>
+        <div class="vsb-label">大多数动词遵循规律</div>
+      </div>
+      <div class="verb-stat-box dark">
+        <span class="vsb-num">强变</span>
+        <div class="vsb-label">不规则动词最高频</div>
+      </div>
+      <div class="verb-stat-box light">
+        <span class="vsb-num">100%</span>
+        <div class="vsb-label">掌握规律可推新词</div>
+      </div>
+    </div>
+
+    <div class="label-row">三大时态变位示例 · sein（是）</div>
+    <div class="tense-grid">
+      <div class="tense-card tense-presens">
+        <div class="tense-header">
+          <span class="tense-name">Präsens</span>
+          <span class="tense-zh">现在时</span>
+        </div>
+        <div class="tense-body">
+          <div class="conj-row"><span class="conj-pronoun">ich</span><span class="conj-verb">bin</span></div>
+          <div class="conj-row"><span class="conj-pronoun">du</span><span class="conj-verb">bist</span></div>
+          <div class="conj-row"><span class="conj-pronoun">er/sie</span><span class="conj-verb">ist</span></div>
+          <div class="conj-row"><span class="conj-pronoun">wir</span><span class="conj-verb">sind</span></div>
+          <div class="conj-row"><span class="conj-pronoun">ihr</span><span class="conj-verb">seid</span></div>
+          <div class="conj-row"><span class="conj-pronoun">sie/Sie</span><span class="conj-verb">sind</span></div>
+        </div>
+      </div>
+      <div class="tense-card tense-praeteritum">
+        <div class="tense-header">
+          <span class="tense-name">Präteritum</span>
+          <span class="tense-zh">过去时（书面）</span>
+        </div>
+        <div class="tense-body">
+          <div class="conj-row"><span class="conj-pronoun">ich</span><span class="conj-verb">war</span></div>
+          <div class="conj-row"><span class="conj-pronoun">du</span><span class="conj-verb">warst</span></div>
+          <div class="conj-row"><span class="conj-pronoun">er/sie</span><span class="conj-verb">war</span></div>
+          <div class="conj-row"><span class="conj-pronoun">wir</span><span class="conj-verb">waren</span></div>
+          <div class="conj-row"><span class="conj-pronoun">ihr</span><span class="conj-verb">wart</span></div>
+          <div class="conj-row"><span class="conj-pronoun">sie/Sie</span><span class="conj-verb">waren</span></div>
+        </div>
+      </div>
+      <div class="tense-card tense-perfekt">
+        <div class="tense-header">
+          <span class="tense-name">Perfekt</span>
+          <span class="tense-zh">完成时（口语）</span>
+        </div>
+        <div class="tense-body">
+          <div class="conj-row"><span class="conj-pronoun">ich</span><span class="conj-verb">habe gegessen</span></div>
+          <div class="conj-row"><span class="conj-pronoun">du</span><span class="conj-verb">hast gegessen</span></div>
+          <div class="conj-row"><span class="conj-pronoun">er/sie</span><span class="conj-verb">hat gegessen</span></div>
+          <div class="conj-row"><span class="conj-pronoun">wir</span><span class="conj-verb">haben gegessen</span></div>
+          <div class="conj-row"><span class="conj-pronoun">ihr</span><span class="conj-verb">habt gegessen</span></div>
+          <div class="conj-row"><span class="conj-pronoun">sie/Sie</span><span class="conj-verb">haben gegessen</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="label-row">最高频不规则动词 · 优先掌握</div>
+    <div class="irregular-grid">
+      <div class="irr-chip star"><span class="irr-de">sein</span><span class="irr-zh">是（存在）</span></div>
+      <div class="irr-chip star"><span class="irr-de">haben</span><span class="irr-zh">有</span></div>
+      <div class="irr-chip star"><span class="irr-de">werden</span><span class="irr-zh">成为/将会</span></div>
+      <div class="irr-chip star"><span class="irr-de">können</span><span class="irr-zh">能/可以</span></div>
+      <div class="irr-chip star"><span class="irr-de">müssen</span><span class="irr-zh">必须</span></div>
+      <div class="irr-chip star"><span class="irr-de">wollen</span><span class="irr-zh">想要</span></div>
+      <div class="irr-chip"><span class="irr-de">gehen</span><span class="irr-zh">去/走</span></div>
+      <div class="irr-chip"><span class="irr-de">kommen</span><span class="irr-zh">来</span></div>
+      <div class="irr-chip"><span class="irr-de">sehen</span><span class="irr-zh">看见</span></div>
+      <div class="irr-chip"><span class="irr-de">geben</span><span class="irr-zh">给</span></div>
+      <div class="irr-chip"><span class="irr-de">nehmen</span><span class="irr-zh">拿/取</span></div>
+      <div class="irr-chip"><span class="irr-de">wissen</span><span class="irr-zh">知道</span></div>
+    </div>
+
+    <div class="highlight-box highlight-yellow">
+      💡 <strong>学习关键：</strong>不是为了「背」变位表，而是为了<strong>看懂规律</strong>——掌握了规律，遇到新动词，你能凭直觉推算出正确的形式
+    </div>
+  </div>
+</div>
+
+<!-- ===== CARD 03: 分级资源地图 ===== -->
+<div class="section-label"><div class="section-label-line"></div><span class="section-label-text">Card 03 · Resource Map · 分级资源地图</span><div class="section-label-line"></div></div>
+<div class="card">
+  <div class="card-bar bar-blue"></div>
+  <div class="card-inner">
+    <div class="card-head">
+      <div>
+        <div class="card-meta">
+          <span class="card-num">03 · RESSOURCEN</span>
+          <span class="card-chip chip-blue">按等级选资源</span>
+        </div>
+        <div class="card-title-zh">A1 到 C1 · 每个等级用什么</div>
+        <div class="card-title-de">Ressourcenkarte — Was benutze ich wann?</div>
+      </div>
+      <div class="card-head-deco">MAP</div>
+    </div>
+
+    <div class="label-row">分级资源推荐</div>
+    <div class="resource-levels">
+      <div class="resource-row">
+        <div class="resource-level-tag level-a1">A1</div>
+        <div class="resource-cards">
+          <div class="res-card featured"><span class="res-icon">🌐</span><span class="res-name">Nico's Weg</span><span class="res-badge badge-free">免费</span></div>
+          <div class="res-card featured"><span class="res-icon">🃏</span><span class="res-name">Anki + Goethe Deck</span><span class="res-badge badge-app">App</span></div>
+          <div class="res-card"><span class="res-icon">🔤</span><span class="res-name">Reverso</span><span class="res-badge badge-app">App</span></div>
+          <div class="res-card"><span class="res-icon">🏫</span><span class="res-name">Lingoda在线课</span><span class="res-badge badge-paid">付费</span></div>
+        </div>
+      </div>
+      <div class="resource-row">
+        <div class="resource-level-tag level-a2">A2</div>
+        <div class="resource-cards">
+          <div class="res-card featured"><span class="res-icon">🗞️</span><span class="res-name">Nachrichtenleicht</span><span class="res-badge badge-free">免费跟读</span></div>
+          <div class="res-card featured"><span class="res-icon">▶️</span><span class="res-name">Easy German</span><span class="res-badge badge-free">YouTube</span></div>
+          <div class="res-card"><span class="res-icon">📗</span><span class="res-name">Grammatik Aktiv A1-B1</span><span class="res-badge badge-paid">教材</span></div>
+        </div>
+      </div>
+      <div class="resource-row">
+        <div class="resource-level-tag level-b1">B1</div>
+        <div class="resource-cards">
+          <div class="res-card featured"><span class="res-icon">🎙️</span><span class="res-name">Easy German Podcast</span><span class="res-badge badge-free">播客</span></div>
+          <div class="res-card featured"><span class="res-icon">🗣️</span><span class="res-name">语言交换伙伴</span><span class="res-badge badge-free">免费</span></div>
+          <div class="res-card"><span class="res-icon">📻</span><span class="res-name">Deutsch Podcast</span><span class="res-badge badge-free">播客</span></div>
+          <div class="res-card"><span class="res-icon">📖</span><span class="res-name">德语有声书</span><span class="res-badge badge-web">YouTube</span></div>
+        </div>
+      </div>
+      <div class="resource-row">
+        <div class="resource-level-tag level-b2">B2</div>
+        <div class="resource-cards">
+          <div class="res-card featured"><span class="res-icon">📺</span><span class="res-name">德国剧集/电影</span><span class="res-badge badge-free">德语字幕</span></div>
+          <div class="res-card featured"><span class="res-icon">📡</span><span class="res-name">ZDF / Tagesschau</span><span class="res-badge badge-free">每日新闻</span></div>
+          <div class="res-card"><span class="res-icon">📷</span><span class="res-name">Tagesschau Instagram</span><span class="res-badge badge-free">每日晨报</span></div>
+          <div class="res-card"><span class="res-icon">📗</span><span class="res-name">Grammatik Aktiv B2-C1</span><span class="res-badge badge-paid">教材</span></div>
+        </div>
+      </div>
+      <div class="resource-row">
+        <div class="resource-level-tag level-c1">C1</div>
+        <div class="resource-cards">
+          <div class="res-card featured"><span class="res-icon">🎙️</span><span class="res-name">专业领域播客</span><span class="res-badge badge-free">按兴趣选</span></div>
+          <div class="res-card featured"><span class="res-icon">📰</span><span class="res-name">德语报纸大声朗读</span><span class="res-badge badge-free">每日练习</span></div>
+          <div class="res-card"><span class="res-icon">🎬</span><span class="res-name">ARTE纪录片</span><span class="res-badge badge-free">免费</span></div>
+          <div class="res-card"><span class="res-icon">🎙️</span><span class="res-name">Lanz und Precht</span><span class="res-badge badge-free">政治社会</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="label-row">A1 两小时学习计划模板</div>
+    <div class="two-hour-plan">
+      <div class="plan-title">2h Daily Study Plan · A1</div>
+      <div class="plan-blocks">
+        <div class="plan-block" style="background:var(--red); flex:2.5">
+          <div class="plan-block-label">Nico's Weg</div>
+          <div class="plan-block-time">30min · 看视频+抄台词</div>
+        </div>
+        <div class="plan-block" style="background:var(--gray-2); flex:1">
+          <div class="plan-block-label">Anki</div>
+          <div class="plan-block-time">15min</div>
+        </div>
+        <div class="plan-block" style="background:var(--blue); flex:1.5">
+          <div class="plan-block-label">语法复习</div>
+          <div class="plan-block-time">20min</div>
+        </div>
+        <div class="plan-block" style="background:var(--orange); flex:1">
+          <div class="plan-block-label">Reverso</div>
+          <div class="plan-block-time">15min</div>
+        </div>
+        <div class="plan-block" style="background:var(--green); flex:2">
+          <div class="plan-block-label">复习+巩固</div>
+          <div class="plan-block-time">30min</div>
+        </div>
+        <div class="plan-block" style="background:var(--gray-1); flex:0.5">
+          <div class="plan-block-label" style="font-size:8px">休息</div>
+          <div class="plan-block-time" style="font-size:8px">10m</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CARD 04: 沉浸策略 ===== -->
+<div class="section-label"><div class="section-label-line"></div><span class="section-label-text">Card 04 · Immersion · B2-C1 沉浸策略</span><div class="section-label-line"></div></div>
+<div class="card">
+  <div class="card-bar bar-green"></div>
+  <div class="card-inner">
+    <div class="card-head">
+      <div>
+        <div class="card-meta">
+          <span class="card-num">04 · IMMERSION</span>
+          <span class="card-chip chip-green">B2-C1 策略</span>
+        </div>
+        <div class="card-title-zh">被动听 vs 主动说 + 每日沉浸节奏</div>
+        <div class="card-title-de">Aktives vs Passives Lernen — Immersion täglich</div>
+      </div>
+      <div class="card-head-deco">IMM</div>
+    </div>
+
+    <div class="label-row">关键转变：被动接收 vs 主动输出</div>
+    <div class="immersion-vs">
+      <div class="imm-side imm-bad">
+        <div class="imm-label">❌ 进步缓慢的方式</div>
+        <div class="imm-title">只听，不开口</div>
+        <div class="imm-desc">把德语视频当背景音乐，三个月后真实对话时脑子一片空白——听和说是两套不同的神经回路</div>
+      </div>
+      <div class="imm-vs-center">VS</div>
+      <div class="imm-side imm-good">
+        <div class="imm-label">✅ 真正有效的方式</div>
+        <div class="imm-title">听完就要说出来</div>
+        <div class="imm-desc">哪怕是对着家人用德语描述眼前的事——开口的瞬间，大脑才真正建立语言输出回路</div>
+      </div>
+    </div>
+
+    <div class="label-row">B2-C1 每日沉浸四板块</div>
+    <div class="daily-routine">
+      <div class="routine-block rb-1">
+        <span class="rb-time">早晨</span>
+        <div class="rb-label">🗞️ 新闻10分钟</div>
+        <div class="rb-desc">ZDF Heute / Tagesschau，吃早饭时当背景，了解德国时事有话题聊</div>
+      </div>
+      <div class="routine-block rb-2">
+        <span class="rb-time">通勤</span>
+        <div class="rb-label">🎧 专业播客</div>
+        <div class="rb-desc">找你真正感兴趣领域的播客——哲学/商业/历史，听你想听的，注意力集中吸收效率高三倍</div>
+      </div>
+      <div class="routine-block rb-3">
+        <span class="rb-time">晚间</span>
+        <div class="rb-label">📺 德语剧集</div>
+        <div class="rb-desc">开德语字幕（不是中文），逼自己用德语理解德语，是突破B2瓶颈最有效的方式</div>
+      </div>
+      <div class="routine-block rb-4">
+        <span class="rb-time">睡前</span>
+        <div class="rb-label">📰 大声朗读</div>
+        <div class="rb-desc">每天1-2段德语报纸大声念出来，不用全看懂，朗读本身就是最好的发音和语感训练</div>
+      </div>
+    </div>
+
+    <div class="label-row">B1阶段特别技巧：开始用德语自言自语</div>
+    <div class="grid-2">
+      <div class="highlight-box highlight-green">
+        🗣️ <strong>怎么做：</strong>走路、做饭、洗澡时，把眼前发生的事用德语描述出来。「Ich schneide jetzt Kartoffeln...（我现在在切土豆...）」——强迫主动调取词汇，比坐着背单词有效十倍
+      </div>
+      <div class="highlight-box highlight-blue">
+        👥 <strong>语言交换：</strong>找一个想学中文的德国人，你教中文，他教德语，每周一次。B1时特别注意<strong>发音纠正</strong>，趁早建立正确肌肉记忆，比后期改习惯容易得多
+      </div>
+    </div>
+
+    <div class="proverb-box" style="margin-top:12px">
+      <div class="proverb-icon">🏛️</div>
+      <div>
+        <span class="proverb-de">„Kein Meister fällt vom Himmel."</span>
+        <div class="proverb-zh">没有大师是从天上掉下来的——坚持日常积累，语言自然开窍</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CARD 05: 五个月月度计划 ===== -->
+<div class="section-label"><div class="section-label-line"></div><span class="section-label-text">Card 05 · Monthly Plan · 五个月详细计划</span><div class="section-label-line"></div></div>
+<div class="card">
+  <div class="card-bar bar-black"></div>
+  <div class="card-inner">
+    <div class="card-head">
+      <div>
+        <div class="card-meta">
+          <span class="card-num">05 · MONATSPLAN</span>
+          <span class="card-chip chip-black">五个月详细计划</span>
+        </div>
+        <div class="card-title-zh">每个月做什么 · 完整月度拆解</div>
+        <div class="card-title-de">Monatlicher Lernplan — Schritt für Schritt</div>
+      </div>
+      <div class="card-head-deco">PLAN</div>
+    </div>
+
+    <div class="label-row">初级 vs 高级：策略完全相反</div>
+    <div class="strategy-shift">
+      <div class="strategy-early">
+        <div class="strategy-period">MONAT 1-3 · A1 → B1</div>
+        <div class="strategy-rule">少即是多：只用1-2个资源</div>
+        <div class="strategy-why">你在建地基。信息过载只会让你困惑，不会让你进步更快</div>
+        <ul class="strategy-bullets">
+          <li class="strategy-bullet"><span class="sb-dash">—</span>选定1个核心资源，每天坚持</li>
+          <li class="strategy-bullet"><span class="sb-dash">—</span>吸收 → 复习 → 重复</li>
+          <li class="strategy-bullet"><span class="sb-dash">—</span>抵制「再下一个App」的冲动</li>
+        </ul>
+      </div>
+      <div class="strategy-divider"><span class="strategy-divider-text">转变点</span></div>
+      <div class="strategy-late">
+        <div class="strategy-period">MONAT 4-5 · B2 → C1</div>
+        <div class="strategy-rule">越多越好：全面浸泡在德语里</div>
+        <div class="strategy-why">地基已经打好，现在需要大量真实语言输入来突破瓶颈</div>
+        <ul class="strategy-bullets">
+          <li class="strategy-bullet"><span class="sb-dash">—</span>每天接触多种德语内容</li>
+          <li class="strategy-bullet"><span class="sb-dash">—</span>不需要一直记笔记</li>
+          <li class="strategy-bullet"><span class="sb-dash">—</span>让德语变成生活的一部分</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="label-row">五个月月度任务清单</div>
+    <div class="month-full-grid">
+      <div class="month-full-card">
+        <div class="mfc-header mfc-h-m1">
+          <span class="mfc-month-num">第一月</span>
+          <span class="mfc-level">A1 · ANFÄNGER</span>
+          <div class="mfc-goal">打地基，建词库</div>
+        </div>
+        <div class="mfc-body">
+          <div class="mfc-task"><span class="mfc-dot m1-dot"></span>Nico's Weg每课抄台词</div>
+          <div class="mfc-task"><span class="mfc-dot m1-dot"></span>Anki每天10-15新词+例句</div>
+          <div class="mfc-task"><span class="mfc-dot m1-dot"></span>装好Reverso动词词典</div>
+          <div class="mfc-task"><span class="mfc-dot m1-dot"></span>建立「每天都做」习惯</div>
+          <div class="mfc-daily m1-daily">每日：20~30分钟</div>
+        </div>
+      </div>
+      <div class="month-full-card">
+        <div class="mfc-header mfc-h-m2">
+          <span class="mfc-month-num">第二月</span>
+          <span class="mfc-level">A2 · GRUNDLAGEN</span>
+          <div class="mfc-goal">建结构，练发音</div>
+        </div>
+        <div class="mfc-body">
+          <div class="mfc-task"><span class="mfc-dot m2-dot"></span>跟读Nachrichtenleicht</div>
+          <div class="mfc-task"><span class="mfc-dot m2-dot"></span>看Easy German视频</div>
+          <div class="mfc-task"><span class="mfc-dot m2-dot"></span>系统学习动词变位规律</div>
+          <div class="mfc-task"><span class="mfc-dot m2-dot"></span>Anki词汇持续每日刷</div>
+          <div class="mfc-daily m2-daily">每日：30~40分钟</div>
+        </div>
+      </div>
+      <div class="month-full-card">
+        <div class="mfc-header mfc-h-m3">
+          <span class="mfc-month-num">第三月</span>
+          <span class="mfc-level">B1 · MITTELSTUFE</span>
+          <div class="mfc-goal">建语感，开口说</div>
+        </div>
+        <div class="mfc-body">
+          <div class="mfc-task"><span class="mfc-dot m3-dot"></span>开始德语自言自语</div>
+          <div class="mfc-task"><span class="mfc-dot m3-dot"></span>找语言交换伙伴</div>
+          <div class="mfc-task"><span class="mfc-dot m3-dot"></span>听Easy German播客</div>
+          <div class="mfc-task"><span class="mfc-dot m3-dot"></span>碎片时间全用听力</div>
+          <div class="mfc-daily m3-daily">每日：40~50分钟</div>
+        </div>
+      </div>
+      <div class="month-full-card">
+        <div class="mfc-header mfc-h-m4">
+          <span class="mfc-month-num">第四月</span>
+          <span class="mfc-level">B2 · FORTGESCHRITTEN</span>
+          <div class="mfc-goal">真实沉浸，全面接触</div>
+        </div>
+        <div class="mfc-body">
+          <div class="mfc-task"><span class="mfc-dot m4-dot"></span>看德语剧开德语字幕</div>
+          <div class="mfc-task"><span class="mfc-dot m4-dot"></span>每天早饭看ZDF新闻</div>
+          <div class="mfc-task"><span class="mfc-dot m4-dot"></span>语言伙伴聊复杂话题</div>
+          <div class="mfc-task"><span class="mfc-dot m4-dot"></span>Reverso一周复习一次</div>
+          <div class="mfc-daily m4-daily">每日：60~90分钟</div>
+        </div>
+      </div>
+      <div class="month-full-card">
+        <div class="mfc-header mfc-h-m5">
+          <span class="mfc-month-num">第五月</span>
+          <span class="mfc-level">C1 · KOMPETENT</span>
+          <div class="mfc-goal">冲击高级，深度表达</div>
+        </div>
+        <div class="mfc-body">
+          <div class="mfc-task"><span class="mfc-dot m5-dot"></span>找专业领域播客精听</div>
+          <div class="mfc-task"><span class="mfc-dot m5-dot"></span>每天大声朗读报纸</div>
+          <div class="mfc-task"><span class="mfc-dot m5-dot"></span>看ARTE纪录片</div>
+          <div class="mfc-task"><span class="mfc-dot m5-dot"></span>语言伙伴聊学术话题</div>
+          <div class="mfc-daily m5-daily">每日：60~120分钟</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proverb-box">
+      <div class="proverb-icon">🎯</div>
+      <div>
+        <span class="proverb-de" style="font-size:15px">五个月后你能做到：用德语流畅讨论日常话题、新闻时事、甚至专业领域——这不是运气，是方法对了</span>
+        <div class="proverb-zh" style="margin-top:6px">今天打开 Nico's Weg 第一课 → 你的五个月，从今天开始计时</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

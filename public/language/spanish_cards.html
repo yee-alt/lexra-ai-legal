@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>44天西班牙语流利攻略</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --card-bg: #111118;
+    --card-border: rgba(255,255,255,0.07);
+    --accent: #f0e040;
+    --accent2: #ff5c5c;
+    --accent3: #4cf5a8;
+    --accent4: #5cc8ff;
+    --muted: rgba(255,255,255,0.38);
+    --text: #f0eeea;
+    --text-dim: rgba(240,238,234,0.65);
+    --chip-bg: rgba(255,255,255,0.06);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans SC', sans-serif;
+    min-height: 100vh;
+    padding: 40px 20px 80px;
+  }
+
+  /* ── HEADER ─────────────────────────────── */
+  .site-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .site-header .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .site-header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #f0e040 0%, #ff9f2f 50%, #ff5c5c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .site-header .sub {
+    margin-top: 12px;
+    color: var(--text-dim);
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  /* ── SECTION LABEL ───────────────────────── */
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    padding-left: 4px;
+  }
+
+  /* ── CARDS GRID ──────────────────────────── */
+  .cards-section {
+    max-width: 1100px;
+    margin: 0 auto 80px;
+  }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  .card-full {
+    grid-column: 1 / -1;
+  }
+
+  /* ── BASE CARD ───────────────────────────── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform .25s, box-shadow .25s;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    pointer-events: none;
+  }
+
+  /* card accent top bar */
+  .card-accent-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .card-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .card-subtitle {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  /* ── CARD 00 · 总览 ───────────────────────── */
+  .card-00 { background: linear-gradient(135deg, #111118 60%, #1a1508 100%); }
+  .card-00 .card-accent-bar { background: linear-gradient(90deg, #f0e040, #ff9f2f, #ff5c5c); }
+
+  .overview-steps {
+    display: flex;
+    gap: 0;
+    position: relative;
+    margin-top: 8px;
+  }
+  .overview-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: 28px; right: 28px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    z-index: 0;
+  }
+  .ov-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .ov-num {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 auto 14px;
+    border: 2px solid;
+  }
+  .ov-step:nth-child(1) .ov-num { background: rgba(240,224,64,.15); border-color: var(--accent); color: var(--accent); }
+  .ov-step:nth-child(2) .ov-num { background: rgba(255,92,92,.15); border-color: var(--accent2); color: var(--accent2); }
+  .ov-step:nth-child(3) .ov-num { background: rgba(76,245,168,.15); border-color: var(--accent3); color: var(--accent3); }
+  .ov-step:nth-child(4) .ov-num { background: rgba(92,200,255,.15); border-color: var(--accent4); color: var(--accent4); }
+  .ov-label {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .ov-desc { font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+
+  .overview-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .stat-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+  }
+  .stat-label { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+
+  /* ── CARD 01 · TED沉浸法 ─────────────────── */
+  .card-01 .card-accent-bar { background: linear-gradient(90deg, #f0e040, #a8e000); }
+
+  .ted-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .ted-step {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(240,224,64,0.05);
+    border: 1px solid rgba(240,224,64,0.15);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .ted-step-num {
+    width: 32px; height: 32px;
+    background: rgba(240,224,64,0.15);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .ted-step-text { font-size: 13px; line-height: 1.5; }
+  .ted-step-text strong { color: var(--accent); }
+
+  .ted-videos {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .video-chip {
+    background: rgba(240,224,64,0.1);
+    border: 1px solid rgba(240,224,64,0.25);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 12px;
+    color: var(--accent);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .video-chip::before { content: '▶'; font-size: 9px; }
+
+  .compare-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .compare-box {
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .compare-box.good { background: rgba(76,245,168,.08); border: 1px solid rgba(76,245,168,.25); }
+  .compare-box.bad { background: rgba(255,92,92,.08); border: 1px solid rgba(255,92,92,.2); }
+  .compare-box .label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  .compare-box.good .label { color: var(--accent3); }
+  .compare-box.bad .label { color: var(--accent2); }
+  .compare-box ul { list-style: none; padding: 0; }
+  .compare-box li {
+    font-size: 12px;
+    color: var(--text-dim);
+    padding: 3px 0;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .compare-box.good li::before { content: '✓'; color: var(--accent3); font-size: 11px; }
+  .compare-box.bad li::before { content: '✗'; color: var(--accent2); font-size: 11px; }
+
+  /* ── CARD 02 · 50个核心动词 ──────────────── */
+  .card-02 .card-accent-bar { background: linear-gradient(90deg, #ff5c5c, #ff9f2f); }
+
+  .verb-progress {
+    margin-bottom: 24px;
+  }
+  .vp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vp-label { font-size: 12px; color: var(--text-dim); }
+  .vp-count { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--accent2); }
+  .vp-bar { height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
+  .vp-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #ff5c5c, #ff9f2f); }
+
+  .irregular-chips {
+    margin-bottom: 20px;
+  }
+  .chips-title {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 1px;
+  }
+  .chips-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .verb-chip {
+    background: var(--chip-bg);
+    border: 1px solid rgba(255,92,92,.2);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: var(--text-dim);
+    font-family: 'Space Mono', monospace;
+  }
+  .verb-chip.hot {
+    background: rgba(255,92,92,.15);
+    border-color: rgba(255,92,92,.5);
+    color: var(--accent2);
+    font-weight: 700;
+  }
+
+  .verb-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .verb-col-card {
+    border-radius: 12px;
+    padding: 14px;
+    text-align: center;
+  }
+  .verb-col-card.ar { background: rgba(92,200,255,.08); border: 1px solid rgba(92,200,255,.2); }
+  .verb-col-card.er { background: rgba(76,245,168,.08); border: 1px solid rgba(76,245,168,.2); }
+  .verb-col-card.ir { background: rgba(240,224,64,.08); border: 1px solid rgba(240,224,64,.2); }
+  .verb-col-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .verb-col-card.ar .verb-col-title { color: var(--accent4); }
+  .verb-col-card.er .verb-col-title { color: var(--accent3); }
+  .verb-col-card.ir .verb-col-title { color: var(--accent); }
+  .verb-col-count { font-size: 11px; color: var(--text-dim); }
+  .verb-example {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ── CARD 03 · 10×10 ─────────────────────── */
+  .card-03 .card-accent-bar { background: linear-gradient(90deg, #4cf5a8, #5cc8ff); }
+
+  .formula-box {
+    background: rgba(76,245,168,.07);
+    border: 1px solid rgba(76,245,168,.2);
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .formula-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 18px;
+    color: var(--accent3);
+    letter-spacing: 2px;
+  }
+  .formula-sub { font-size: 11px; color: var(--text-dim); margin-top: 6px; }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .topic-item {
+    background: rgba(76,245,168,.06);
+    border: 1px solid rgba(76,245,168,.15);
+    border-radius: 10px;
+    padding: 10px 6px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-dim);
+    transition: all .2s;
+    cursor: default;
+  }
+  .topic-item:hover {
+    background: rgba(76,245,168,.15);
+    border-color: rgba(76,245,168,.4);
+    color: var(--accent3);
+    transform: scale(1.03);
+  }
+  .topic-emoji { font-size: 18px; display: block; margin-bottom: 5px; }
+
+  .result-row {
+    display: flex;
+    gap: 10px;
+  }
+  .result-box {
+    flex: 1;
+    background: rgba(255,255,255,.04);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 14px;
+    text-align: center;
+  }
+  .result-box .num {
+    font-family: 'Space Mono', monospace;
+    font-size: 22px;
+    color: var(--accent3);
+    display: block;
+  }
+  .result-box .lbl { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+
+  /* ── CARD 04 · 口语复述 ──────────────────── */
+  .card-04 .card-accent-bar { background: linear-gradient(90deg, #5cc8ff, #a78bfa); }
+
+  .speaking-flow {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .sf-step {
+    background: rgba(92,200,255,.07);
+    border: 1px solid rgba(92,200,255,.2);
+    border-radius: 12px;
+    padding: 14px 10px;
+    text-align: center;
+    position: relative;
+  }
+  .sf-icon {
+    font-size: 22px;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .sf-label { font-size: 11px; font-weight: 700; color: var(--accent4); margin-bottom: 4px; }
+  .sf-desc { font-size: 10px; color: var(--text-dim); line-height: 1.4; }
+  .sf-arrow {
+    position: absolute;
+    right: -14px; top: 50%;
+    transform: translateY(-50%);
+    color: rgba(92,200,255,.4);
+    font-size: 16px;
+    z-index: 2;
+  }
+
+  .timeline {
+    margin-bottom: 20px;
+  }
+  .tl-title { font-size: 11px; color: var(--text-dim); margin-bottom: 12px; font-family: 'Space Mono', monospace; letter-spacing: 1px; }
+  .tl-row {
+    display: flex;
+    height: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    gap: 2px;
+  }
+  .tl-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 6px;
+    color: rgba(0,0,0,0.7);
+    transition: opacity .2s;
+  }
+  .tl-block:hover { opacity: 0.85; }
+
+  .data-trio {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 12px;
+  }
+  .dt-box {
+    background: rgba(92,200,255,.08);
+    border: 1px solid rgba(92,200,255,.2);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .dt-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent4);
+    display: block;
+  }
+  .dt-label { font-size: 11px; color: var(--text-dim); margin-top: 4px; line-height: 1.4; }
+
+  /* ── DIVIDER ─────────────────────────────── */
+  .divider {
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--card-border), transparent);
+  }
+
+  /* ── MINDMAP SECTION ─────────────────────── */
+  .mindmap-section {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .mindmap-container {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 36px;
+    overflow: hidden;
+  }
+  .mindmap-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+  .mindmap-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+  }
+  .mindmap-hint {
+    font-size: 11px;
+    color: var(--muted);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 1px;
+  }
+
+  /* MindMap Tree */
+  .mm-tree {
+    font-size: 13px;
+  }
+  .mm-root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .mm-root-node {
+    background: linear-gradient(135deg, #f0e040, #ff9f2f);
+    color: #000;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 50px;
+    margin-bottom: 0;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(240,224,64,.3);
+    z-index: 2;
+    position: relative;
+  }
+
+  .mm-branches {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    padding-top: 40px;
+    width: 100%;
+    justify-content: center;
+  }
+  .mm-branches::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; bottom: 40px;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(240,224,64,.5), rgba(240,224,64,.05));
+    transform: translateX(-50%);
+  }
+
+  .mm-branch {
+    flex: 1;
+    min-width: 200px;
+    max-width: 240px;
+    position: relative;
+  }
+  .mm-branch::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    width: 2px;
+    height: 40px;
+    transform: translateX(-50%) translateY(-40px);
+  }
+
+  .mm-branch-node {
+    border-radius: 14px;
+    padding: 12px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    transition: all .2s;
+    user-select: none;
+    position: relative;
+  }
+  .mm-branch-node:hover { filter: brightness(1.15); transform: scale(1.02); }
+  .mm-branch-node .mm-toggle {
+    margin-left: auto;
+    font-size: 10px;
+    opacity: 0.6;
+    transition: transform .2s;
+  }
+  .mm-branch-node.open .mm-toggle { transform: rotate(90deg); }
+
+  /* branch colors */
+  .branch-1 .mm-branch-node { background: rgba(240,224,64,.12); border: 1px solid rgba(240,224,64,.3); color: var(--accent); }
+  .branch-2 .mm-branch-node { background: rgba(255,92,92,.12); border: 1px solid rgba(255,92,92,.3); color: var(--accent2); }
+  .branch-3 .mm-branch-node { background: rgba(76,245,168,.12); border: 1px solid rgba(76,245,168,.3); color: var(--accent3); }
+  .branch-4 .mm-branch-node { background: rgba(92,200,255,.12); border: 1px solid rgba(92,200,255,.3); color: var(--accent4); }
+
+  .mm-children {
+    margin-top: 8px;
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 8px;
+    border-left: 2px solid;
+    margin-left: 20px;
+  }
+  .mm-children.visible { display: flex; }
+  .branch-1 .mm-children { border-color: rgba(240,224,64,.25); }
+  .branch-2 .mm-children { border-color: rgba(255,92,92,.25); }
+  .branch-3 .mm-children { border-color: rgba(76,245,168,.25); }
+  .branch-4 .mm-children { border-color: rgba(92,200,255,.25); }
+
+  .mm-child {
+    background: rgba(255,255,255,.04);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .mm-child:hover {
+    background: rgba(255,255,255,.08);
+    color: var(--text);
+    transform: translateX(3px);
+  }
+  .mm-child .child-title { font-weight: 600; margin-bottom: 2px; }
+  .mm-child .child-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+  .mm-grandchildren {
+    margin-top: 6px;
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 12px;
+  }
+  .mm-grandchildren.visible { display: flex; }
+  .mm-grandchild {
+    font-size: 11px;
+    color: var(--muted);
+    padding: 4px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    line-height: 1.5;
+  }
+  .mm-grandchild::before {
+    content: '─';
+    opacity: 0.4;
+    flex-shrink: 0;
+  }
+
+  /* expand all btn */
+  .mm-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 28px;
+    justify-content: center;
+  }
+  .mm-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 8px 18px;
+    color: var(--text-dim);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all .2s;
+    font-family: 'Space Mono', monospace;
+  }
+  .mm-btn:hover { background: rgba(255,255,255,0.09); color: var(--text); }
+
+  /* ── RESPONSIVE ──────────────────────────── */
+  @media (max-width: 680px) {
+    .overview-steps { flex-direction: column; gap: 16px; }
+    .overview-steps::before { display: none; }
+    .topics-grid { grid-template-columns: repeat(2,1fr); }
+    .speaking-flow { grid-template-columns: repeat(2,1fr); }
+    .mm-branches { flex-direction: column; align-items: center; }
+    .mm-branch { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="eyebrow">METHOD · 44 DAYS · SPANISH</div>
+  <h1>44天学会西班牙语<br>完整方法拆解</h1>
+  <p class="sub">每天8小时 · 三步走策略 · 可复制的完整流程</p>
+</header>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- CARDS SECTION -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="cards-section">
+  <div class="section-label">// CARDS · 05 TOTAL</div>
+  <div class="cards-grid">
+
+    <!-- CARD 00 · 总览 -->
+    <div class="card card-00 card-full">
+      <div class="card-accent-bar"></div>
+      <div class="card-tag">CARD 00 · OVERVIEW</div>
+      <div class="card-title">三步走全局图</div>
+      <div class="card-subtitle">从零到流利，每个阶段的目标与核心动作一览</div>
+
+      <div class="overview-steps">
+        <div class="ov-step">
+          <div class="ov-num">01</div>
+          <div class="ov-label">研究语言</div>
+          <div class="ov-desc">搞清楚难点<br>制定攻略</div>
+        </div>
+        <div class="ov-step">
+          <div class="ov-num">02</div>
+          <div class="ov-label">打好基础</div>
+          <div class="ov-desc">词汇 + 动词<br>能拼出基本句</div>
+        </div>
+        <div class="ov-step">
+          <div class="ov-num">03</div>
+          <div class="ov-label">冲刺流利</div>
+          <div class="ov-desc">10×10法<br>口语复述练习</div>
+        </div>
+        <div class="ov-step">
+          <div class="ov-num">04</div>
+          <div class="ov-label">母语级别</div>
+          <div class="ov-desc">专题词汇<br>跟读法练口音</div>
+        </div>
+      </div>
+
+      <div class="overview-stats">
+        <div class="stat-box">
+          <span class="stat-num">44</span>
+          <div class="stat-label">天完成基础流利</div>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">8h</span>
+          <div class="stat-label">日均投入时长</div>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">0</span>
+          <div class="stat-label">报班 / 请家教</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 01 · TED沉浸法 -->
+    <div class="card card-01">
+      <div class="card-accent-bar"></div>
+      <div class="card-tag">CARD 01 · VOCABULARY</div>
+      <div class="card-title">TED 沉浸法</div>
+      <div class="card-subtitle">用真实演讲建立词汇体系，告别死背单词</div>
+
+      <div class="ted-flow">
+        <div class="ted-step">
+          <div class="ted-step-num">1</div>
+          <div class="ted-step-text">选择 <strong>5个TED演讲</strong>（每个约10分钟），题材多样</div>
+        </div>
+        <div class="ted-step">
+          <div class="ted-step-num">2</div>
+          <div class="ted-step-text">把视频里<strong>每个不认识的词</strong>全部查一遍</div>
+        </div>
+        <div class="ted-step">
+          <div class="ted-step-num">3</div>
+          <div class="ted-step-text"><strong>一边看视频，一边读字幕</strong>，重复播放</div>
+        </div>
+        <div class="ted-step">
+          <div class="ted-step-num">4</div>
+          <div class="ted-step-text">直到这5个视频听起来<strong>像听中文一样清楚</strong></div>
+        </div>
+      </div>
+
+      <div class="ted-videos">
+        <div class="video-chip">视频 01</div>
+        <div class="video-chip">视频 02</div>
+        <div class="video-chip">视频 03</div>
+        <div class="video-chip">视频 04</div>
+        <div class="video-chip">视频 05</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="compare-box good">
+          <div class="label">TED沉浸法 ✓</div>
+          <ul>
+            <li>带真实语境</li>
+            <li>同时练发音</li>
+            <li>自然连读感</li>
+            <li>看完即复习</li>
+          </ul>
+        </div>
+        <div class="compare-box bad">
+          <div class="label">闪卡APP ✗</div>
+          <ul>
+            <li>脱离语境</li>
+            <li>无发音训练</li>
+            <li>容易忘记</li>
+            <li>枯燥易放弃</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 02 · 50个核心动词 -->
+    <div class="card card-02">
+      <div class="card-accent-bar"></div>
+      <div class="card-tag">CARD 02 · CONJUGATION</div>
+      <div class="card-title">50 个核心动词</div>
+      <div class="card-subtitle">重点死磕20个高频不规则动词，掌握规律胜过死背</div>
+
+      <div class="verb-progress">
+        <div class="vp-header">
+          <span class="vp-label">不规则动词（最高频）</span>
+          <span class="vp-count">20个</span>
+        </div>
+        <div class="vp-bar"><div class="vp-fill" style="width:40%"></div></div>
+      </div>
+      <div class="verb-progress">
+        <div class="vp-header">
+          <span class="vp-label">规则动词（AR/ER/IR）</span>
+          <span class="vp-count">30个</span>
+        </div>
+        <div class="vp-bar"><div class="vp-fill" style="width:60%"></div></div>
+      </div>
+
+      <div class="irregular-chips">
+        <div class="chips-title">// 20个不规则动词（橙色=最高频5个）</div>
+        <div class="chips-wrap">
+          <div class="verb-chip hot">ser</div>
+          <div class="verb-chip hot">estar</div>
+          <div class="verb-chip hot">tener</div>
+          <div class="verb-chip hot">ir</div>
+          <div class="verb-chip hot">hacer</div>
+          <div class="verb-chip">poder</div>
+          <div class="verb-chip">querer</div>
+          <div class="verb-chip">saber</div>
+          <div class="verb-chip">ver</div>
+          <div class="verb-chip">dar</div>
+          <div class="verb-chip">decir</div>
+          <div class="verb-chip">venir</div>
+          <div class="verb-chip">salir</div>
+          <div class="verb-chip">poner</div>
+          <div class="verb-chip">traer</div>
+          <div class="verb-chip">oír</div>
+          <div class="verb-chip">caer</div>
+          <div class="verb-chip">conocer</div>
+          <div class="verb-chip">haber</div>
+          <div class="verb-chip">deber</div>
+        </div>
+      </div>
+
+      <div class="verb-cols">
+        <div class="verb-col-card ar">
+          <div class="verb-col-title">-AR</div>
+          <div class="verb-col-count">规则类</div>
+          <div class="verb-example">hablar<br>caminar</div>
+        </div>
+        <div class="verb-col-card er">
+          <div class="verb-col-title">-ER</div>
+          <div class="verb-col-count">规则类</div>
+          <div class="verb-example">comer<br>beber</div>
+        </div>
+        <div class="verb-col-card ir">
+          <div class="verb-col-title">-IR</div>
+          <div class="verb-col-count">规则类</div>
+          <div class="verb-example">vivir<br>escribir</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 03 · 10×10视频法 -->
+    <div class="card card-03">
+      <div class="card-accent-bar"></div>
+      <div class="card-tag">CARD 03 · IMMERSION</div>
+      <div class="card-title">10×10 视频法</div>
+      <div class="card-subtitle">10个题材 × 每天看10遍，把"认识的词"变成"张口就来"</div>
+
+      <div class="formula-box">
+        <div class="formula-text">10 个视频 × 10 分钟/个 = 100 分钟沉浸</div>
+        <div class="formula-sub">每天重复看 → 词汇进入主动记忆 → 开口不卡顿</div>
+      </div>
+
+      <div class="topics-grid">
+        <div class="topic-item"><span class="topic-emoji">🔬</span>科技</div>
+        <div class="topic-item"><span class="topic-emoji">🍜</span>美食</div>
+        <div class="topic-item"><span class="topic-emoji">✈️</span>旅行</div>
+        <div class="topic-item"><span class="topic-emoji">💪</span>健身</div>
+        <div class="topic-item"><span class="topic-emoji">🎵</span>音乐</div>
+        <div class="topic-item"><span class="topic-emoji">📱</span>数字</div>
+        <div class="topic-item"><span class="topic-emoji">🌿</span>自然</div>
+        <div class="topic-item"><span class="topic-emoji">💼</span>职场</div>
+        <div class="topic-item"><span class="topic-emoji">🎬</span>影视</div>
+        <div class="topic-item"><span class="topic-emoji">🏙️</span>文化</div>
+      </div>
+
+      <div class="result-row">
+        <div class="result-box">
+          <span class="num">×100</span>
+          <div class="lbl">每个视频最终观看次数</div>
+        </div>
+        <div class="result-box">
+          <span class="num">30天</span>
+          <div class="lbl">密集练习后可以对话</div>
+        </div>
+        <div class="result-box">
+          <span class="num">主动</span>
+          <div class="lbl">词汇变成条件反射</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 04 · 30分钟口语复述 -->
+    <div class="card card-04 card-full">
+      <div class="card-accent-bar"></div>
+      <div class="card-tag">CARD 04 · SPEAKING</div>
+      <div class="card-title">30 分钟口语复述练习</div>
+      <div class="card-subtitle">把输入变输出的核心动作，每天最少30分钟，最多6小时</div>
+
+      <div class="speaking-flow">
+        <div class="sf-step">
+          <span class="sf-icon">▶</span>
+          <div class="sf-label">看视频</div>
+          <div class="sf-desc">从10×10列表里选一个</div>
+          <span class="sf-arrow">→</span>
+        </div>
+        <div class="sf-step">
+          <span class="sf-icon">📝</span>
+          <div class="sf-label">做笔记</div>
+          <div class="sf-desc">边看边记关键词</div>
+          <span class="sf-arrow">→</span>
+        </div>
+        <div class="sf-step">
+          <span class="sf-icon">🙈</span>
+          <div class="sf-label">合上笔记</div>
+          <div class="sf-desc">不看屏幕，靠记忆</div>
+          <span class="sf-arrow">→</span>
+        </div>
+        <div class="sf-step">
+          <span class="sf-icon">🗣</span>
+          <div class="sf-label">开口复述</div>
+          <div class="sf-desc">用目标语言说出来</div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-title">// 一天时间线拆解（普通日 8小时）</div>
+        <div class="tl-row">
+          <div class="tl-block" style="flex:1;background:#f0e040;font-size:9px;">TED×5<br>1h</div>
+          <div class="tl-block" style="flex:2.5;background:#4cf5a8;color:rgba(0,0,0,0.65);font-size:9px;">10×10 沉浸<br>2.5h</div>
+          <div class="tl-block" style="flex:3;background:#5cc8ff;color:rgba(0,0,0,0.65);font-size:9px;">口语复述（30min×6轮）<br>3h</div>
+          <div class="tl-block" style="flex:1.5;background:#a78bfa;color:rgba(0,0,0,0.55);font-size:9px;">复盘+休息<br>1.5h</div>
+        </div>
+      </div>
+
+      <div class="data-trio">
+        <div class="dt-box">
+          <span class="dt-num">30min</span>
+          <div class="dt-label">每轮最短练习时间</div>
+        </div>
+        <div class="dt-box">
+          <span class="dt-num">4-6h</span>
+          <div class="dt-label">普通日口语练习量</div>
+        </div>
+        <div class="dt-box">
+          <span class="dt-num">30天</span>
+          <div class="dt-label">达到基础流利所需</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /cards-grid -->
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- MINDMAP SECTION -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="mindmap-section">
+  <div class="section-label">// INTERACTIVE MINDMAP · 可收缩展开</div>
+  <div class="mindmap-container">
+    <div class="mindmap-header">
+      <div class="mindmap-title">🗺 44天西班牙语流利 — 完整思维导图</div>
+      <div class="mindmap-hint">点击节点 展开 / 收起</div>
+    </div>
+
+    <div class="mm-tree">
+      <div class="mm-root">
+        <div class="mm-root-node" onclick="toggleAll()">🌟 44天西班牙语流利方法</div>
+
+        <div class="mm-branches">
+
+          <!-- BRANCH 1 -->
+          <div class="mm-branch branch-1">
+            <div class="mm-branch-node" onclick="toggle(this)">
+              📖 第一步：研究语言
+              <span class="mm-toggle">▶</span>
+            </div>
+            <div class="mm-children">
+              <div class="mm-child" onclick="toggleChild(this)">
+                <div class="child-title">🔍 目标：知己知彼</div>
+                <div class="child-desc">搞清楚这门语言的难点在哪里，做好心理准备</div>
+                <div class="mm-grandchildren">
+                  <div class="mm-grandchild">搜索"学西班牙语最容易踩的坑"</div>
+                  <div class="mm-grandchild">了解动词变位的复杂度</div>
+                  <div class="mm-grandchild">提前规避卡关风险</div>
+                </div>
+              </div>
+              <div class="mm-child" onclick="toggleChild(this)">
+                <div class="child-title">🎯 选定方言</div>
+                <div class="child-desc">确认你要学哪个地区的西班牙语</div>
+                <div class="mm-grandchildren">
+                  <div class="mm-grandchild">西班牙 / 墨西哥 / 阿根廷 差异很大</div>
+                  <div class="mm-grandchild">同一单词在不同国家完全不同</div>
+                  <div class="mm-grandchild">尽早确定，避免混乱</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BRANCH 2 -->
+          <div class="mm-branch branch-2">
+            <div class="mm-branch-node" onclick="toggle(this)">
+              🧱 第二步：打好基础
+              <span class="mm-toggle">▶</span>
+            </div>
+            <div class="mm-children">
+              <div class="mm-child" onclick="toggleChild(this)">
+                <div class="child-title">📚 TED沉浸法（词汇）</div>
+                <div class="child-desc">5个TED演讲 × 反复看 = 建立词汇体系</div>
+                <div class="mm-grandchildren">
+                  <div class="mm-grandchild">每个视频约10分钟，共5个</div>
+                  <div class="mm-grandchild">查完所有不认识的词</div>
+                  <div class="mm-grandchild">一边看一边读字幕，重复直到清晰</div>
+                  <div class="mm-grandchild">每天1小时把5个视频全刷一遍</div>
+                </div>
+              </div>
+              <div class="mm-child" onclick="toggleChild(this)">
+                <div class="child-title">⚡ 50核心动词（语法）</div>
+                <div class="child-desc">20个不规则 + 30个规则，靠规律不靠死背</div>
+                <div class="mm-grandchildren">
+                  <div class="mm-grandchild">最高频5个：ser / estar / tener / ir / hacer</div>
+                  <div class="mm-grandchild">AR / ER / IR 三类规则动词各约10个</div>
+                  <div class="mm-grandchild">用Google表格自制练习</div>
+                  <div class="mm-grandchild">理解规律 → 可以推测陌生动词</div>
+                </div>
+              </div>
+              <div class="mm-child" onclick="toggleChild(this)">
+                <div class="child-title">🎮 入门推荐（Duolingo）</div>
+                <div class="child-desc">完全零基础时，先刷几周Duolingo建立信心</div>
+                <div class="mm-grandchildren">
+                  <div class="mm-grandchild">每天约1小时</div>
+                  <div class="mm-grandchild">目的是不让自己感到迷失</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BRANCH 3 -->
+          <div class="mm-branch branch-3">
+            <div class="mm-branch-node" onclick="toggle(this)">
+              🚀 第三步：冲刺流利
+              <span class="mm-toggle">▶</span>
+            </div>
+            <div class="mm-children">
+              <div class="mm-child" onclick="toggleChild(this)">
+                <div class="child-title">🎬 10×10视频法（输入）</div>
+                <div class="child-desc">10个新视频 × 每天重复看 = 词汇进入主动记忆</div>
+                <div class="mm-grandchildren">
+                  <div class="mm-grandchild">选10个普通话题视频（每个约10分钟）</div>
+                  <div class="mm-grandchild">一边看一边读字幕，每天重复多遍</div>
+                  <div class="mm-grandchild">直到视频里的句子"自动出现"在脑海</div>
+                  <div class="mm-grandchild">每个视频最终看100+遍</div>
+                </div>
+              </div>
+              <div class="mm-child" onclick="toggleChild(this)">
+                <div class="child-title">🗣 30分钟口语复述（输出）</div>
+                <div class="child-desc">看 → 记笔记 → 合上 → 开口复述</div>
+                <div class="mm-grandchildren">
+                  <div class="mm-grandchild">每轮30分钟，换一个视频复述</div>
+                  <div class="mm-grandchild">普通日练4-6小时（共8-12轮）</div>
+                  <div class="mm-grandchild">逼迫大脑把被动词汇变主动输出</div>
+                  <div class="mm-grandchild">30天后可以和真人对话</div>
+                </div>
+              </div>
+              <div class="mm-child" onclick="toggleChild(this)">
+                <div class="child-title">👥 找语言伙伴</div>
+                <div class="child-desc">流利之后接入真人对话</div>
+                <div class="mm-grandchildren">
+                  <div class="mm-grandchild">HelloTalk 找语伴</div>
+                  <div class="mm-grandchild">发语音让对方纠错</div>
+                  <div class="mm-grandchild">这是语言学习开始变好玩的节点</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BRANCH 4 -->
+          <div class="mm-branch branch-4">
+            <div class="mm-branch-node" onclick="toggle(this)">
+              🏆 第四步：母语级别
+              <span class="mm-toggle">▶</span>
+            </div>
+            <div class="mm-children">
+              <div class="mm-child" onclick="toggleChild(this)">
+                <div class="child-title">📡 专题10×10（高级词汇）</div>
+                <div class="child-desc">用目标语言学你感兴趣的专业领域</div>
+                <div class="mm-grandchildren">
+                  <div class="mm-grandchild">摄影/健身/编程/烹饪……选你喜欢的</div>
+                  <div class="mm-grandchild">每月换一个主题</div>
+                  <div class="mm-grandchild">一套操作，同时提升语言+专业技能</div>
+                </div>
+              </div>
+              <div class="mm-child" onclick="toggleChild(this)">
+                <div class="child-title">🎙 跟读法（口音）</div>
+                <div class="child-desc">找一个你想模仿的母语者，逐句跟读</div>
+                <div class="mm-grandchildren">
+                  <div class="mm-grandchild">每次播放约5分钟的视频</div>
+                  <div class="mm-grandchild">每句话暂停，重复到一模一样</div>
+                  <div class="mm-grandchild">反复练习 → 每次多捕捉一点口音细节</div>
+                </div>
+              </div>
+              <div class="mm-child" onclick="toggleChild(this)">
+                <div class="child-title">💡 日常沉浸技巧</div>
+                <div class="child-desc">把语言融入生活，让它无处不在</div>
+                <div class="mm-grandchildren">
+                  <div class="mm-grandchild">手机系统语言改成目标语言</div>
+                  <div class="mm-grandchild">关注目标语言的博主/音乐</div>
+                  <div class="mm-grandchild">做日常事情时用目标语言自言自语</div>
+                  <div class="mm-grandchild">用目标语言搜索日常问题</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /mm-branches -->
+      </div><!-- /mm-root -->
+    </div><!-- /mm-tree -->
+
+    <div class="mm-controls">
+      <button class="mm-btn" onclick="expandAll()">展开全部</button>
+      <button class="mm-btn" onclick="collapseAll()">收起全部</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggle(node) {
+    node.classList.toggle('open');
+    const children = node.nextElementSibling;
+    if (children) children.classList.toggle('visible');
+  }
+
+  function toggleChild(node) {
+    const gc = node.querySelector('.mm-grandchildren');
+    if (gc) gc.classList.toggle('visible');
+  }
+
+  function expandAll() {
+    document.querySelectorAll('.mm-branch-node').forEach(n => {
+      n.classList.add('open');
+      const c = n.nextElementSibling;
+      if (c) c.classList.add('visible');
+    });
+    document.querySelectorAll('.mm-grandchildren').forEach(g => g.classList.add('visible'));
+  }
+
+  function collapseAll() {
+    document.querySelectorAll('.mm-branch-node').forEach(n => {
+      n.classList.remove('open');
+      const c = n.nextElementSibling;
+      if (c) c.classList.remove('visible');
+    });
+    document.querySelectorAll('.mm-grandchildren').forEach(g => g.classList.remove('visible'));
+  }
+
+  function toggleAll() {
+    const anyOpen = document.querySelector('.mm-branch-node.open');
+    anyOpen ? collapseAll() : expandAll();
+  }
+</script>
+
+</body>
+</html>

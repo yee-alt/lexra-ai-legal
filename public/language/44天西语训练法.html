@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>44天语言流利训练法</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0c;
+    --paper: #f5f0e8;
+    --cream: #ede8dc;
+    --gold: #c9a84c;
+    --gold-light: #e8c96b;
+    --red: #c94040;
+    --blue-deep: #1a3a5c;
+    --blue-mid: #2d5f8a;
+    --teal: #2a7a6e;
+    --teal-light: #3aa090;
+    --orange: #d4682a;
+    --purple: #6b3fa0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #1a1814;
+    font-family: 'Noto Sans SC', sans-serif;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+
+  .page-title {
+    text-align: center;
+    color: var(--gold);
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+
+  .page-subtitle {
+    text-align: center;
+    color: var(--paper);
+    font-family: 'Noto Serif SC', serif;
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 60px;
+    letter-spacing: 2px;
+  }
+
+  .page-subtitle span {
+    color: var(--gold);
+  }
+
+  /* ===== CARD BASE ===== */
+  .card {
+    background: var(--paper);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3);
+    margin-bottom: 32px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .card-header {
+    padding: 28px 36px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .card-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    opacity: 0.4;
+  }
+
+  .card-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .card-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-top: 2px;
+  }
+
+  .card-subtitle-text {
+    font-size: 13px;
+    opacity: 0.55;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .card-body {
+    padding: 28px 36px 32px;
+  }
+
+  /* ===== CARD 1: TED沉浸法 ===== */
+  .card-ted .card-header { background: var(--blue-deep); color: white; }
+  .card-ted .card-badge { background: rgba(255,255,255,0.15); color: white; }
+  .card-ted .card-num { color: white; opacity: 0.5; }
+
+  .ted-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 24px;
+  }
+
+  .ted-step {
+    flex: 1;
+    background: var(--cream);
+    padding: 20px 18px;
+    position: relative;
+    border-right: none;
+  }
+
+  .ted-step:last-child { border-right: none; }
+  .ted-step:not(:last-child)::after {
+    content: '▶';
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--blue-mid);
+    font-size: 14px;
+    z-index: 2;
+    background: var(--paper);
+    padding: 4px 2px;
+  }
+
+  .ted-step-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--blue-deep);
+    opacity: 0.15;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .ted-step-icon { font-size: 22px; margin-bottom: 8px; }
+
+  .ted-step-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--blue-deep);
+    margin-bottom: 6px;
+  }
+
+  .ted-step-desc {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .ted-videos-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .ted-video-card {
+    background: var(--blue-deep);
+    color: white;
+    border-radius: 3px;
+    padding: 12px 10px;
+    text-align: center;
+  }
+
+  .ted-video-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold-light);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .ted-video-label {
+    font-size: 10px;
+    opacity: 0.7;
+    letter-spacing: 1px;
+  }
+
+  .ted-callout {
+    background: var(--blue-deep);
+    color: white;
+    border-radius: 3px;
+    padding: 16px 20px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .ted-callout-icon { font-size: 20px; flex-shrink: 0; }
+
+  .ted-callout-text {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .ted-callout-text strong {
+    color: var(--gold-light);
+    font-weight: 700;
+  }
+
+  /* ===== CARD 2: 动词卡片 ===== */
+  .card-verb .card-header { background: var(--ink); color: white; }
+  .card-verb .card-badge { background: var(--gold); color: var(--ink); }
+  .card-verb .card-num { color: white; opacity: 0.5; }
+
+  .verb-section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .verb-count-badge {
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+
+  .verb-grid-irregular {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .verb-chip {
+    background: var(--ink);
+    color: var(--gold-light);
+    border-radius: 3px;
+    padding: 10px 8px;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+  }
+
+  .verb-chip-es { font-size: 15px; display: block; margin-bottom: 3px; }
+  .verb-chip-zh { font-size: 10px; color: rgba(255,255,255,0.5); display: block; }
+
+  .verb-chip.highlight {
+    background: var(--gold);
+    color: var(--ink);
+  }
+  .verb-chip.highlight .verb-chip-zh { color: rgba(0,0,0,0.55); }
+
+  .verb-categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .verb-cat-card {
+    border: 1.5px solid;
+    border-radius: 3px;
+    padding: 14px 14px;
+  }
+
+  .verb-cat-card.ar { border-color: var(--teal); }
+  .verb-cat-card.er { border-color: var(--orange); }
+  .verb-cat-card.ir { border-color: var(--purple); }
+
+  .verb-cat-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .verb-cat-card.ar .verb-cat-title { color: var(--teal); }
+  .verb-cat-card.er .verb-cat-title { color: var(--orange); }
+  .verb-cat-card.ir .verb-cat-title { color: var(--purple); }
+
+  .verb-cat-desc {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+
+  .verb-cat-examples {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: #333;
+    line-height: 1.8;
+  }
+
+  .verb-total-bar {
+    background: var(--cream);
+    border-radius: 3px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 8px;
+  }
+
+  .verb-total-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .verb-total-breakdown {
+    flex: 1;
+  }
+
+  .verb-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .verb-bar-label {
+    font-size: 11px;
+    color: #555;
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  .verb-bar-track {
+    flex: 1;
+    height: 8px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .verb-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+  }
+
+  .verb-bar-fill.primary { background: var(--gold); width: 40%; }
+  .verb-bar-fill.secondary { background: var(--ink); width: 60%; }
+
+  .verb-bar-count {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #333;
+    width: 30px;
+  }
+
+  /* ===== CARD 3: 10x10 ===== */
+  .card-10x10 .card-header { background: var(--teal); color: white; }
+  .card-10x10 .card-badge { background: rgba(255,255,255,0.2); color: white; }
+  .card-10x10 .card-num { color: white; opacity: 0.5; }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .topic-card {
+    background: var(--cream);
+    border-radius: 3px;
+    padding: 16px 12px;
+    text-align: center;
+    position: relative;
+    border-top: 3px solid transparent;
+  }
+
+  .topic-card.science { border-top-color: #4a90d9; }
+  .topic-card.life { border-top-color: #f0a500; }
+  .topic-card.food { border-top-color: #e05c3a; }
+  .topic-card.travel { border-top-color: #5db87a; }
+  .topic-card.tech { border-top-color: #9b59b6; }
+  .topic-card.culture { border-top-color: #e91e63; }
+  .topic-card.business { border-top-color: #00bcd4; }
+  .topic-card.sport { border-top-color: #ff5722; }
+  .topic-card.nature { border-top-color: #8bc34a; }
+  .topic-card.history { border-top-color: #795548; }
+
+  .topic-icon { font-size: 24px; margin-bottom: 6px; display: block; }
+
+  .topic-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .topic-sub {
+    font-size: 10px;
+    color: #888;
+  }
+
+  .topic-time {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--teal);
+    font-weight: 700;
+    margin-top: 6px;
+  }
+
+  .x10-formula {
+    background: var(--teal);
+    color: white;
+    border-radius: 3px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .formula-item {
+    flex: 1;
+    text-align: center;
+  }
+
+  .formula-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    display: block;
+  }
+
+  .formula-label {
+    font-size: 11px;
+    opacity: 0.8;
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+
+  .formula-op {
+    font-family: 'Space Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    opacity: 0.4;
+    padding: 0 8px;
+  }
+
+  /* ===== CARD 4: 30分钟口语练习 ===== */
+  .card-speak .card-header { background: var(--red); color: white; }
+  .card-speak .card-badge { background: rgba(255,255,255,0.2); color: white; }
+  .card-speak .card-num { color: white; opacity: 0.5; }
+
+  .speak-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .speak-step {
+    background: var(--cream);
+    border-radius: 3px;
+    padding: 18px 14px;
+    text-align: center;
+    position: relative;
+  }
+
+  .speak-step-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--red);
+    opacity: 0.2;
+    line-height: 1;
+  }
+
+  .speak-step-icon { font-size: 22px; margin: 6px 0; display: block; }
+
+  .speak-step-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .speak-step-desc { font-size: 11px; color: #666; line-height: 1.5; }
+
+  .day-timeline {
+    background: var(--ink);
+    border-radius: 3px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+
+  .timeline-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+
+  .timeline-blocks {
+    display: flex;
+    gap: 4px;
+    align-items: stretch;
+  }
+
+  .timeline-block {
+    border-radius: 2px;
+    padding: 10px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .timeline-block.session {
+    background: var(--red);
+    flex: 1;
+  }
+
+  .timeline-block.break {
+    background: rgba(255,255,255,0.07);
+    width: 20px;
+    flex: none;
+  }
+
+  .timeline-block-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    writing-mode: horizontal-tb;
+  }
+
+  .timeline-block.session .timeline-block-label { color: rgba(255,255,255,0.9); }
+  .timeline-block.break .timeline-block-label { color: rgba(255,255,255,0.3); font-size: 8px; }
+
+  .timeline-block-time {
+    font-size: 9px;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    margin-top: 3px;
+  }
+
+  .speak-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .speak-stat {
+    background: var(--cream);
+    border-radius: 3px;
+    padding: 16px 18px;
+    text-align: center;
+  }
+
+  .speak-stat-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+    display: block;
+  }
+
+  .speak-stat-label {
+    font-size: 11px;
+    color: #666;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== CARD 5: 总览 ===== */
+  .card-overview .card-header { background: linear-gradient(135deg, #1a1814 0%, #2d2a22 100%); color: white; }
+  .card-overview .card-badge { background: var(--gold); color: var(--ink); }
+  .card-overview .card-num { color: white; opacity: 0.4; }
+
+  .overview-phases {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .phase-card {
+    border-radius: 3px;
+    padding: 20px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phase-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+
+  .phase-card.p1 { background: #edf3fa; }
+  .phase-card.p1::before { background: var(--blue-deep); }
+
+  .phase-card.p2 { background: #edf7f4; }
+  .phase-card.p2::before { background: var(--teal); }
+
+  .phase-card.p3 { background: #fef6ee; }
+  .phase-card.p3::before { background: var(--orange); }
+
+  .phase-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+    opacity: 0.6;
+  }
+
+  .phase-card.p1 .phase-label { color: var(--blue-deep); }
+  .phase-card.p2 .phase-label { color: var(--teal); }
+  .phase-card.p3 .phase-label { color: var(--orange); }
+
+  .phase-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .phase-goal {
+    background: rgba(0,0,0,0.06);
+    border-radius: 2px;
+    padding: 8px 10px;
+    font-size: 11px;
+    color: #444;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .phase-exercises { list-style: none; }
+
+  .phase-exercise {
+    font-size: 12px;
+    color: #333;
+    padding: 4px 0;
+    border-bottom: 1px dashed rgba(0,0,0,0.1);
+    display: flex;
+    gap: 6px;
+    line-height: 1.4;
+  }
+
+  .phase-exercise:last-child { border-bottom: none; }
+
+  .phase-exercise-dot {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-top: 5px;
+  }
+
+  .p1 .phase-exercise-dot { background: var(--blue-deep); }
+  .p2 .phase-exercise-dot { background: var(--teal); }
+  .p3 .phase-exercise-dot { background: var(--orange); }
+
+  .overview-footer {
+    margin-top: 16px;
+    background: var(--ink);
+    border-radius: 3px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .footer-quote {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    color: var(--paper);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .footer-quote span { color: var(--gold); font-weight: 700; }
+
+  .footer-days {
+    flex-shrink: 0;
+    text-align: center;
+  }
+
+  .footer-days-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+
+  .footer-days-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 3px;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* ===== DECORATIVE ===== */
+  .card-corner {
+    position: absolute;
+    top: 0; right: 0;
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 0 40px 40px 0;
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
+    margin: 20px 0;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+
+  .note-box {
+    border-left: 3px solid var(--gold);
+    background: rgba(201,168,76,0.08);
+    padding: 12px 16px;
+    border-radius: 0 3px 3px 0;
+    font-size: 12px;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 16px;
+  }
+
+  .note-box strong { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<p class="page-title">语言训练可视化素材</p>
+<h1 class="page-subtitle">44天流利训练法 <span>完整拆解</span></h1>
+
+<!-- ===== CARD 0: 总览 ===== -->
+<div class="card card-overview">
+  <div class="card-header">
+    <div>
+      <div class="card-num">OVERVIEW · 00</div>
+      <div class="card-title" style="color:var(--paper)">三步走：从零到流利</div>
+      <div class="card-subtitle-text" style="color:rgba(255,255,255,0.5)">每一步都有明确目标 + 配套练习</div>
+    </div>
+    <div class="card-badge" style="margin-left:auto; flex-shrink:0;">完整框架</div>
+  </div>
+  <div class="card-body">
+    <div class="overview-phases">
+      <div class="phase-card p1">
+        <div class="phase-label">STEP 01 · 打基础</div>
+        <div class="phase-title">学会拼凑<br>基础句子</div>
+        <div class="phase-goal">🎯 目标：能用正确结构造句，建立词汇底仓</div>
+        <ul class="phase-exercises">
+          <li class="phase-exercise"><span class="phase-exercise-dot"></span>TED演讲沉浸法（5个视频，反复刷）</li>
+          <li class="phase-exercise"><span class="phase-exercise-dot"></span>动词变位精学（50个核心动词）</li>
+        </ul>
+      </div>
+      <div class="phase-card p2">
+        <div class="phase-label">STEP 02 · 达到流利</div>
+        <div class="phase-title">开口说话<br>不再卡壳</div>
+        <div class="phase-goal">🎯 目标：词汇自动调取，流畅表达想法</div>
+        <ul class="phase-exercises">
+          <li class="phase-exercise"><span class="phase-exercise-dot"></span>10×10视频沉浸练习</li>
+          <li class="phase-exercise"><span class="phase-exercise-dot"></span>每日30分钟口语复述训练</li>
+        </ul>
+      </div>
+      <div class="phase-card p3">
+        <div class="phase-label">STEP 03 · 母语级别</div>
+        <div class="phase-title">地道发音<br>专业词汇</div>
+        <div class="phase-goal">🎯 目标：口音接近母语者，词汇覆盖专业领域</div>
+        <ul class="phase-exercises">
+          <li class="phase-exercise"><span class="phase-exercise-dot"></span>主题化10×10（按领域扩展词汇）</li>
+          <li class="phase-exercise"><span class="phase-exercise-dot"></span>跟读模仿练习（Shadowing）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="overview-footer">
+      <div class="footer-quote">
+        <span>目标决定结构。</span><br>
+        你想的是"开口说话"，<br>所有训练就得围着"说"转。
+      </div>
+      <div class="footer-days">
+        <span class="footer-days-num">44</span>
+        <span class="footer-days-label">D A Y S</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CARD 1: TED沉浸法 ===== -->
+<div class="card card-ted">
+  <div class="card-header">
+    <div>
+      <div class="card-num">METHOD · 01</div>
+      <div class="card-title">TED演讲沉浸法</div>
+      <div class="card-subtitle-text" style="color:rgba(255,255,255,0.6)">在真实语境中学词，而不是孤立背单词</div>
+    </div>
+    <div class="card-badge">打基础 · 词汇</div>
+  </div>
+  <div class="card-body">
+    <div class="ted-flow">
+      <div class="ted-step">
+        <div class="ted-step-num">01</div>
+        <div class="ted-step-icon">🎯</div>
+        <div class="ted-step-title">选5个视频</div>
+        <div class="ted-step-desc">找有完整人工字幕的TED演讲，每个约10分钟</div>
+      </div>
+      <div class="ted-step">
+        <div class="ted-step-num">02</div>
+        <div class="ted-step-icon">📖</div>
+        <div class="ted-step-title">逐词查意思</div>
+        <div class="ted-step-desc">把每个不认识的词全部查一遍，建立初步认知</div>
+      </div>
+      <div class="ted-step">
+        <div class="ted-step-num">03</div>
+        <div class="ted-step-icon">🔁</div>
+        <div class="ted-step-title">边看边读稿</div>
+        <div class="ted-step-desc">一边看视频，一边对着文字稿，反复播放</div>
+      </div>
+      <div class="ted-step">
+        <div class="ted-step-num">04</div>
+        <div class="ted-step-icon">✅</div>
+        <div class="ted-step-title">听清每个词</div>
+        <div class="ted-step-desc">直到5个视频里每句话都听懂，近乎"母语感"</div>
+      </div>
+    </div>
+
+    <div class="ted-videos-grid">
+      <div class="ted-video-card">
+        <span class="ted-video-num">01</span>
+        <span class="ted-video-label">视频 A</span>
+      </div>
+      <div class="ted-video-card">
+        <span class="ted-video-num">02</span>
+        <span class="ted-video-label">视频 B</span>
+      </div>
+      <div class="ted-video-card">
+        <span class="ted-video-num">03</span>
+        <span class="ted-video-label">视频 C</span>
+      </div>
+      <div class="ted-video-card">
+        <span class="ted-video-num">04</span>
+        <span class="ted-video-label">视频 D</span>
+      </div>
+      <div class="ted-video-card" style="background:var(--gold); color:var(--ink);">
+        <span class="ted-video-num" style="color:var(--ink)">05</span>
+        <span class="ted-video-label" style="color:rgba(0,0,0,0.6)">视频 E</span>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px;">
+      <div class="ted-callout">
+        <div class="ted-callout-icon">💡</div>
+        <div class="ted-callout-text">
+          每天把5个视频全刷一遍，<br>约 <strong>1小时</strong>，同时学词 + 学发音
+        </div>
+      </div>
+      <div class="ted-callout" style="background:var(--teal);">
+        <div class="ted-callout-icon">🆚</div>
+        <div class="ted-callout-text">
+          比背单词App强在哪？<br><strong>有语境 + 有发音</strong>，记得快忘不掉
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CARD 2: 动词卡片 ===== -->
+<div class="card card-verb">
+  <div class="card-header">
+    <div>
+      <div class="card-num">METHOD · 02</div>
+      <div class="card-title" style="color:var(--paper)">50个核心动词精讲</div>
+      <div class="card-subtitle-text" style="color:rgba(255,255,255,0.5)">覆盖日常对话的绝大部分场景</div>
+    </div>
+    <div class="card-badge">打基础 · 动词变位</div>
+  </div>
+  <div class="card-body">
+
+    <div class="verb-section-title">
+      ⭐ 20个最高频不规则动词 — 重点攻克
+      <span class="verb-count-badge">×20</span>
+    </div>
+    <div class="verb-grid-irregular">
+      <div class="verb-chip highlight"><span class="verb-chip-es">ser</span><span class="verb-chip-zh">是（本质）</span></div>
+      <div class="verb-chip highlight"><span class="verb-chip-es">estar</span><span class="verb-chip-zh">是（状态）</span></div>
+      <div class="verb-chip highlight"><span class="verb-chip-es">tener</span><span class="verb-chip-zh">有</span></div>
+      <div class="verb-chip highlight"><span class="verb-chip-es">ir</span><span class="verb-chip-zh">去</span></div>
+      <div class="verb-chip highlight"><span class="verb-chip-es">venir</span><span class="verb-chip-zh">来</span></div>
+      <div class="verb-chip"><span class="verb-chip-es">hacer</span><span class="verb-chip-zh">做/制作</span></div>
+      <div class="verb-chip"><span class="verb-chip-es">poder</span><span class="verb-chip-zh">能/可以</span></div>
+      <div class="verb-chip"><span class="verb-chip-es">querer</span><span class="verb-chip-zh">想要</span></div>
+      <div class="verb-chip"><span class="verb-chip-es">saber</span><span class="verb-chip-zh">知道</span></div>
+      <div class="verb-chip"><span class="verb-chip-es">dar</span><span class="verb-chip-zh">给</span></div>
+      <div class="verb-chip"><span class="verb-chip-es">decir</span><span class="verb-chip-zh">说</span></div>
+      <div class="verb-chip"><span class="verb-chip-es">ver</span><span class="verb-chip-zh">看</span></div>
+      <div class="verb-chip"><span class="verb-chip-es">poner</span><span class="verb-chip-zh">放置</span></div>
+      <div class="verb-chip"><span class="verb-chip-es">salir</span><span class="verb-chip-zh">出去</span></div>
+      <div class="verb-chip"><span class="verb-chip-es">llevar</span><span class="verb-chip-zh">带/拿</span></div>
+      <div class="verb-chip"><span class="verb-chip-es">parecer</span><span class="verb-chip-zh">看起来</span></div>
+      <div class="verb-chip"><span class="verb-chip-es">seguir</span><span class="verb-chip-zh">继续/跟随</span></div>
+      <div class="verb-chip"><span class="verb-chip-es">encontrar</span><span class="verb-chip-zh">找到/遇到</span></div>
+      <div class="verb-chip"><span class="verb-chip-es">creer</span><span class="verb-chip-zh">相信/认为</span></div>
+      <div class="verb-chip"><span class="verb-chip-es">haber</span><span class="verb-chip-zh">有（存在）</span></div>
+    </div>
+
+    <div class="verb-section-title">
+      30个规则动词 — 按变位类型学规律
+      <span class="verb-count-badge" style="background:var(--ink); color:var(--gold);">×30</span>
+    </div>
+    <div class="verb-categories">
+      <div class="verb-cat-card ar">
+        <div class="verb-cat-title">-AR 动词</div>
+        <div class="verb-cat-desc">最常见类型，规则最统一</div>
+        <div class="verb-cat-examples">
+          hablar（说话）<br>
+          trabajar（工作）<br>
+          caminar（走路）<br>
+          comprar（购买）<br>
+          escuchar（听）<br>
+          mirar（看）<br>
+          cocinar（做饭）<br>
+          viajar（旅行）<br>
+          bailar（跳舞）<br>
+          cantar（唱歌）
+        </div>
+      </div>
+      <div class="verb-cat-card er">
+        <div class="verb-cat-title">-ER 动词</div>
+        <div class="verb-cat-desc">第二常见，与AR有小差异</div>
+        <div class="verb-cat-examples">
+          comer（吃）<br>
+          beber（喝）<br>
+          leer（读）<br>
+          correr（跑）<br>
+          volver（回来）<br>
+          aprender（学习）<br>
+          entender（理解）<br>
+          romper（打破）<br>
+          vender（卖）<br>
+          responder（回答）
+        </div>
+      </div>
+      <div class="verb-cat-card ir">
+        <div class="verb-cat-title">-IR 动词</div>
+        <div class="verb-cat-desc">最少见类型，含干元音变</div>
+        <div class="verb-cat-examples">
+          vivir（住）<br>
+          escribir（写）<br>
+          abrir（打开）<br>
+          subir（上去）<br>
+          recibir（收到）<br>
+          decidir（决定）<br>
+          permitir（允许）<br>
+          discutir（讨论）<br>
+          cubrir（覆盖）<br>
+          dividir（分开）
+        </div>
+      </div>
+    </div>
+
+    <div class="verb-total-bar">
+      <div class="verb-total-num">50</div>
+      <div class="verb-total-breakdown">
+        <div class="verb-bar-row">
+          <div class="verb-bar-label">⭐ 不规则动词</div>
+          <div class="verb-bar-track"><div class="verb-bar-fill primary"></div></div>
+          <div class="verb-bar-count">20个</div>
+        </div>
+        <div class="verb-bar-row">
+          <div class="verb-bar-label">规则动词（×3）</div>
+          <div class="verb-bar-track"><div class="verb-bar-fill secondary"></div></div>
+          <div class="verb-bar-count">30个</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-box">
+      💡 <strong>学习关键：</strong>不是为了"背"，而是为了<strong>看懂规律</strong>——一旦掌握规律，遇到新词就能凭直觉猜出变位，就像中文里"的"的用法，懂了就全通了。
+    </div>
+  </div>
+</div>
+
+<!-- ===== CARD 3: 10x10 ===== -->
+<div class="card card-10x10">
+  <div class="card-header">
+    <div>
+      <div class="card-num">METHOD · 03</div>
+      <div class="card-title">10×10 视频沉浸法</div>
+      <div class="card-subtitle-text" style="color:rgba(255,255,255,0.6)">10个视频 × 每个看10遍 × 题材多元</div>
+    </div>
+    <div class="card-badge">达到流利 · 主动词汇</div>
+  </div>
+  <div class="card-body">
+
+    <div class="topics-grid">
+      <div class="topic-card science">
+        <span class="topic-icon">🔬</span>
+        <div class="topic-name">科技</div>
+        <div class="topic-sub">AI / 太空 / 医学</div>
+        <div class="topic-time">≈10 min</div>
+      </div>
+      <div class="topic-card life">
+        <span class="topic-icon">🌱</span>
+        <div class="topic-name">生活方式</div>
+        <div class="topic-sub">习惯 / 健康 / 心理</div>
+        <div class="topic-time">≈10 min</div>
+      </div>
+      <div class="topic-card food">
+        <span class="topic-icon">🍜</span>
+        <div class="topic-name">美食文化</div>
+        <div class="topic-sub">料理 / 传统 / 饮食</div>
+        <div class="topic-time">≈10 min</div>
+      </div>
+      <div class="topic-card travel">
+        <span class="topic-icon">✈️</span>
+        <div class="topic-name">旅行探险</div>
+        <div class="topic-sub">城市 / 自然 / 文化</div>
+        <div class="topic-time">≈10 min</div>
+      </div>
+      <div class="topic-card tech">
+        <span class="topic-icon">💻</span>
+        <div class="topic-name">商业科技</div>
+        <div class="topic-sub">创业 / 产品 / 设计</div>
+        <div class="topic-time">≈10 min</div>
+      </div>
+      <div class="topic-card culture">
+        <span class="topic-icon">🎭</span>
+        <div class="topic-name">艺术文化</div>
+        <div class="topic-sub">音乐 / 电影 / 文学</div>
+        <div class="topic-time">≈10 min</div>
+      </div>
+      <div class="topic-card business">
+        <span class="topic-icon">📊</span>
+        <div class="topic-name">经济商业</div>
+        <div class="topic-sub">市场 / 金融 / 管理</div>
+        <div class="topic-time">≈10 min</div>
+      </div>
+      <div class="topic-card sport">
+        <span class="topic-icon">⚽</span>
+        <div class="topic-name">体育运动</div>
+        <div class="topic-sub">足球 / 训练 / 竞技</div>
+        <div class="topic-time">≈10 min</div>
+      </div>
+      <div class="topic-card nature">
+        <span class="topic-icon">🌊</span>
+        <div class="topic-name">自然环境</div>
+        <div class="topic-sub">气候 / 生态 / 地理</div>
+        <div class="topic-time">≈10 min</div>
+      </div>
+      <div class="topic-card history">
+        <span class="topic-icon">🏛️</span>
+        <div class="topic-name">历史人文</div>
+        <div class="topic-sub">历史 / 哲学 / 社会</div>
+        <div class="topic-time">≈10 min</div>
+      </div>
+    </div>
+
+    <div class="x10-formula">
+      <div class="formula-item">
+        <span class="formula-num">10</span>
+        <div class="formula-label">个视频</div>
+      </div>
+      <div class="formula-op">×</div>
+      <div class="formula-item">
+        <span class="formula-num">10</span>
+        <div class="formula-label">分钟/个</div>
+      </div>
+      <div class="formula-op">×</div>
+      <div class="formula-item">
+        <span class="formula-num">N</span>
+        <div class="formula-label">遍（反复刷）</div>
+      </div>
+      <div class="formula-op">=</div>
+      <div class="formula-item">
+        <span class="formula-num" style="font-size:24px; color:white;">主动词汇</span>
+        <div class="formula-label">脱口而出，无需思考</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CARD 4: 口语复述练习 ===== -->
+<div class="card card-speak">
+  <div class="card-header">
+    <div>
+      <div class="card-num">METHOD · 04</div>
+      <div class="card-title">30分钟口语复述训练</div>
+      <div class="card-subtitle-text" style="color:rgba(255,255,255,0.6)">把"输入"逼成"输出"——最硬核的一步</div>
+    </div>
+    <div class="card-badge">达到流利 · 口语输出</div>
+  </div>
+  <div class="card-body">
+
+    <div class="speak-steps">
+      <div class="speak-step">
+        <div class="speak-step-num">1</div>
+        <span class="speak-step-icon">📺</span>
+        <div class="speak-step-title">看视频</div>
+        <div class="speak-step-desc">从10×10列表里选一个视频，完整看一遍</div>
+      </div>
+      <div class="speak-step">
+        <div class="speak-step-num">2</div>
+        <span class="speak-step-icon">📝</span>
+        <div class="speak-step-title">记笔记</div>
+        <div class="speak-step-desc">用关键词记下视频的核心内容和要点</div>
+      </div>
+      <div class="speak-step">
+        <div class="speak-step-num">3</div>
+        <span class="speak-step-icon">🗣️</span>
+        <div class="speak-step-title">开口复述</div>
+        <div class="speak-step-desc">只看笔记，用目标语言把视频内容说出来</div>
+      </div>
+      <div class="speak-step" style="background:var(--ink);">
+        <div class="speak-step-num" style="color:var(--red); opacity:0.4">4</div>
+        <span class="speak-step-icon">🔁</span>
+        <div class="speak-step-title" style="color:white">换下一个</div>
+        <div class="speak-step-desc" style="color:rgba(255,255,255,0.6)">换不同视频，重复以上步骤，做满30分钟</div>
+      </div>
+    </div>
+
+    <div class="day-timeline">
+      <div class="timeline-title">一天的训练节奏示例（4-6小时口语练习）</div>
+      <div class="timeline-blocks">
+        <div class="timeline-block session">
+          <div class="timeline-block-label">口语×1</div>
+          <div class="timeline-block-time">30min</div>
+        </div>
+        <div class="timeline-block break">
+          <div class="timeline-block-label">休</div>
+        </div>
+        <div class="timeline-block session">
+          <div class="timeline-block-label">口语×2</div>
+          <div class="timeline-block-time">30min</div>
+        </div>
+        <div class="timeline-block break">
+          <div class="timeline-block-label">休</div>
+        </div>
+        <div class="timeline-block session">
+          <div class="timeline-block-label">沉浸刷片</div>
+          <div class="timeline-block-time">60min</div>
+        </div>
+        <div class="timeline-block break">
+          <div class="timeline-block-label">休</div>
+        </div>
+        <div class="timeline-block session">
+          <div class="timeline-block-label">口语×3</div>
+          <div class="timeline-block-time">30min</div>
+        </div>
+        <div class="timeline-block break">
+          <div class="timeline-block-label">休</div>
+        </div>
+        <div class="timeline-block session">
+          <div class="timeline-block-label">口语×4</div>
+          <div class="timeline-block-time">30min</div>
+        </div>
+        <div class="timeline-block break">
+          <div class="timeline-block-label">休</div>
+        </div>
+        <div class="timeline-block session">
+          <div class="timeline-block-label">沉浸刷片</div>
+          <div class="timeline-block-time">60min</div>
+        </div>
+        <div class="timeline-block break">
+          <div class="timeline-block-label">休</div>
+        </div>
+        <div class="timeline-block session">
+          <div class="timeline-block-label">口语×5</div>
+          <div class="timeline-block-time">30min</div>
+        </div>
+        <div class="timeline-block break">
+          <div class="timeline-block-label">休</div>
+        </div>
+        <div class="timeline-block session" style="background:var(--gold);">
+          <div class="timeline-block-label" style="color:var(--ink)">语伴对话</div>
+          <div class="timeline-block-time" style="color:rgba(0,0,0,0.5)">60min</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="speak-stats">
+      <div class="speak-stat">
+        <span class="speak-stat-num">8h</span>
+        <div class="speak-stat-label">平均每日训练时长</div>
+      </div>
+      <div class="speak-stat">
+        <span class="speak-stat-num">4~6h</span>
+        <div class="speak-stat-label">其中口语输出时长</div>
+      </div>
+      <div class="speak-stat">
+        <span class="speak-stat-num">30天</span>
+        <div class="speak-stat-label">密集训练后可开口对话</div>
+      </div>
+    </div>
+
+    <div class="note-box" style="border-color:var(--red); background:rgba(201,64,64,0.05); margin-top:16px;">
+      🔥 <strong>为什么要复述而不是背台词？</strong> 你在用<strong>自己的理解</strong>重新组织语言——这才是真正的"主动表达"训练。背别人的话只留痕迹，理解后复述才有记忆。
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

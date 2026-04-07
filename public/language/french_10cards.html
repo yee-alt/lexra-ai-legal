@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>法语自学体系 · 十张视频素材卡片</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   ROOT & RESET
+============================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand palette */
+  --ink:       #0c0c0e;
+  --ink-60:    rgba(12,12,14,0.6);
+  --ink-35:    rgba(12,12,14,0.35);
+  --ink-12:    rgba(12,12,14,0.12);
+  --cream:     #f7f2ea;
+  --cream-70:  rgba(247,242,234,0.7);
+  --cream-30:  rgba(247,242,234,0.3);
+  --cream-10:  rgba(247,242,234,0.10);
+
+  /* Accent colours */
+  --gold:      #c8a45a;
+  --gold-l:    #e8cc88;
+  --gold-d:    #8a6820;
+  --blue:      #2b4d9e;
+  --blue-l:    #5578c8;
+  --blue-pale: #e8eef8;
+  --green:     #2a7a52;
+  --green-l:   #4aa878;
+  --green-pale:#e4f2eb;
+  --red:       #c83a30;
+  --red-l:     #e06858;
+  --red-pale:  #faeaea;
+  --purple:    #6840a8;
+  --purple-l:  #9868d8;
+  --purple-pale:#f0eafc;
+  --teal:      #207878;
+  --teal-l:    #3aacac;
+  --teal-pale: #e0f4f4;
+  --rose:      #c84870;
+  --rose-pale: #fce8f0;
+
+  /* Spacing */
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+}
+
+body {
+  background: #111015;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: var(--ink);
+  padding: 48px 24px 80px;
+  min-height: 100vh;
+}
+
+/* =============================================
+   PAGE HEADER
+============================================= */
+.page-top {
+  max-width: 1120px;
+  margin: 0 auto 72px;
+  text-align: center;
+}
+.page-top .eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+  opacity: 0.9;
+}
+.page-top h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+.page-top p {
+  font-size: 13px;
+  color: var(--cream-30);
+  letter-spacing: 1.5px;
+}
+
+/* =============================================
+   CARD SHELL
+============================================= */
+.deck {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.card {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: 0 12px 60px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.2);
+  transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s;
+  position: relative;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.25);
+}
+
+/* ---- Card inner layout ---- */
+.card-top {
+  padding: 44px 52px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  border-bottom: 1px solid var(--ink-12);
+}
+.card-top .meta { flex: 1; }
+.card-top .meta .tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.card-top .meta .tag::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+}
+.card-top .meta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+.card-top .meta .sub {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+.big-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  flex-shrink: 0;
+}
+
+.card-body { padding: 36px 52px 44px; }
+
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: .45;
+  margin-bottom: 16px;
+  margin-top: 32px;
+}
+.section-label:first-child { margin-top: 0; }
+
+.card-foot {
+  padding: 14px 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--ink-12);
+  background: rgba(12,12,14,0.03);
+}
+.card-foot .note { font-size: 11px; font-style: italic; opacity: .4; }
+.card-foot .num  { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; opacity: .22; text-transform: uppercase; }
+
+/* =============================================
+   SHARED COMPONENTS
+============================================= */
+
+/* Chips / pills */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  padding: 5px 14px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  border: 1px solid transparent;
+  transition: all .2s;
+  cursor: default;
+}
+
+/* Step flow */
+.flow {
+  display: grid;
+  gap: 0;
+  position: relative;
+}
+.flow.cols-4 { grid-template-columns: repeat(4,1fr); }
+.flow.cols-3 { grid-template-columns: repeat(3,1fr); }
+
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 14px;
+  position: relative;
+  z-index: 1;
+}
+/* connector line */
+.flow.cols-4::after,
+.flow.cols-3::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  top: 30px;
+  left: 12%;
+  right: 12%;
+  z-index: 0;
+}
+.flow-num {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 700;
+  margin-bottom: 14px;
+  transition: all .3s;
+  background: white;
+  position: relative;
+}
+.flow-step:hover .flow-num { transform: scale(1.12); }
+.flow-step h4 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px; font-weight: 700;
+  margin-bottom: 5px;
+}
+.flow-step p { font-size: 11px; opacity: .55; line-height: 1.55; }
+
+/* VS comparison */
+.vs-wrap {
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr;
+  gap: 12px;
+  align-items: stretch;
+}
+.vs-box {
+  border-radius: var(--r-md);
+  padding: 22px 20px;
+}
+.vs-box h4 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px; font-weight: 700;
+  margin-bottom: 12px;
+}
+.vs-box ul { list-style: none; }
+.vs-box ul li {
+  font-size: 12px; line-height: 1.6;
+  padding: 3px 0;
+  display: flex; align-items: flex-start; gap: 7px;
+  opacity: .7;
+}
+.vs-box ul li::before { content: '▸'; flex-shrink: 0; font-size: 9px; margin-top: 3px; opacity: .5; }
+.vs-mid {
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 600;
+  opacity: .25;
+}
+
+/* Level badge cards */
+.level-cards {
+  display: grid;
+  gap: 12px;
+}
+.level-cards.cols-5 { grid-template-columns: repeat(5,1fr); }
+.level-cards.cols-3 { grid-template-columns: repeat(3,1fr); }
+.level-cards.cols-4 { grid-template-columns: repeat(4,1fr); }
+
+.lc {
+  border-radius: var(--r-md);
+  padding: 18px 14px 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .25s, box-shadow .25s;
+  position: relative;
+  overflow: hidden;
+}
+.lc:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,0.14); }
+.lc .lv-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px; letter-spacing: 2px;
+  padding: 3px 8px; border-radius: 100px;
+  display: inline-block; margin-bottom: 10px;
+  font-weight: 500;
+}
+.lc .lc-icon { font-size: 28px; display: block; margin-bottom: 8px; }
+.lc .lc-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px; font-weight: 700;
+  margin-bottom: 3px; line-height: 1.3;
+}
+.lc .lc-sub { font-size: 10px; opacity: .5; line-height: 1.4; }
+
+/* Stats row */
+.stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.stat {
+  border-radius: var(--r-md);
+  padding: 22px 18px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.stat .sn {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px; font-weight: 700;
+  line-height: 1; margin-bottom: 6px;
+}
+.stat .sl { font-size: 11px; line-height: 1.55; opacity: .75; }
+.stat .si { position: absolute; top: 12px; right: 14px; font-size: 18px; opacity: .2; }
+
+/* Promo box */
+.promo {
+  border-radius: var(--r-md);
+  padding: 20px 24px;
+  display: flex; align-items: center; gap: 18px;
+}
+.promo .pi { font-size: 38px; flex-shrink: 0; }
+.promo .pt h4 { font-family: 'Noto Serif SC', serif; font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.promo .pt p  { font-size: 12px; opacity: .65; }
+.promo-code {
+  margin-left: auto; flex-shrink: 0;
+  border-radius: var(--r-sm);
+  padding: 10px 20px;
+  font-family: 'DM Mono', monospace;
+  font-size: 15px; font-weight: 500; letter-spacing: 2px;
+}
+
+/* Timeline bar */
+.tl-bar-wrap { border-radius: var(--r-md); padding: 22px 24px; margin-bottom: 10px; }
+.tl-bar-wrap h3 { font-family: 'Noto Serif SC', serif; font-size: 13px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.tl-bar { display: flex; height: 46px; border-radius: 10px; overflow: hidden; }
+.tl-seg {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: #fff;
+  transition: opacity .2s; cursor: default;
+}
+.tl-seg:hover { opacity: .82; }
+.tl-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px; }
+.tl-legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; opacity: .6; }
+.tl-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+/* Horizontal resource row */
+.res-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.res-card {
+  border-radius: var(--r-md);
+  padding: 18px 16px;
+  display: flex; flex-direction: column; gap: 6px;
+  transition: transform .2s;
+}
+.res-card:hover { transform: translateY(-3px); }
+.res-card .rc-icon { font-size: 24px; }
+.res-card .rc-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px; font-weight: 700;
+}
+.res-card .rc-how { font-size: 11px; opacity: .55; line-height: 1.5; }
+.res-card .rc-why {
+  font-size: 10px; font-weight: 600;
+  padding: 3px 9px; border-radius: 100px;
+  display: inline-block; width: fit-content;
+}
+
+/* Formula box */
+.formula-box {
+  border-radius: var(--r-md);
+  padding: 24px 28px; text-align: center;
+  border: 1px dashed;
+}
+.formula-box .fml {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(16px, 2.5vw, 24px);
+  font-weight: 700; line-height: 1.4;
+  margin-bottom: 8px;
+}
+.formula-box .fml-note { font-size: 12px; opacity: .5; }
+
+/* Topic grid (10 items) */
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 10px;
+}
+.tc {
+  border-radius: var(--r-md);
+  padding: 14px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+.tc:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.1); }
+.tc .te { font-size: 26px; display: block; margin-bottom: 7px; }
+.tc .tn { font-family: 'Noto Serif SC', serif; font-size: 12px; font-weight: 700; margin-bottom: 2px; }
+.tc .tfr { font-size: 9px; font-family: 'DM Mono', monospace; letter-spacing: 1px; opacity: .4; text-transform: uppercase; }
+
+/* Method card grid */
+.method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.method-card {
+  border-radius: var(--r-md);
+  padding: 22px 20px;
+}
+.method-card .mb { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 3px; padding: 3px 10px; border-radius: 100px; display: inline-block; margin-bottom: 12px; }
+.method-card h3 { font-family: 'Noto Serif SC', serif; font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.method-card p  { font-size: 12px; opacity: .6; line-height: 1.65; margin-bottom: 14px; }
+.steps-mini { display: flex; flex-direction: column; gap: 7px; }
+.sm { display: flex; align-items: center; gap: 9px; font-size: 12px; opacity: .7; }
+.sm-n {
+  width: 20px; height: 20px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 700; color: #fff; flex-shrink: 0;
+}
+
+/* Announcement banner */
+.announcement {
+  border-radius: var(--r-md);
+  padding: 16px 20px;
+  display: flex; align-items: center; gap: 14px;
+  font-size: 13px; font-weight: 500;
+}
+.announcement .ann-icon { font-size: 22px; flex-shrink: 0; }
+
+/* Big comparison row */
+.compare-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.cmp-card {
+  border-radius: var(--r-lg);
+  padding: 22px 18px;
+  position: relative; overflow: hidden;
+}
+.cmp-card .cc-level {
+  font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px;
+  text-transform: uppercase; opacity: .5; margin-bottom: 8px;
+}
+.cmp-card .cc-skill {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px; font-weight: 700; margin-bottom: 4px; line-height: 1;
+}
+.cmp-card .cc-res {
+  font-family: 'Noto Serif SC', serif; font-size: 12px; font-weight: 600;
+  opacity: .75; margin-bottom: 8px;
+}
+.cmp-card .cc-list { list-style: none; }
+.cmp-card .cc-list li { font-size: 11px; opacity: .55; padding: 2px 0; display: flex; gap: 6px; }
+.cmp-card .cc-list li::before { content: '–'; opacity: .4; }
+.cmp-card .cc-bg {
+  position: absolute; bottom: -10px; right: -10px;
+  font-size: 80px; opacity: .05; pointer-events: none; line-height: 1;
+}
+
+/* =============================================
+   CARD 00 — OVERVIEW (dark luxury)
+============================================= */
+.c00 {
+  background: var(--ink);
+  color: var(--cream);
+}
+.c00 .card-top {
+  border-bottom: 1px solid rgba(247,242,234,0.08);
+  background: radial-gradient(ellipse 70% 50% at 85% 0%, rgba(200,164,90,0.12) 0%, transparent 60%),
+              radial-gradient(ellipse 40% 60% at 5% 90%, rgba(43,77,158,0.18) 0%, transparent 55%);
+}
+.c00 .tag { color: var(--gold); }
+.c00 .tag::after { background: linear-gradient(90deg, var(--gold), transparent); }
+.c00 h2 { color: var(--cream); }
+.c00 .sub { color: var(--cream-30); }
+.c00 .big-icon { background: rgba(247,242,234,0.07); }
+.c00 .card-body { background: rgba(247,242,234,0.015); }
+.c00 .section-label { color: var(--gold-l); opacity: .55; }
+
+/* Pillars */
+.pillars-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 36px; }
+.pillar {
+  background: rgba(247,242,234,0.05);
+  border: 1px solid rgba(247,242,234,0.1);
+  border-radius: var(--r-lg);
+  padding: 24px 18px;
+  text-align: center;
+  cursor: pointer;
+  transition: background .3s, border-color .3s;
+  position: relative; overflow: hidden;
+}
+.pillar::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 3px;
+}
+.pillar.pl { --pc: var(--blue-l); }
+.pillar.pg { --pc: var(--green-l); }
+.pillar.po { --pc: var(--gold); }
+.pillar.pr { --pc: var(--red-l); }
+.pillar::after { background: var(--pc); }
+.pillar:hover { background: rgba(247,242,234,0.09); border-color: rgba(247,242,234,0.18); }
+.pillar .p-emoji { font-size: 38px; display: block; margin-bottom: 12px; }
+.pillar .p-zh {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 26px; font-weight: 900; letter-spacing: 2px;
+  color: var(--cream); margin-bottom: 3px;
+}
+.pillar .p-en { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--pc); opacity: .8; text-transform: uppercase; }
+
+/* Stage timeline */
+.stages { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; border-radius: 14px; overflow: hidden; background: rgba(247,242,234,0.05); margin-bottom: 28px; }
+.stage { padding: 22px 20px; background: rgba(247,242,234,0.03); }
+.stage .st-level { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--gold); margin-bottom: 6px; opacity: .9; }
+.stage .st-time { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; color: var(--cream); margin-bottom: 4px; line-height: 1; }
+.stage .st-desc { font-size: 11px; color: var(--cream-30); line-height: 1.55; }
+
+/* Resource chips (dark version) */
+.c00 .chip {
+  background: rgba(247,242,234,0.07);
+  border-color: rgba(247,242,234,0.13);
+  color: var(--cream-70);
+}
+.c00 .chip:hover { background: rgba(200,164,90,0.18); border-color: var(--gold); color: var(--gold-l); }
+.chip.free::before { content: '🆓 '; }
+.chip.paid::before { content: '💳 '; }
+
+/* =============================================
+   CARD 01 — 听 A1 (blue)
+============================================= */
+.c01 { background: white; }
+.c01 .tag { color: var(--blue); }
+.c01 .tag::after { background: linear-gradient(90deg, var(--blue-pale), transparent); }
+.c01 h2 { color: var(--blue); }
+.c01 .sub { color: var(--ink-60); }
+.c01 .big-icon { background: var(--blue-pale); }
+
+.c01 .flow.cols-4::after { background: linear-gradient(90deg, var(--blue-l), var(--blue)); }
+.c01 .flow-num { border: 2px solid var(--blue); color: var(--blue); box-shadow: 0 4px 16px rgba(43,77,158,.15); }
+.c01 .flow-step:hover .flow-num { background: var(--blue); color: white; }
+
+.c01 .lc.a1 { background: linear-gradient(135deg,#eaf0fc,#d4e2f8); }
+.c01 .lc.a2 { background: linear-gradient(135deg,#d8ecf8,#bcd8f0); }
+.c01 .lc.b1 { background: linear-gradient(135deg,#d8f0e8,#b8e0cc); }
+.c01 .lc.b2 { background: linear-gradient(135deg,#f0ead8,#e8d4a8); }
+.c01 .lc.c1 { background: linear-gradient(135deg,#f0d8d8,#e8b8b8); }
+.c01 .lc .lv-badge { background: rgba(43,77,158,.13); color: var(--blue); }
+.c01 .lc.b1 .lv-badge { background: rgba(42,122,82,.13); color: var(--green); }
+.c01 .lc.b2 .lv-badge { background: rgba(200,164,90,.2); color: var(--gold-d); }
+.c01 .lc.c1 .lv-badge { background: rgba(200,58,48,.13); color: var(--red); }
+
+.c01 .vs-box { background: var(--blue-pale); border: 1px solid rgba(43,77,158,.15); }
+.c01 .vs-box h4 { color: var(--blue); }
+.c01 .vs-box ul li::before { color: var(--blue-l); }
+.c01 .vs-box.right { background: var(--green-pale); border-color: rgba(42,122,82,.15); }
+.c01 .vs-box.right h4 { color: var(--green); }
+.c01 .vs-box.right ul li::before { color: var(--green-l); }
+
+/* =============================================
+   CARD 02 — 说 A1 (green)
+============================================= */
+.c02 { background: white; }
+.c02 .tag { color: var(--green); }
+.c02 .tag::after { background: linear-gradient(90deg, var(--green-pale), transparent); }
+.c02 h2 { color: var(--green); }
+.c02 .sub { color: var(--ink-60); }
+.c02 .big-icon { background: var(--green-pale); }
+
+.c02 .method-card.p { background: linear-gradient(135deg, #ecf7f0, #d4edde); border: 1px solid rgba(42,122,82,.18); }
+.c02 .method-card.f { background: linear-gradient(135deg, #f2f9f5, #e2f4ea); border: 1px solid rgba(42,122,82,.12); }
+.c02 .method-card .mb.pmb { background: rgba(42,122,82,.14); color: var(--green); }
+.c02 .method-card .mb.fmb { background: rgba(42,122,82,.09); color: #1a5e3a; }
+.c02 .method-card h3 { color: var(--ink); }
+.c02 .sm-n { background: var(--green); }
+.c02 .sm-n.f { background: var(--green-l); }
+
+.c02 .promo { background: linear-gradient(135deg, var(--ink), #1a2e20); }
+.c02 .promo .pt h4 { color: var(--gold-l); }
+.c02 .promo .pt p  { color: var(--cream-30); }
+.c02 .promo-code { background: var(--gold); color: var(--ink); }
+
+.c02 .formula-box { background: linear-gradient(135deg,rgba(42,122,82,.05),rgba(74,168,120,.03)); border-color: rgba(42,122,82,.25); }
+.c02 .fml { color: var(--green); }
+
+/* =============================================
+   CARD 03 — 读 A1 (gold)
+============================================= */
+.c03 { background: white; }
+.c03 .tag { color: var(--gold-d); }
+.c03 .tag::after { background: linear-gradient(90deg, #f5ead0, transparent); }
+.c03 h2 { color: var(--gold-d); }
+.c03 .sub { color: var(--ink-60); }
+.c03 .big-icon { background: linear-gradient(135deg,#fdf5e0,#f5e5c0); }
+
+/* Topic colors */
+.tc-1  { background: linear-gradient(135deg,#fff3cc,#ffe8a0); }
+.tc-2  { background: linear-gradient(135deg,#ffe0d0,#ffccaa); }
+.tc-3  { background: linear-gradient(135deg,#d4ecfc,#b4d8f8); }
+.tc-4  { background: linear-gradient(135deg,#f0d4f8,#e0b4f4); }
+.tc-5  { background: linear-gradient(135deg,#d4f8e8,#b4f0d0); }
+.tc-6  { background: linear-gradient(135deg,#d4f0d4,#b4e8b4); }
+.tc-7  { background: linear-gradient(135deg,#ffd4e8,#ffb4d0); }
+.tc-8  { background: linear-gradient(135deg,#d4d4f8,#b4b4f0); }
+.tc-9  { background: linear-gradient(135deg,#f8ecd4,#f0d8b4); }
+.tc-10 { background: linear-gradient(135deg,#d4f4fc,#b4eaf8); }
+
+/* Vocab formula visual */
+.vocab-formula {
+  background: linear-gradient(135deg,#fdf5e0,#f5ead0);
+  border: 1px solid rgba(200,164,90,.22);
+  border-radius: var(--r-lg);
+  padding: 26px 28px;
+}
+.vocab-formula h3 { font-family: 'Noto Serif SC', serif; font-size: 14px; font-weight: 700; color: var(--gold-d); margin-bottom: 20px; text-align: center; }
+.vf-row { display: flex; align-items: stretch; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.vf-item {
+  background: white;
+  border-radius: var(--r-sm);
+  padding: 14px 18px; text-align: center;
+  box-shadow: 0 2px 10px rgba(200,164,90,.15);
+  min-width: 90px;
+}
+.vf-item .vfn { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+.vf-item .vfl { font-size: 10px; opacity: .55; }
+.vf-op { display: flex; align-items: center; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: rgba(200,164,90,.4); padding: 0 2px; }
+.vf-result {
+  background: linear-gradient(135deg, var(--gold), #e8901a);
+  color: white; border-radius: var(--r-sm);
+  padding: 14px 22px; text-align: center; min-width: 110px;
+  box-shadow: 0 4px 20px rgba(200,164,90,.38);
+}
+.vf-result .vfn { color: white; font-size: 32px; }
+.vf-result .vfl { opacity: .85; font-size: 10px; }
+
+.c03 .vs-box { background: linear-gradient(135deg,#fdf5e0,#f5ead0); border-color: rgba(200,164,90,.22); }
+.c03 .vs-box h4 { color: var(--gold-d); }
+.c03 .vs-box ul li::before { color: var(--gold); }
+
+/* =============================================
+   CARD 04 — 写 A1 (red)
+============================================= */
+.c04 { background: white; }
+.c04 .tag { color: var(--red); }
+.c04 .tag::after { background: linear-gradient(90deg, var(--red-pale), transparent); }
+.c04 h2 { color: var(--red); }
+.c04 .sub { color: var(--ink-60); }
+.c04 .big-icon { background: var(--red-pale); }
+
+.c04 .flow.cols-4::after { background: linear-gradient(90deg, var(--red-l), var(--red)); }
+.c04 .flow-num { border: 2px solid var(--red); color: var(--red); box-shadow: 0 4px 16px rgba(200,58,48,.14); }
+.c04 .flow-step:hover .flow-num { background: var(--red); color: white; }
+.c04 .flow-step { padding: 0 10px; }
+
+.c04 .tl-bar-wrap { background: linear-gradient(135deg,#fff5f4,#ffe8e6); border: 1px solid rgba(200,58,48,.1); }
+.c04 .tl-bar-wrap h3 { color: var(--red); }
+
+.c04 .stat.s1 { background: linear-gradient(135deg, var(--red), var(--red-l)); color: white; }
+.c04 .stat.s2 { background: linear-gradient(135deg,#fff3cc,#ffe8a0); }
+.c04 .stat.s2 .sn { color: var(--gold-d); }
+.c04 .stat.s3 { background: linear-gradient(135deg, var(--ink), #1a1a24); color: var(--cream); }
+.c04 .stat.s3 .sn { color: var(--gold-l); }
+
+/* =============================================
+   CARD 05 — 听 A2 (deep blue)
+============================================= */
+.c05 { background: linear-gradient(160deg,#f0f4fc,#e8eef8); }
+.c05 .tag { color: var(--blue); }
+.c05 .tag::after { background: linear-gradient(90deg, rgba(43,77,158,.15), transparent); }
+.c05 h2 { color: var(--blue); }
+.c05 .sub { color: var(--ink-60); }
+.c05 .big-icon { background: var(--blue-pale); }
+
+.c05 .res-card { background: white; border: 1px solid rgba(43,77,158,.1); }
+.c05 .res-card .rc-name { color: var(--blue); }
+.c05 .res-card .rc-why { background: var(--blue-pale); color: var(--blue); }
+
+.c05 .announcement { background: linear-gradient(135deg,#2b4d9e,#3a6acd); color: white; }
+.c05 .announcement strong { color: var(--gold-l); }
+
+/* =============================================
+   CARD 06 — 说 A2 (teal)
+============================================= */
+.c06 { background: linear-gradient(160deg,#eef8f8,#e0f4f4); }
+.c06 .tag { color: var(--teal); }
+.c06 .tag::after { background: linear-gradient(90deg, var(--teal-pale), transparent); }
+.c06 h2 { color: var(--teal); }
+.c06 .sub { color: var(--ink-60); }
+.c06 .big-icon { background: var(--teal-pale); }
+
+.c06 .flow.cols-3::after { background: linear-gradient(90deg, var(--teal-l), var(--teal)); }
+.c06 .flow-num { border: 2px solid var(--teal); color: var(--teal); }
+.c06 .flow-step:hover .flow-num { background: var(--teal); color: white; }
+
+.c06 .lc { }
+.c06 .lc.tandem { background: linear-gradient(135deg,#d4f4f4,#b0eaea); }
+.c06 .lc.preply { background: linear-gradient(135deg,#d4eaf0,#b0d8e8); }
+.c06 .lc.italki { background: linear-gradient(135deg,#e8d4f4,#d4b8ec); }
+.c06 .lc .lv-badge { background: rgba(32,120,120,.12); color: var(--teal); }
+
+.c06 .formula-box { background: linear-gradient(135deg,rgba(32,120,120,.05),rgba(58,172,172,.03)); border-color: rgba(32,120,120,.25); }
+.c06 .fml { color: var(--teal); }
+
+/* =============================================
+   CARD 07 — 读 A2-B1 (warm amber)
+============================================= */
+.c07 { background: linear-gradient(160deg,#fdf8f0,#f8f0e0); }
+.c07 .tag { color: #8a5a20; }
+.c07 .tag::after { background: linear-gradient(90deg,#f5e0c0,transparent); }
+.c07 h2 { color: #8a5a20; }
+.c07 .sub { color: var(--ink-60); }
+.c07 .big-icon { background: linear-gradient(135deg,#fdf5e0,#f5e5c0); }
+
+.c07 .res-card { background: white; border: 1px solid rgba(200,164,90,.15); }
+.c07 .res-card .rc-name { color: #8a5a20; }
+.c07 .res-card .rc-why { background: linear-gradient(135deg,#fff3cc,#ffe8a0); color: var(--gold-d); }
+
+.c07 .level-cards .lc.audiobook { background: linear-gradient(135deg,#fff3cc,#ffe090); }
+.c07 .level-cards .lc.news      { background: linear-gradient(135deg,#f0d4fc,#e0b4f8); }
+.c07 .level-cards .lc.film      { background: linear-gradient(135deg,#d4ecfc,#b4d8f8); }
+.c07 .level-cards .lc.tv        { background: linear-gradient(135deg,#d4f8e4,#b4ecd0); }
+.c07 .level-cards .lc .lv-badge { background: rgba(200,164,90,.18); color: var(--gold-d); }
+
+/* =============================================
+   CARD 08 — 写 B1 (rose)
+============================================= */
+.c08 { background: linear-gradient(160deg,#fdf0f4,#f8e4ee); }
+.c08 .tag { color: var(--rose); }
+.c08 .tag::after { background: linear-gradient(90deg, var(--rose-pale), transparent); }
+.c08 h2 { color: var(--rose); }
+.c08 .sub { color: var(--ink-60); }
+.c08 .big-icon { background: var(--rose-pale); }
+
+.c08 .flow.cols-4::after { background: linear-gradient(90deg, #e888a8, var(--rose)); }
+.c08 .flow-num { border: 2px solid var(--rose); color: var(--rose); }
+.c08 .flow-step:hover .flow-num { background: var(--rose); color: white; }
+.c08 .flow-step { padding: 0 10px; }
+
+.c08 .res-card { background: white; border: 1px solid rgba(200,72,112,.12); }
+.c08 .res-card .rc-name { color: var(--rose); }
+.c08 .res-card .rc-why { background: var(--rose-pale); color: var(--rose); }
+
+/* =============================================
+   CARD 09 — B1 综合冲刺 (dark luxury)
+============================================= */
+.c09 { background: #0c0e18; color: var(--cream); }
+.c09 .card-top {
+  border-bottom: 1px solid rgba(247,242,234,0.08);
+  background: radial-gradient(ellipse 60% 50% at 90% 0%, rgba(104,64,168,.25) 0%, transparent 60%),
+              radial-gradient(ellipse 40% 60% at 5% 90%, rgba(32,120,120,.2) 0%, transparent 55%);
+}
+.c09 .tag { color: var(--purple-l); }
+.c09 .tag::after { background: linear-gradient(90deg, rgba(152,104,216,.3), transparent); }
+.c09 h2 { color: var(--cream); }
+.c09 .sub { color: var(--cream-30); }
+.c09 .big-icon { background: rgba(247,242,234,.07); }
+.c09 .card-body { background: rgba(247,242,234,.015); }
+.c09 .section-label { color: var(--purple-l); opacity: .5; }
+.c09 .card-foot { border-top-color: rgba(247,242,234,.08); background: rgba(247,242,234,.02); }
+.c09 .card-foot .note,.c09 .card-foot .num { color: var(--cream-30); }
+
+.c09 .compare-row .cmp-card.c-a1 { background: rgba(43,77,158,.25); border: 1px solid rgba(85,120,200,.2); }
+.c09 .compare-row .cmp-card.c-a2 { background: rgba(32,120,120,.2); border: 1px solid rgba(58,172,172,.18); }
+.c09 .compare-row .cmp-card.c-b1 { background: rgba(104,64,168,.25); border: 1px solid rgba(152,104,216,.2); }
+.c09 .cmp-card .cc-level { color: var(--cream); }
+.c09 .cmp-card.c-a1 .cc-skill { color: var(--blue-l); }
+.c09 .cmp-card.c-a2 .cc-skill { color: var(--teal-l); }
+.c09 .cmp-card.c-b1 .cc-skill { color: var(--purple-l); }
+.c09 .cmp-card .cc-res { color: var(--cream-70); }
+.c09 .cmp-card .cc-list li { color: var(--cream-30); }
+
+.c09 .level-cards .lc.lc-purple { background: linear-gradient(135deg,rgba(152,104,216,.2),rgba(104,64,168,.15)); border: 1px solid rgba(152,104,216,.2); }
+.c09 .level-cards .lc.lc-teal   { background: linear-gradient(135deg,rgba(58,172,172,.18),rgba(32,120,120,.12)); border: 1px solid rgba(58,172,172,.18); }
+.c09 .level-cards .lc.lc-gold   { background: linear-gradient(135deg,rgba(200,164,90,.18),rgba(200,164,90,.1)); border: 1px solid rgba(200,164,90,.2); }
+.c09 .level-cards .lc .lc-title { color: var(--cream); }
+.c09 .level-cards .lc .lc-sub   { color: var(--cream-30); }
+.c09 .level-cards .lc .lv-badge { background: rgba(247,242,234,.1); color: var(--cream-70); }
+
+.c09 .tl-bar-wrap { background: rgba(247,242,234,.05); border: 1px solid rgba(247,242,234,.08); }
+.c09 .tl-bar-wrap h3 { color: var(--purple-l); }
+.c09 .tl-legend-item { color: var(--cream-30); }
+
+.c09 .stat.sp { background: linear-gradient(135deg,rgba(104,64,168,.5),rgba(152,104,216,.4)); border: 1px solid rgba(152,104,216,.3); color: var(--cream); }
+.c09 .stat.st { background: linear-gradient(135deg,rgba(32,120,120,.4),rgba(58,172,172,.3)); border: 1px solid rgba(58,172,172,.3); color: var(--cream); }
+.c09 .stat.sg { background: linear-gradient(135deg,rgba(200,164,90,.3),rgba(232,200,136,.2)); border: 1px solid rgba(200,164,90,.3); color: var(--cream); }
+.c09 .stat .sn { color: var(--cream); }
+.c09 .stat .sl { color: var(--cream-70); }
+
+/* =============================================
+   RESPONSIVE
+============================================= */
+@media (max-width: 900px) {
+  .pillars-grid { grid-template-columns: repeat(2,1fr); }
+  .stages { grid-template-columns: 1fr; }
+  .topic-grid { grid-template-columns: repeat(3,1fr); }
+  .level-cards.cols-5 { grid-template-columns: repeat(3,1fr); }
+  .compare-row { grid-template-columns: 1fr; }
+  .card-top, .card-body, .card-foot { padding-left: 28px; padding-right: 28px; }
+  .c00 .card-inner { padding: 32px 28px; }
+  .flow.cols-4 { grid-template-columns: repeat(2,1fr); }
+  .flow.cols-4::after { display: none; }
+  .method-grid { grid-template-columns: 1fr; }
+  .res-row { grid-template-columns: repeat(2,1fr); }
+  .vf-row { flex-direction: column; align-items: center; }
+  .vs-wrap { grid-template-columns: 1fr; }
+  .vs-mid { display: none; }
+}
+@media (max-width: 600px) {
+  body { padding: 24px 12px 60px; }
+  .topic-grid { grid-template-columns: repeat(2,1fr); }
+  .stats-row, .compare-row { grid-template-columns: 1fr; }
+  .level-cards.cols-5, .level-cards.cols-4 { grid-template-columns: repeat(2,1fr); }
+  .promo { flex-direction: column; text-align: center; }
+  .promo-code { margin: 0 auto; }
+  .flow.cols-3 { grid-template-columns: 1fr; }
+  .flow.cols-3::after { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<div class="page-top">
+  <div class="eyebrow">Video Visual Assets · 视频素材卡片集</div>
+  <h1>法语自学<br>完整体系</h1>
+  <p>A1 → B1 · 听 · 说 · 读 · 写 · 10张核心卡片 · 全阶段覆盖</p>
+</div>
+
+<div class="deck">
+
+<!-- =============================================
+     CARD 00 · OVERVIEW
+============================================= -->
+<div class="card c00">
+  <div style="padding:48px 52px 36px; position:relative; overflow:hidden;
+    background: radial-gradient(ellipse 70% 50% at 85% 0%,rgba(200,164,90,.12),transparent 60%),
+                radial-gradient(ellipse 40% 60% at 5% 90%,rgba(43,77,158,.18),transparent 55%);">
+    <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--gold);margin-bottom:16px;text-transform:uppercase;display:flex;align-items:center;gap:12px;">
+      Card 00 · Overview · 总览框架
+      <span style="flex:1;height:1px;background:linear-gradient(90deg,var(--gold),transparent);opacity:.5;"></span>
+    </div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(38px,6vw,72px);font-weight:700;color:var(--cream);line-height:1;letter-spacing:-1px;margin-bottom:10px;">
+      自学法语<br>完整路线图
+    </h2>
+    <p style="font-size:14px;color:var(--cream-30);font-weight:300;margin-bottom:44px;letter-spacing:.5px;">从零开始 → 流利对话 · 最快两年 · 核心资源免费</p>
+
+    <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-l);opacity:.55;margin-bottom:16px;">四大核心技能</div>
+    <div class="pillars-grid">
+      <div class="pillar pl"><span class="p-emoji">🎧</span><div class="p-zh">听</div><div class="p-en">Listen</div></div>
+      <div class="pillar pg"><span class="p-emoji">🗣️</span><div class="p-zh">说</div><div class="p-en">Speak</div></div>
+      <div class="pillar po"><span class="p-emoji">📖</span><div class="p-zh">读</div><div class="p-en">Read</div></div>
+      <div class="pillar pr"><span class="p-emoji">✍️</span><div class="p-zh">写</div><div class="p-en">Write</div></div>
+    </div>
+
+    <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-l);opacity:.55;margin-bottom:16px;margin-top:36px;">三大学习阶段</div>
+    <div class="stages">
+      <div class="stage"><div class="st-level">A1 – A2 · 入门基础</div><div class="st-time">6个月</div><div class="st-desc">基础语法 · 高频词汇<br>简单对话 · 建立语感</div></div>
+      <div class="stage"><div class="st-level">B1 · 进阶突破</div><div class="st-time">6–12月</div><div class="st-desc">流畅表达 · 理解日常<br>开始大量真实输入</div></div>
+      <div class="stage"><div class="st-level">B2 – C1 · 流利进阶</div><div class="st-time">12–24月</div><div class="st-desc">母语者内容 · 自信表达<br>学术 / 职场全面覆盖</div></div>
+    </div>
+
+    <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-l);opacity:.55;margin-bottom:14px;margin-top:32px;">核心资源一览</div>
+    <div class="chips">
+      <span class="chip free c00">Anki 记忆卡组</span>
+      <span class="chip free c00">Language Transfer</span>
+      <span class="chip free c00">Coffee Break French</span>
+      <span class="chip free c00">InnerFrench</span>
+      <span class="chip free c00">Tandem 语言交换</span>
+      <span class="chip free c00">TV5 Monde</span>
+      <span class="chip free c00">Assimil 教材</span>
+      <span class="chip free c00">Podcastfrancaisfacile</span>
+      <span class="chip free c00">francaisfacile.com</span>
+      <span class="chip paid c00">Preply 导师课</span>
+      <span class="chip paid c00">Busuu APP</span>
+      <span class="chip paid c00">Pimsleur 音频课</span>
+    </div>
+  </div>
+  <div class="card-foot" style="border-top:1px solid rgba(247,242,234,.08);background:rgba(247,242,234,.02);">
+    <span class="note" style="color:var(--cream-30);">语言学习没有捷径，但有正确的路。选对路，坚持就是必然</span>
+    <span class="num">Card 00 · Overview</span>
+  </div>
+</div>
+
+
+<!-- =============================================
+     CARD 01 · 听 A1
+============================================= -->
+<div class="card c01">
+  <div class="card-top">
+    <div class="meta">
+      <div class="tag">Card 01 · 听 · A1 阶段 · Listen</div>
+      <h2>听力训练<br>分级播客攻略</h2>
+      <p class="sub">五级播客推荐 · 四步操作法 · 听力 vs 闪卡双路径</p>
+    </div>
+    <div class="big-icon">🎧</div>
+  </div>
+  <div class="card-body">
+
+    <div class="section-label">四步操作流程 — 每天通勤就能完成</div>
+    <div class="flow cols-4" style="margin-bottom:36px;">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <h4>选对内容</h4>
+        <p>按水平选播客<br>不强听听不懂的</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <h4>碎片时间输入</h4>
+        <p>通勤/做饭/跑步<br>把空闲变成学习</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <h4>Shadowing 跟读</h4>
+        <p>模仿语音语调<br>输出配合输入</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <h4>复听强化</h4>
+        <p>同一集听2–3遍<br>检验理解是否提升</p>
+      </div>
+    </div>
+
+    <div class="section-label">五大播客 — 从 A1 到 C1 全覆盖</div>
+    <div class="level-cards cols-5" style="margin-bottom:28px;">
+      <div class="lc a1">
+        <span class="lv-badge">A1 · 零基础</span>
+        <span class="lc-icon">☕</span>
+        <div class="lc-title">Coffee Break French</div>
+        <div class="lc-sub">英文讲解 · 15季<br>节奏慢易懂</div>
+      </div>
+      <div class="lc a2">
+        <span class="lv-badge">A2 · 初级</span>
+        <span class="lc-icon">🏡</span>
+        <div class="lc-title">Français Authentique</div>
+        <div class="lc-sub">全法语 · 语速慢<br>用词简单</div>
+      </div>
+      <div class="lc b1">
+        <span class="lv-badge">B1 · 中级</span>
+        <span class="lc-icon">🧠</span>
+        <div class="lc-title">InnerFrench</div>
+        <div class="lc-sub">法国文化 · 稍快<br>思维方式</div>
+      </div>
+      <div class="lc b2">
+        <span class="lv-badge">B2 · 中高</span>
+        <span class="lc-icon">📻</span>
+        <div class="lc-title">Journal en français facile</div>
+        <div class="lc-sub">RFI新闻 · 学习版<br>正式但易懂</div>
+      </div>
+      <div class="lc c1">
+        <span class="lv-badge">C1 · 高级</span>
+        <span class="lc-icon">🎙️</span>
+        <div class="lc-title">法语原生播客</div>
+        <div class="lc-sub">母语者内容<br>无限选择</div>
+      </div>
+    </div>
+
+    <div class="section-label">听力 vs 闪卡 — 哪种更适合你？</div>
+    <div class="vs-wrap">
+      <div class="vs-box left">
+        <h4>🎧 播客听力</h4>
+        <ul>
+          <li>碎片时间全利用，做饭跑步都在学</li>
+          <li>语感 + 发音 + 词汇同步提升</li>
+          <li>长期进步最稳健的核心方法</li>
+          <li>输入量越大，输出越自然流畅</li>
+        </ul>
+      </div>
+      <div class="vs-mid">VS</div>
+      <div class="vs-box right">
+        <h4>🃏 Anki 闪卡</h4>
+        <ul>
+          <li>间隔重复算法，记忆效率提升5倍</li>
+          <li>快速扩充词汇，B1前必备工具</li>
+          <li>5000高频词从最常用开始排序</li>
+          <li>进度可见，成就感强，坚持容易</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="card-foot">
+    <span class="note">最佳策略：两者结合，听力培养语感，闪卡强化词汇，缺一不可</span>
+    <span class="num">Card 01 · 听 A1</span>
+  </div>
+</div>
+
+
+<!-- =============================================
+     CARD 02 · 说 A1
+============================================= -->
+<div class="card c02">
+  <div class="card-top">
+    <div class="meta">
+      <div class="tag">Card 02 · 说 · A1 阶段 · Speak</div>
+      <h2>开口说法语<br>两大实战路径</h2>
+      <p class="sub">专业导师 vs 语言交换 · Preply 优惠码 · 口语突破公式</p>
+    </div>
+    <div class="big-icon">🗣️</div>
+  </div>
+  <div class="card-body">
+
+    <div class="section-label">两大核心方法 — 选一个马上开始</div>
+    <div class="method-grid" style="margin-bottom:24px;">
+      <div class="method-card p">
+        <span class="mb pmb">💳 付费推荐</span>
+        <h3>Preply · 专业导师课</h3>
+        <p>每周1–2节一对一课程，找法语母语老师，随时在线上课。这是从「能说」到「流利」最快的方式，没有之一。学法语、普通话、阿拉伯语全靠这个方法。</p>
+        <div class="steps-mini">
+          <div class="sm"><span class="sm-n">1</span>注册 Preply，搜索法语母语导师</div>
+          <div class="sm"><span class="sm-n">2</span>看试讲视频，选择风格匹配的老师</div>
+          <div class="sm"><span class="sm-n">3</span>每周安排固定2节课</div>
+          <div class="sm"><span class="sm-n">4</span>课后用学到的内容写日记/对话</div>
+        </div>
+      </div>
+      <div class="method-card f">
+        <span class="mb fmb">🆓 完全免费</span>
+        <h3>Tandem · 语言交换</h3>
+        <p>你教对方中文，对方教你法语。互相学、互相改错，还可能交到法国朋友。评论区留言也能找到语伴——很多人在评论区真的配对成功。</p>
+        <div class="steps-mini">
+          <div class="sm"><span class="sm-n f">1</span>下载 Tandem APP</div>
+          <div class="sm"><span class="sm-n f">2</span>设置母语中文 / 目标法语</div>
+          <div class="sm"><span class="sm-n f">3</span>匹配法语母语伙伴</div>
+          <div class="sm"><span class="sm-n f">4</span>每周固定时间视频对话</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="promo" style="margin-bottom:24px;">
+      <div class="pi">🎁</div>
+      <div class="pt">
+        <h4>Preply 专属优惠 · 第一节课五折</h4>
+        <p>仅限频道推荐 · 先体验再决定是否订阅 · 描述区链接直达</p>
+      </div>
+      <div class="promo-code">BRIAN50</div>
+    </div>
+
+    <div class="section-label">口语突破公式</div>
+    <div class="formula-box">
+      <div class="fml">每天开口 × 真人反馈 × 持续纠错 = 口语突破</div>
+      <div class="fml-note">背单词≠会说话 · 只有开口才能开口 · 从第一天就练说</div>
+    </div>
+  </div>
+  <div class="card-foot">
+    <span class="note">语言的核心是交流，不开口永远停在输入阶段，永远无法流利</span>
+    <span class="num">Card 02 · 说 A1</span>
+  </div>
+</div>
+
+
+<!-- =============================================
+     CARD 03 · 读 A1
+============================================= -->
+<div class="card c03">
+  <div class="card-top">
+    <div class="meta">
+      <div class="tag">Card 03 · 读 · A1 阶段 · Read</div>
+      <h2>阅读入门<br>发音 · 词汇 · 语法</h2>
+      <p class="sub">初学者三大核心 · 10个兴趣题材 · Anki词汇增长公式</p>
+    </div>
+    <div class="big-icon">📖</div>
+  </div>
+  <div class="card-body">
+
+    <div class="section-label">初学者三大核心突破点</div>
+    <div class="level-cards cols-3" style="margin-bottom:28px;">
+      <div class="lc" style="background:linear-gradient(135deg,#fff3cc,#ffe090);">
+        <span class="lv-badge" style="background:rgba(200,164,90,.2);color:var(--gold-d);">🔊 PRIORITÉ 1</span>
+        <span class="lc-icon">👄</span>
+        <div class="lc-title">发音 · Phonétique</div>
+        <div class="lc-sub">专门花1个月强化<br>R音/an/en/in等<br>推荐：FrenchPod101<br>Comme une Française</div>
+      </div>
+      <div class="lc" style="background:linear-gradient(135deg,#d4f8e4,#b4ecd0);">
+        <span class="lv-badge" style="background:rgba(42,122,82,.14);color:var(--green);">📚 PRIORITÉ 2</span>
+        <span class="lc-icon">🧩</span>
+        <div class="lc-title">词汇 · Vocabulaire</div>
+        <div class="lc-sub">Anki 5000高频词组<br>B1前每天20个新词<br>法语歌单辅助记忆<br>Reverso / Linguee查词</div>
+      </div>
+      <div class="lc" style="background:linear-gradient(135deg,#d4d4f8,#b8b8f0);">
+        <span class="lv-badge" style="background:rgba(104,64,168,.14);color:var(--purple);">📐 PRIORITÉ 3</span>
+        <span class="lc-icon">⚙️</span>
+        <div class="lc-title">语法 · Grammaire</div>
+        <div class="lc-sub">动词变位每天一点<br>laconjugaison.fr练习<br>《Grammaire progressive》<br>francaisfacile.com精讲</div>
+      </div>
+    </div>
+
+    <div class="section-label">找到你最感兴趣的题材 — 阅读就变成享受</div>
+    <div class="topic-grid" style="margin-bottom:28px;">
+      <div class="tc tc-1"><span class="te">🍜</span><div class="tn">美食料理</div><div class="tfr">Cuisine</div></div>
+      <div class="tc tc-2"><span class="te">✈️</span><div class="tn">旅行攻略</div><div class="tfr">Voyage</div></div>
+      <div class="tc tc-3"><span class="te">💻</span><div class="tn">科技数码</div><div class="tfr">Tech</div></div>
+      <div class="tc tc-4"><span class="te">🎬</span><div class="tn">电影文化</div><div class="tfr">Cinéma</div></div>
+      <div class="tc tc-5"><span class="te">💪</span><div class="tn">健康健身</div><div class="tfr">Santé</div></div>
+      <div class="tc tc-6"><span class="te">🌿</span><div class="tn">环保自然</div><div class="tfr">Écologie</div></div>
+      <div class="tc tc-7"><span class="te">💃</span><div class="tn">时尚穿搭</div><div class="tfr">Mode</div></div>
+      <div class="tc tc-8"><span class="te">🏛️</span><div class="tn">历史人文</div><div class="tfr">Histoire</div></div>
+      <div class="tc tc-9"><span class="te">📚</span><div class="tn">文学小说</div><div class="tfr">Littérature</div></div>
+      <div class="tc tc-10"><span class="te">🔬</span><div class="tn">科学探索</div><div class="tfr">Science</div></div>
+    </div>
+
+    <div class="section-label">Anki 词汇增长公式</div>
+    <div class="vocab-formula">
+      <h3>📐 坚持每天学，一个月词汇量质变</h3>
+      <div class="vf-row">
+        <div class="vf-item"><div class="vfn">20</div><div class="vfl">每天Anki<br>新词数</div></div>
+        <div class="vf-op">×</div>
+        <div class="vf-item"><div class="vfn">30</div><div class="vfl">坚持天数<br>（一个月）</div></div>
+        <div class="vf-op">+</div>
+        <div class="vf-item"><div class="vfn">沉浸</div><div class="vfl">Toucan插件<br>日常阅读</div></div>
+        <div class="vf-op">=</div>
+        <div class="vf-result"><div class="vfn">600+</div><div class="vfl">月新增词汇<br>无痛记住</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="card-foot">
+    <span class="note">发音从第一天就要认真，它是口音的根基，之后很难再改</span>
+    <span class="num">Card 03 · 读 A1</span>
+  </div>
+</div>
+
+
+<!-- =============================================
+     CARD 04 · 写 A1
+============================================= -->
+<div class="card c04">
+  <div class="card-top">
+    <div class="meta">
+      <div class="tag">Card 04 · 写 · A1 阶段 · Write</div>
+      <h2>写作输出<br>从第一天就动笔</h2>
+      <p class="sub">四步操作流程 · 每日时间线 · 三个坚持数据</p>
+    </div>
+    <div class="big-icon">✍️</div>
+  </div>
+  <div class="card-body">
+
+    <div class="section-label">四步写作操作流程</div>
+    <div class="flow cols-4" style="margin-bottom:32px;">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <h4>学语法结构</h4>
+        <p>francaisfacile.com<br>或《Grammaire progressive》<br>弄懂时态和句式</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <h4>每日动词变位</h4>
+        <p>一天一个动词<br>一个时态<br>laconjugaison.fr</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <h4>动笔写3句话</h4>
+        <p>写当天学到的词<br>Reverso 查例句<br>不怕写错</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <h4>导师批改反馈</h4>
+        <p>Preply 导师看作业<br>从错误中学<br>比教材快3倍</p>
+      </div>
+    </div>
+
+    <div class="section-label">一天1小时 · 时间线拆解（初级阶段）</div>
+    <div class="tl-bar-wrap" style="margin-bottom:28px;">
+      <h3>📅 每日标准计划 · 1小时不间断</h3>
+      <div class="tl-bar">
+        <div class="tl-seg" style="background:#4a7cc7;width:15%;">Anki·15min</div>
+        <div class="tl-seg" style="background:#2a7a52;width:25%;">播客听力·25min</div>
+        <div class="tl-seg" style="background:#c8a45a;width:20%;">阅读·20min</div>
+        <div class="tl-seg" style="background:#c83a30;width:25%;">写作·25min</div>
+        <div class="tl-seg" style="background:#6840a8;width:15%;">说话·15min</div>
+      </div>
+      <div class="tl-legend">
+        <div class="tl-legend-item"><div class="tl-dot" style="background:#4a7cc7;"></div>Anki词汇 · 15分钟</div>
+        <div class="tl-legend-item"><div class="tl-dot" style="background:#2a7a52;"></div>播客听力 · 25分钟</div>
+        <div class="tl-legend-item"><div class="tl-dot" style="background:#c8a45a;"></div>阅读输入 · 20分钟</div>
+        <div class="tl-legend-item"><div class="tl-dot" style="background:#c83a30;"></div>写作输出 · 25分钟</div>
+        <div class="tl-legend-item"><div class="tl-dot" style="background:#6840a8;"></div>口语练习 · 15分钟</div>
+      </div>
+    </div>
+
+    <div class="section-label">三个核心数据 · 坚持的理由</div>
+    <div class="stats-row">
+      <div class="stat s1"><span class="si">⏰</span><div class="sn">1小时</div><div class="sl">每天最低投入<br>少一分都不行</div></div>
+      <div class="stat s2"><span class="si">📅</span><div class="sn">730</div><div class="sl">两年 = 730天积累<br>够用一辈子的法语</div></div>
+      <div class="stat s3"><span class="si">🆓</span><div class="sn">80%</div><div class="sl">所需资源完全免费<br>钱不是借口</div></div>
+    </div>
+  </div>
+  <div class="card-foot">
+    <span class="note">每天3句日记，坚持一年，语言感觉会悄悄发生质变</span>
+    <span class="num">Card 04 · 写 A1</span>
+  </div>
+</div>
+
+
+<!-- =============================================
+     CARD 05 · 听 A2
+============================================= -->
+<div class="card c05">
+  <div class="card-top">
+    <div class="meta">
+      <div class="tag">Card 05 · 听 · A2 阶段 · Listen</div>
+      <h2>A2 听力进阶<br>YouTube + 真实语速</h2>
+      <p class="sub">法语 YouTube 频道 · 更自然语速资源 · 沉浸式工具</p>
+    </div>
+    <div class="big-icon" style="background:var(--blue-pale);">📺</div>
+  </div>
+  <div class="card-body">
+
+    <div class="section-label">推荐 YouTube 频道 — 每天1个视频</div>
+    <div class="res-row" style="margin-bottom:28px;">
+      <div class="res-card">
+        <div class="rc-icon">🎓</div>
+        <div class="rc-name">Parlez-vous French</div>
+        <div class="rc-how">方法：每天看一集，做笔记，shadowing 跟读，多听几遍</div>
+        <span class="rc-why">A2 入门首选</span>
+      </div>
+      <div class="res-card">
+        <div class="rc-icon">👨‍🏫</div>
+        <div class="rc-name">Français avec Pierre</div>
+        <div class="rc-how">方法：随着熟悉度提升慢慢加速，开始接触正常语速讲解</div>
+        <span class="rc-why">语法+口语融合</span>
+      </div>
+      <div class="res-card">
+        <div class="rc-icon">🌍</div>
+        <div class="rc-name">Easy French</div>
+        <div class="rc-how">方法：街头采访风格，贴近真实法语，配有字幕辅助理解</div>
+        <span class="rc-why">真实语境首选</span>
+      </div>
+    </div>
+
+    <div class="section-label">更自然语速 — A2 进阶资源</div>
+    <div class="res-row" style="margin-bottom:28px;">
+      <div class="res-card">
+        <div class="rc-icon">🌅</div>
+        <div class="rc-name">French Mornings with Elisa</div>
+        <div class="rc-how">vlog 风格，语速自然，聊日常生活，用词贴近真实对话</div>
+        <span class="rc-why">生活场景输入</span>
+      </div>
+      <div class="res-card">
+        <div class="rc-icon">🧩</div>
+        <div class="rc-name">Piece of French</div>
+        <div class="rc-how">短片段精讲，每集聚焦一个实用表达，适合碎片时间</div>
+        <span class="rc-why">碎片学习神器</span>
+      </div>
+      <div class="res-card">
+        <div class="rc-icon">🧠</div>
+        <div class="rc-name">InnerFrench</div>
+        <div class="rc-how">专为学习者设计的播客，讲法国文化和社会，语速略慢但内容真实</div>
+        <span class="rc-why">文化输入最强</span>
+      </div>
+    </div>
+
+    <div class="announcement">
+      <div class="ann-icon">💡</div>
+      <div>
+        <strong>沉浸式工具推荐：</strong>安装 <strong>Readlang 或 Toucan Chrome 插件</strong>，浏览普通网页时自动学法语词汇。你在刷新闻、逛网站的时候，其实在悄悄学法语——没有痛苦感，但效果真实。
+      </div>
+    </div>
+  </div>
+  <div class="card-foot">
+    <span class="note">A2的核心是接触真实语速，不要一直停留在"学习者法语"的舒适区</span>
+    <span class="num">Card 05 · 听 A2</span>
+  </div>
+</div>
+
+
+<!-- =============================================
+     CARD 06 · 说 A2
+============================================= -->
+<div class="card c06">
+  <div class="card-top">
+    <div class="meta">
+      <div class="tag">Card 06 · 说 · A2 阶段 · Speak</div>
+      <h2>A2 口语突破<br>有声书 Shadowing 法</h2>
+      <p class="sub">有声书精读法 · Shadowing 跟读 · 三大练口语平台对比</p>
+    </div>
+    <div class="big-icon" style="background:var(--teal-pale);">🎙️</div>
+  </div>
+  <div class="card-body">
+
+    <div class="section-label">Shadowing 有声书法 — A2 最爱方法</div>
+    <div class="flow cols-3" style="margin-bottom:28px;">
+      <div class="flow-step">
+        <div class="flow-num" style="border-color:var(--teal);color:var(--teal);">01</div>
+        <h4>选择熟悉书目</h4>
+        <p>推荐《小王子》《局外人》<br>选你已经了解剧情的书<br>注意力放在语言上</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num" style="border-color:var(--teal);color:var(--teal);">02</div>
+        <h4>每天一页跟读</h4>
+        <p>先听原声一遍<br>再跟着朗读一遍<br>模仿语调停顿</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num" style="border-color:var(--teal);color:var(--teal);">03</div>
+        <h4>坚持读完整本</h4>
+        <p>不追求完全听懂<br>积累感觉最重要<br>完成比完美重要</p>
+      </div>
+    </div>
+
+    <div class="section-label">三大口语练习平台对比</div>
+    <div class="level-cards cols-3" style="margin-bottom:28px;">
+      <div class="lc tandem">
+        <span class="lv-badge">🆓 免费</span>
+        <span class="lc-icon">🤝</span>
+        <div class="lc-title">Tandem</div>
+        <div class="lc-sub">语言交换 · 找母语者<br>互教互学 · 交真朋友<br>零花费但需要筛选</div>
+      </div>
+      <div class="lc preply">
+        <span class="lv-badge">💳 付费</span>
+        <span class="lc-icon">👨‍🏫</span>
+        <div class="lc-title">Preply</div>
+        <div class="lc-sub">专业导师 · 1对1<br>系统纠错 · 进步最快<br>首节课用码BRIAN50</div>
+      </div>
+      <div class="lc italki">
+        <span class="lv-badge">💳 付费</span>
+        <span class="lc-icon">🌐</span>
+        <div class="lc-title">italki</div>
+        <div class="lc-sub">导师多元 · 价格灵活<br>社区互动 · 可写日记<br>母语者批改作文</div>
+      </div>
+    </div>
+
+    <div class="section-label">A2 口语公式</div>
+    <div class="formula-box" style="background:linear-gradient(135deg,rgba(32,120,120,.05),rgba(58,172,172,.03));border-color:rgba(32,120,120,.25);">
+      <div class="fml" style="color:var(--teal);">Shadowing × 30天 + 每周1节导师课 = 口音明显改善</div>
+      <div class="fml-note">跟读不是死记，是在训练你的嘴巴说出以前发不出来的音</div>
+    </div>
+  </div>
+  <div class="card-foot">
+    <span class="note">选你读过的书用法语再读一遍，注意力完全放在语言上效率极高</span>
+    <span class="num">Card 06 · 说 A2</span>
+  </div>
+</div>
+
+
+<!-- =============================================
+     CARD 07 · 读 A2-B1
+============================================= -->
+<div class="card c07">
+  <div class="card-top">
+    <div class="meta">
+      <div class="tag">Card 07 · 读 · A2–B1 阶段 · Read</div>
+      <h2>进阶阅读<br>真实内容大量输入</h2>
+      <p class="sub">有声书精读 · 法国媒体内容 · Coursera 系统课程</p>
+    </div>
+    <div class="big-icon" style="background:linear-gradient(135deg,#fdf5e0,#f5e5c0);">📰</div>
+  </div>
+  <div class="card-body">
+
+    <div class="section-label">A2-B1 四大阅读资源 — 怎么用 · 用来做什么</div>
+    <div class="level-cards cols-4" style="margin-bottom:28px;">
+      <div class="lc audiobook">
+        <span class="lv-badge">📚 有声书</span>
+        <span class="lc-icon">🎧</span>
+        <div class="lc-title">《小王子》《局外人》</div>
+        <div class="lc-sub">怎么用：每天读一页配合有声书<br>用来做什么：训练语调节奏感</div>
+      </div>
+      <div class="lc news">
+        <span class="lv-badge">📻 新闻</span>
+        <span class="lc-icon">📡</span>
+        <div class="lc-title">News in Slow French</div>
+        <div class="lc-sub">怎么用：听慢速新闻+字幕<br>用来做什么：积累正式词汇</div>
+      </div>
+      <div class="lc film">
+        <span class="lv-badge">🎬 影视</span>
+        <span class="lc-icon">🎥</span>
+        <div class="lc-title">法语版老电影</div>
+        <div class="lc-sub">怎么用：法语音轨+法语字幕<br>用来做什么：听懂真实对话速度</div>
+      </div>
+      <div class="lc tv">
+        <span class="lv-badge">📺 YouTube</span>
+        <span class="lc-icon">▶️</span>
+        <div class="lc-title">COLAS BIM 动画</div>
+        <div class="lc-sub">怎么用：看动画视频 + 反复听<br>用来做什么：贴近真实法语表达</div>
+      </div>
+    </div>
+
+    <div class="section-label">进阶阅读资源 — 系统课程 + 网站</div>
+    <div class="res-row" style="margin-bottom:28px;">
+      <div class="res-card">
+        <div class="rc-icon">🎓</div>
+        <div class="rc-name">Coursera · 法语课程</div>
+        <div class="rc-how">推荐"Étudier en France"课程，系统学习正式法语，有作业和考核</div>
+        <span class="rc-why">B1系统课 首选</span>
+      </div>
+      <div class="res-card">
+        <div class="rc-icon">🌐</div>
+        <div class="rc-name">TV5 Monde</div>
+        <div class="rc-how">按 A1–C2 等级选内容，有文章、视频、练习，法国官方免费平台</div>
+        <span class="rc-why">官方资源 完全免费</span>
+      </div>
+      <div class="res-card">
+        <div class="rc-icon">🎙️</div>
+        <div class="rc-name">ELLE · 戛纳采访</div>
+        <div class="rc-how">找你喜欢的明星用法语接受采访，感兴趣的内容学得最快</div>
+        <span class="rc-why">娱乐化学习</span>
+      </div>
+    </div>
+
+    <div class="announcement" style="background:linear-gradient(135deg,#8a5a20,#c08040);color:white;">
+      <div class="ann-icon">📌</div>
+      <div>
+        <strong>重要策略：</strong>B1 阶段起，要<strong>有意识地接触「法国人看的内容」</strong>，而不只是「学习者内容」。看真正的法国 vlog、烹饪频道、健身博主——用你感兴趣的题材推动语言进步。
+      </div>
+    </div>
+  </div>
+  <div class="card-foot">
+    <span class="note">看你已经看过的电影再看法语版，认知负担低，语言吸收率极高</span>
+    <span class="num">Card 07 · 读 A2-B1</span>
+  </div>
+</div>
+
+
+<!-- =============================================
+     CARD 08 · 写 B1
+============================================= -->
+<div class="card c08">
+  <div class="card-top">
+    <div class="meta">
+      <div class="tag">Card 08 · 写 · B1 阶段 · Write</div>
+      <h2>B1 写作升级<br>语法精进 + 书面表达</h2>
+      <p class="sub">进阶语法书 · 四步写作提升 · 核心工具对比</p>
+    </div>
+    <div class="big-icon" style="background:var(--rose-pale);">🖊️</div>
+  </div>
+  <div class="card-body">
+
+    <div class="section-label">B1 四步写作提升流程</div>
+    <div class="flow cols-4" style="margin-bottom:32px;">
+      <div class="flow-step">
+        <div class="flow-num" style="border-color:var(--rose);color:var(--rose);">01</div>
+        <h4>进阶语法书</h4>
+        <p>《Grammaire progressive》中级版<br>虚拟式/条件式<br>直接/间接宾语</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num" style="border-color:var(--rose);color:var(--rose);">02</div>
+        <h4>句型积累</h4>
+        <p>LTL 卡组学整句<br>不只记单词<br>按场景分类积累</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num" style="border-color:var(--rose);color:var(--rose);">03</div>
+        <h4>写作练习</h4>
+        <p>每天1段文字<br>Linguee 查用法<br>模仿地道表达</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num" style="border-color:var(--rose);color:var(--rose);">04</div>
+        <h4>母语者批改</h4>
+        <p>italki日记功能<br>或Preply导师批改<br>专注高频错误</p>
+      </div>
+    </div>
+
+    <div class="section-label">B1 核心语法书 — 哪本用来做什么</div>
+    <div class="res-row" style="margin-bottom:28px;">
+      <div class="res-card">
+        <div class="rc-icon">📗</div>
+        <div class="rc-name">Grammaire progressive · 中级</div>
+        <div class="rc-how">最经典语法书，左页讲解右页练习，随查随用，B1首选参考书</div>
+        <span class="rc-why">B1 语法基础书</span>
+      </div>
+      <div class="res-card">
+        <div class="rc-icon">📘</div>
+        <div class="rc-name">500 exercices grammaire B1</div>
+        <div class="rc-how">纯练习题合集，配合语法书使用，弱点专项突破，快速提分</div>
+        <span class="rc-why">B1 专项练习</span>
+      </div>
+      <div class="res-card">
+        <div class="rc-icon">📙</div>
+        <div class="rc-name">索邦 Nouvelle Grammaire</div>
+        <div class="rc-how">法国大学用书，内容深厚，适合想往C1突破的认真学习者</div>
+        <span class="rc-why">进阶到C1必备</span>
+      </div>
+    </div>
+
+    <div class="section-label">俚语 + 真实表达 — 不学就像背课文</div>
+    <div class="level-cards cols-3">
+      <div class="lc" style="background:linear-gradient(135deg,#ffd4e8,#ffb4d4);">
+        <span class="lv-badge" style="background:rgba(200,72,112,.14);color:var(--rose);">🎬 B1推荐</span>
+        <span class="lc-icon">⚡</span>
+        <div class="lc-title">Bref 短视频</div>
+        <div class="lc-sub">法国超流行短剧<br>语速快 · 俚语多<br>能听懂说明真上了B1</div>
+      </div>
+      <div class="lc" style="background:linear-gradient(135deg,#d4d4f8,#b8b8f0);">
+        <span class="lv-badge" style="background:rgba(104,64,168,.14);color:var(--purple);">🎥 B1推荐</span>
+        <span class="lc-icon">🍿</span>
+        <div class="lc-title">法语电影配音版</div>
+        <div class="lc-sub">法语音轨+法语字幕<br>看熟悉的电影<br>《冰雪奇缘》首选</div>
+      </div>
+      <div class="lc" style="background:linear-gradient(135deg,#d4f4f4,#b0eaea);">
+        <span class="lv-badge" style="background:rgba(32,120,120,.14);color:var(--teal);">📺 B1推荐</span>
+        <span class="lc-icon">🎙️</span>
+        <div class="lc-title">ELLE 戛纳采访</div>
+        <div class="lc-sub">真实采访 · 自然对话<br>时尚词汇 · 文化背景<br>用兴趣驱动学习</div>
+      </div>
+    </div>
+  </div>
+  <div class="card-foot">
+    <span class="note">B1写作核心：不追求完美句子，追求用法语真实表达你自己的想法</span>
+    <span class="num">Card 08 · 写 B1</span>
+  </div>
+</div>
+
+
+<!-- =============================================
+     CARD 09 · B1 综合冲刺
+============================================= -->
+<div class="card c09">
+  <div class="card-top">
+    <div class="meta">
+      <div class="tag">Card 09 · B1 综合冲刺 · Master Plan</div>
+      <h2>B1 全面突破<br>听说读写综合计划</h2>
+      <p class="sub">三阶段全览 · 2小时强化计划 · 流利时间线</p>
+    </div>
+    <div class="big-icon">🏆</div>
+  </div>
+  <div class="card-body">
+
+    <div class="section-label">三阶段 · 各技能核心资源对照</div>
+    <div class="compare-row" style="margin-bottom:32px;">
+      <div class="cmp-card c-a1">
+        <div class="cc-bg">A1</div>
+        <div class="cc-level">A1 · 入门基础</div>
+        <div class="cc-skill">打好地基</div>
+        <div class="cc-res">核心：Assimil · Busuu · Language Transfer</div>
+        <ul class="cc-list">
+          <li>听：Coffee Break French · 每天30min</li>
+          <li>说：Preply导师每周1节 + Tandem</li>
+          <li>读：Podcastfrancaisfacile · 专注发音</li>
+          <li>写：每天3句日记 · Anki 5000词</li>
+        </ul>
+      </div>
+      <div class="cmp-card c-a2">
+        <div class="cc-bg">A2</div>
+        <div class="cc-level">A2 · 进阶突破</div>
+        <div class="cc-skill">接触真实</div>
+        <div class="cc-res">核心：YouTube 频道 · 有声书 Shadowing</div>
+        <ul class="cc-list">
+          <li>听：InnerFrench · Easy French</li>
+          <li>说：有声书跟读 · 每周2节导师课</li>
+          <li>读：法语媒体 · Readlang 插件沉浸</li>
+          <li>写：整句记忆 · LTL Anki卡组</li>
+        </ul>
+      </div>
+      <div class="cmp-card c-b1">
+        <div class="cc-bg">B1</div>
+        <div class="cc-level">B1 · 冲刺流利</div>
+        <div class="cc-skill">全面输出</div>
+        <div class="cc-res">核心：Coursera · 母语者内容 · 大量输入</div>
+        <ul class="cc-list">
+          <li>听：Journal en français facile</li>
+          <li>说：大量对话 · 纠正高频错误</li>
+          <li>读：COLAS BIM · Bref · 真实内容</li>
+          <li>写：进阶语法书 · 母语者批改</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-label">2小时强化计划 — 给认真学习者</div>
+    <div class="tl-bar-wrap" style="margin-bottom:28px;">
+      <h3 style="color:var(--purple-l);">🔥 2小时高强度 · 每一分钟都有用</h3>
+      <div class="tl-bar">
+        <div class="tl-seg" style="background:#4a7cc7;width:15%;">Anki 20min</div>
+        <div class="tl-seg" style="background:#2a7a52;width:20%;">听力 25min</div>
+        <div class="tl-seg" style="background:#c8a45a;width:17%;">阅读 20min</div>
+        <div class="tl-seg" style="background:#6840a8;width:20%;">口语/Shadowing 25min</div>
+        <div class="tl-seg" style="background:#c83a30;width:15%;">写作 20min</div>
+        <div class="tl-seg" style="background:#207878;width:13%;">复习 10min</div>
+      </div>
+      <div class="tl-legend">
+        <div class="tl-legend-item"><div class="tl-dot" style="background:#4a7cc7;"></div>Anki词汇·20min</div>
+        <div class="tl-legend-item"><div class="tl-dot" style="background:#2a7a52;"></div>精听·25min</div>
+        <div class="tl-legend-item"><div class="tl-dot" style="background:#c8a45a;"></div>精读·20min</div>
+        <div class="tl-legend-item"><div class="tl-dot" style="background:#6840a8;"></div>口语Shadowing·25min</div>
+        <div class="tl-legend-item"><div class="tl-dot" style="background:#c83a30;"></div>写作·20min</div>
+        <div class="tl-legend-item"><div class="tl-dot" style="background:#207878;"></div>错题复盘·10min</div>
+      </div>
+    </div>
+
+    <div class="section-label">三个最终数据</div>
+    <div class="stats-row">
+      <div class="stat sp"><span class="si">🏁</span><div class="sn">B1</div><div class="sl">一年内完全可达到<br>每天1小时坚持</div></div>
+      <div class="stat st"><span class="si">💬</span><div class="sn">5000</div><div class="sl">核心词汇量<br>B1流利对话门槛</div></div>
+      <div class="stat sg"><span class="si">⭐</span><div class="sn">2年</div><div class="sl">B2-C1 流利水平<br>自信开口说任何话</div></div>
+    </div>
+  </div>
+  <div class="card-foot">
+    <span class="note" style="color:var(--cream-30);">选对了路，坚持每天1小时，两年后流利是必然结果，不是奇迹</span>
+    <span class="num" style="color:rgba(247,242,234,.2);">Card 09 · B1 总结</span>
+  </div>
+</div>
+
+</div><!-- end .deck -->
+
+<div style="text-align:center;padding:56px 20px 20px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:4px;color:rgba(247,242,234,.15);text-transform:uppercase;">
+  French Self-Study System · 法语自学体系 · 10 Cards Complete
+</div>
+
+</body>
+</html>

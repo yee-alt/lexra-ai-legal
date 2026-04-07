@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三个月日语速成法</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Dela+Gothic+One&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --washi: #f7f3ec;
+  --washi-dark: #ede8de;
+  --ink: #1a1712;
+  --ink-soft: #2e2b26;
+  --red: #c8392b;
+  --red-light: #e8503f;
+  --red-pale: #fdf0ee;
+  --gold: #c49a3c;
+  --gold-pale: #fdf6e3;
+  --teal: #1e6b6b;
+  --teal-pale: #e8f4f4;
+  --indigo: #2c3e7a;
+  --indigo-pale: #eef0f9;
+  --moss: #4a6741;
+  --moss-pale: #eef4ec;
+  --charcoal: #3d3a35;
+  --gray: #8a8580;
+  --gray-light: #d4cfc8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #141210;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(200,57,43,0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(44,62,122,0.05) 0%, transparent 50%);
+  font-family: 'Noto Sans SC', sans-serif;
+  padding: 48px 24px 80px;
+  min-height: 100vh;
+}
+
+/* PAGE HEADER */
+.site-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.site-header-kana {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 13px;
+  letter-spacing: 8px;
+  color: var(--red);
+  opacity: 0.8;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.site-header-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--washi);
+  letter-spacing: 4px;
+  display: block;
+}
+
+.site-header-title em {
+  color: var(--red);
+  font-style: normal;
+}
+
+.site-header-sub {
+  font-size: 12px;
+  color: rgba(247,243,236,0.35);
+  letter-spacing: 3px;
+  display: block;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+/* SECTION DIVIDER */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 48px 0 20px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-divider-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(247,243,236,0.1);
+}
+
+.section-divider-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: rgba(247,243,236,0.3);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ===== CARD BASE ===== */
+.card {
+  max-width: 960px;
+  margin: 0 auto 32px;
+  background: var(--washi);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 4px 16px rgba(0,0,0,0.4);
+}
+
+/* Red accent stripe */
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+}
+
+.card-red::before { background: var(--red); }
+.card-gold::before { background: var(--gold); }
+.card-teal::before { background: var(--teal); }
+.card-indigo::before { background: var(--indigo); }
+.card-moss::before { background: var(--moss); }
+
+.card-header {
+  padding: 28px 36px 22px 44px;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  position: relative;
+}
+
+.card-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.card-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--gray);
+  letter-spacing: 2px;
+}
+
+.card-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 3px 10px;
+  border-radius: 1px;
+  text-transform: uppercase;
+}
+
+.tag-red { background: var(--red); color: white; }
+.tag-gold { background: var(--gold); color: white; }
+.tag-teal { background: var(--teal); color: white; }
+.tag-indigo { background: var(--indigo); color: white; }
+.tag-moss { background: var(--moss); color: white; }
+
+.card-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: 1px;
+  line-height: 1.3;
+}
+
+.card-title-jp {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 13px;
+  color: var(--gray);
+  margin-top: 4px;
+  letter-spacing: 2px;
+}
+
+/* Corner decoration */
+.card-corner-jp {
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Noto Serif JP', serif;
+  font-size: 52px;
+  font-weight: 900;
+  color: rgba(0,0,0,0.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.card-body {
+  padding: 28px 36px 36px 44px;
+}
+
+/* ===== UTILS ===== */
+.label-sm {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.label-sm::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(0,0,0,0.08);
+}
+
+.divider { height: 1px; background: rgba(0,0,0,0.06); margin: 20px 0; }
+
+.note {
+  border-left: 2px solid;
+  padding: 10px 14px;
+  border-radius: 0 2px 2px 0;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--charcoal);
+  margin-top: 16px;
+}
+
+.note-red { border-color: var(--red); background: var(--red-pale); }
+.note-gold { border-color: var(--gold); background: var(--gold-pale); }
+.note-teal { border-color: var(--teal); background: var(--teal-pale); }
+.note-indigo { border-color: var(--indigo); background: var(--indigo-pale); }
+.note-moss { border-color: var(--moss); background: var(--moss-pale); }
+
+.note strong { font-weight: 700; }
+
+/* ===== CARD 00: 总览 ===== */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.phase-tile {
+  border-radius: 2px;
+  padding: 20px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.phase-tile::after {
+  content: attr(data-jp);
+  position: absolute;
+  bottom: -8px; right: -4px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 48px;
+  font-weight: 900;
+  opacity: 0.06;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.phase-tile-0 { background: var(--ink); }
+.phase-tile-1 { background: var(--red-pale); border: 1.5px solid rgba(200,57,43,0.15); }
+.phase-tile-2 { background: var(--gold-pale); border: 1.5px solid rgba(196,154,60,0.15); }
+.phase-tile-3 { background: var(--teal-pale); border: 1.5px solid rgba(30,107,107,0.15); }
+.phase-tile-4 { background: var(--indigo-pale); border: 1.5px solid rgba(44,62,122,0.15); }
+
+.phase-step {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.phase-tile-0 .phase-step { color: rgba(255,255,255,0.4); }
+.phase-tile-1 .phase-step { color: var(--red); }
+.phase-tile-2 .phase-step { color: var(--gold); }
+.phase-tile-3 .phase-step { color: var(--teal); }
+.phase-tile-4 .phase-step { color: var(--indigo); }
+
+.phase-icon { font-size: 24px; margin-bottom: 8px; display: block; }
+
+.phase-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.phase-tile-0 .phase-name { color: var(--washi); }
+.phase-tile-1 .phase-name { color: var(--red); }
+.phase-tile-2 .phase-name { color: #7a5f1e; }
+.phase-tile-3 .phase-name { color: var(--teal); }
+.phase-tile-4 .phase-name { color: var(--indigo); }
+
+.phase-desc {
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--charcoal);
+}
+
+.phase-tile-0 .phase-desc { color: rgba(255,255,255,0.55); }
+
+.phase-tools {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.phase-tool-chip {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 1px;
+  letter-spacing: 0.5px;
+}
+
+.phase-tile-1 .phase-tool-chip { background: rgba(200,57,43,0.12); color: var(--red); }
+.phase-tile-2 .phase-tool-chip { background: rgba(196,154,60,0.15); color: #7a5f1e; }
+.phase-tile-3 .phase-tool-chip { background: rgba(30,107,107,0.12); color: var(--teal); }
+.phase-tile-4 .phase-tool-chip { background: rgba(44,62,122,0.12); color: var(--indigo); }
+
+.overview-banner {
+  background: var(--ink);
+  border-radius: 2px;
+  padding: 18px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  background-color: var(--gray-light);
+}
+
+.overview-stat {
+  background: var(--ink);
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.overview-stat:first-child { border-radius: 2px 0 0 2px; }
+.overview-stat:last-child { border-radius: 0 2px 2px 0; }
+
+.overview-stat-num {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 36px;
+  color: var(--red);
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.overview-stat-label {
+  font-size: 11px;
+  color: rgba(247,243,236,0.5);
+  letter-spacing: 1px;
+}
+
+/* ===== CARD 01: 假名 ===== */
+.kana-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.kana-block {
+  border-radius: 2px;
+  padding: 20px;
+  position: relative;
+}
+
+.kana-block-hira { background: var(--red-pale); border: 1.5px solid rgba(200,57,43,0.12); }
+.kana-block-kata { background: var(--indigo-pale); border: 1.5px solid rgba(44,62,122,0.12); }
+
+.kana-block-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.kana-block-hira .kana-block-title { color: var(--red); }
+.kana-block-kata .kana-block-title { color: var(--indigo); }
+
+.kana-sample-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.kana-char {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 20px;
+  font-weight: 700;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+}
+
+.kana-char-hira { background: rgba(200,57,43,0.1); color: var(--red); }
+.kana-char-kata { background: rgba(44,62,122,0.1); color: var(--indigo); }
+
+.kana-count-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1;
+  display: block;
+  margin-top: 8px;
+}
+
+.kana-block-hira .kana-count-badge { color: var(--red); }
+.kana-block-kata .kana-count-badge { color: var(--indigo); }
+
+.kana-count-sub { font-size: 10px; color: var(--gray); letter-spacing: 1px; }
+
+.kana-method-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.kana-method-card {
+  background: var(--washi-dark);
+  border-radius: 2px;
+  padding: 14px 12px;
+  text-align: center;
+}
+
+.kana-method-icon { font-size: 20px; display: block; margin-bottom: 6px; }
+
+.kana-method-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.kana-method-desc { font-size: 10px; color: var(--gray); line-height: 1.5; }
+
+.kana-mnemonic-box {
+  background: var(--ink);
+  border-radius: 2px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.kana-mnemonic-char {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--washi);
+  flex-shrink: 0;
+  line-height: 1;
+  text-shadow: 2px 2px 0 var(--red);
+}
+
+.kana-mnemonic-arrow {
+  font-size: 20px;
+  color: var(--red);
+  flex-shrink: 0;
+}
+
+.kana-mnemonic-text { flex: 1; }
+
+.kana-mnemonic-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--washi);
+  margin-bottom: 4px;
+}
+
+.kana-mnemonic-desc {
+  font-size: 11px;
+  color: rgba(247,243,236,0.55);
+  line-height: 1.6;
+}
+
+.kana-mnemonic-desc em { color: var(--red); font-style: normal; font-weight: 700; }
+
+/* ===== CARD 02: Anki ===== */
+.anki-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.anki-side {
+  border-radius: 2px;
+  padding: 20px;
+}
+
+.anki-side-a { background: var(--gold-pale); border: 1.5px solid rgba(196,154,60,0.15); }
+.anki-side-b { background: var(--washi-dark); }
+
+.anki-side-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.anki-side-a .anki-side-title { color: #7a5f1e; }
+.anki-side-b .anki-side-title { color: var(--ink); }
+
+.vocab-cards-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vocab-card-mini {
+  background: white;
+  border-radius: 2px;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.vocab-jp {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.vocab-reading {
+  font-size: 10px;
+  color: var(--gray);
+  font-family: 'Noto Serif JP', serif;
+}
+
+.vocab-zh {
+  font-size: 12px;
+  color: var(--charcoal);
+  text-align: right;
+}
+
+.vocab-interval {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 1px;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.interval-new { background: #e8f5e8; color: #2d7d2d; }
+.interval-soon { background: #fff3e0; color: #e65c00; }
+.interval-done { background: #e8eaf6; color: #3949ab; }
+
+.anki-pace-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.pace-tile {
+  text-align: center;
+  padding: 14px 8px;
+  border-radius: 2px;
+  background: var(--washi-dark);
+}
+
+.pace-num {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 28px;
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.pace-num-gold { color: var(--gold); }
+.pace-num-red { color: var(--red); }
+.pace-num-teal { color: var(--teal); }
+
+.pace-label { font-size: 10px; color: var(--gray); letter-spacing: 0.5px; }
+
+/* Kanji level bars */
+.kanji-levels {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.kanji-level-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.kanji-level-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  width: 24px;
+  flex-shrink: 0;
+  color: var(--charcoal);
+}
+
+.kanji-level-bar-track {
+  flex: 1;
+  height: 18px;
+  background: var(--washi-dark);
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}
+
+.kanji-level-bar-fill {
+  height: 100%;
+  border-radius: 1px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  color: white;
+  transition: width 0.3s ease;
+}
+
+.kanji-count {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--gray);
+  width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.kanji-pct {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ===== CARD 03: 教材+语法 ===== */
+.grammar-split {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.genki-card {
+  background: var(--ink);
+  border-radius: 2px;
+  padding: 24px 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.genki-card::before {
+  content: 'げんき';
+  position: absolute;
+  right: -10px;
+  bottom: -15px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 80px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.04);
+  pointer-events: none;
+}
+
+.genki-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--washi);
+  letter-spacing: 4px;
+  margin-bottom: 4px;
+}
+
+.genki-subtitle {
+  font-size: 11px;
+  color: rgba(247,243,236,0.45);
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.genki-features { list-style: none; }
+
+.genki-feature {
+  font-size: 12px;
+  color: rgba(247,243,236,0.7);
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.genki-feature:last-child { border-bottom: none; }
+
+.genki-feature-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--red);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.grammar-points {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.grammar-point-card {
+  background: var(--washi-dark);
+  border-radius: 2px;
+  padding: 12px 14px;
+}
+
+.grammar-point-jp {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--teal);
+  margin-bottom: 4px;
+}
+
+.grammar-point-zh {
+  font-size: 11px;
+  color: var(--charcoal);
+  margin-bottom: 6px;
+}
+
+.grammar-example {
+  background: white;
+  border-radius: 1px;
+  padding: 6px 10px;
+}
+
+.grammar-example-jp {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 12px;
+  color: var(--ink);
+}
+
+.grammar-example-zh { font-size: 10px; color: var(--gray); margin-top: 2px; }
+
+.grammar-vs-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.vs-card {
+  border-radius: 2px;
+  padding: 14px;
+}
+
+.vs-card-polite { background: var(--red-pale); border: 1.5px solid rgba(200,57,43,0.12); }
+.vs-card-casual { background: var(--teal-pale); border: 1.5px solid rgba(30,107,107,0.12); }
+
+.vs-card-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.vs-card-polite .vs-card-label { color: var(--red); }
+.vs-card-casual .vs-card-label { color: var(--teal); }
+
+.vs-example {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 16px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.vs-card-polite .vs-example { color: var(--red); }
+.vs-card-casual .vs-example { color: var(--teal); }
+
+.vs-reading { font-size: 10px; color: var(--gray); }
+.vs-meaning { font-size: 11px; color: var(--charcoal); margin-top: 4px; }
+
+/* ===== CARD 04: 沉浸输入 ===== */
+.immersion-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.immersion-tool {
+  background: var(--washi-dark);
+  border-radius: 2px;
+  padding: 16px 10px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.immersion-tool.top-pick {
+  background: var(--ink);
+}
+
+.immersion-tool-icon { font-size: 22px; display: block; margin-bottom: 6px; }
+
+.immersion-tool-name {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.immersion-tool .immersion-tool-name { color: var(--ink); }
+.immersion-tool.top-pick .immersion-tool-name { color: var(--washi); }
+
+.immersion-rating {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  margin: 6px 0;
+}
+
+.star { font-size: 9px; color: var(--gold); }
+.star-empty { font-size: 9px; color: var(--gray-light); }
+
+.immersion-score {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.immersion-tool .immersion-score { color: var(--teal); }
+.immersion-tool.top-pick .immersion-score { color: var(--gold); }
+
+.immersion-badge {
+  position: absolute;
+  top: 6px; right: 6px;
+  font-size: 8px;
+  font-weight: 700;
+  background: var(--red);
+  color: white;
+  padding: 1px 5px;
+  border-radius: 1px;
+  letter-spacing: 1px;
+}
+
+.speak-vs-box {
+  background: var(--ink);
+  border-radius: 2px;
+  padding: 22px 24px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.speak-side {
+  padding: 0 20px;
+}
+
+.speak-side:first-child { padding-left: 0; }
+.speak-side:last-child { padding-right: 0; }
+
+.speak-type {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.speak-passive .speak-type { color: rgba(247,243,236,0.35); }
+.speak-active .speak-type { color: var(--red); }
+
+.speak-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.speak-passive .speak-title { color: rgba(247,243,236,0.5); }
+.speak-active .speak-title { color: var(--washi); }
+
+.speak-desc {
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.speak-passive .speak-desc { color: rgba(247,243,236,0.3); }
+.speak-active .speak-desc { color: rgba(247,243,236,0.7); }
+
+.speak-vs-divider {
+  font-family: 'DM Mono', monospace;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--red);
+  padding: 0 16px;
+  position: relative;
+}
+
+.speak-vs-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px; height: 40px;
+  border: 1px solid rgba(200,57,43,0.3);
+  border-radius: 50%;
+}
+
+.immersion-tips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.immersion-tip {
+  background: var(--washi-dark);
+  border-radius: 2px;
+  padding: 14px;
+}
+
+.immersion-tip-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--gray);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.immersion-tip-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.immersion-tip-desc {
+  font-size: 11px;
+  color: var(--charcoal);
+  line-height: 1.5;
+}
+
+/* ===== CARD 05: 时间线 ===== */
+.timeline-months {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.month-card {
+  border-radius: 2px;
+  padding: 20px 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.month-card::after {
+  content: attr(data-month);
+  position: absolute;
+  right: -8px; bottom: -12px;
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 64px;
+  opacity: 0.06;
+  line-height: 1;
+  pointer-events: none;
+  color: var(--ink);
+}
+
+.month-card-1 { background: var(--red-pale); border: 1.5px solid rgba(200,57,43,0.12); }
+.month-card-2 { background: var(--gold-pale); border: 1.5px solid rgba(196,154,60,0.12); }
+.month-card-3 { background: var(--teal-pale); border: 1.5px solid rgba(30,107,107,0.12); }
+
+.month-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.month-card-1 .month-label { color: var(--red); }
+.month-card-2 .month-label { color: var(--gold); }
+.month-card-3 .month-label { color: var(--teal); }
+
+.month-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 16px;
+  font-weight: 900;
+  margin-bottom: 12px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.month-tasks { list-style: none; }
+
+.month-task {
+  font-size: 11px;
+  color: var(--charcoal);
+  padding: 5px 0;
+  border-bottom: 1px dashed rgba(0,0,0,0.08);
+  display: flex;
+  gap: 6px;
+  line-height: 1.4;
+  align-items: flex-start;
+}
+
+.month-task:last-child { border-bottom: none; }
+
+.month-task-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.month-card-1 .month-task-dot { background: var(--red); }
+.month-card-2 .month-task-dot { background: var(--gold); }
+.month-card-3 .month-task-dot { background: var(--teal); }
+
+.month-daily {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-radius: 1px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.month-card-1 .month-daily { background: rgba(200,57,43,0.08); color: var(--red); }
+.month-card-2 .month-daily { background: rgba(196,154,60,0.1); color: #7a5f1e; }
+.month-card-3 .month-daily { background: rgba(30,107,107,0.08); color: var(--teal); }
+
+.final-banner {
+  background: var(--ink);
+  border-radius: 2px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.final-banner-jp {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--red);
+  line-height: 1;
+  flex-shrink: 0;
+  text-shadow: 2px 2px 0 rgba(200,57,43,0.3);
+}
+
+.final-banner-content { flex: 1; }
+
+.final-banner-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--washi);
+  margin-bottom: 6px;
+}
+
+.final-banner-desc {
+  font-size: 12px;
+  color: rgba(247,243,236,0.55);
+  line-height: 1.7;
+}
+
+.final-banner-desc em { color: var(--gold); font-style: normal; font-weight: 700; }
+
+.final-banner-stat {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.final-banner-stat-num {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 48px;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+}
+
+.final-banner-stat-label {
+  font-size: 10px;
+  color: rgba(247,243,236,0.4);
+  letter-spacing: 2px;
+  display: block;
+  margin-top: 4px;
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <span class="site-header-kana">日本語学習 · 三ヶ月チャレンジ</span>
+  <span class="site-header-title">三个月<em>日语速成</em>完整路线图</span>
+  <span class="site-header-sub">Japanese Learning Roadmap · Video Reference Cards</span>
+</header>
+
+<!-- ===== CARD 00: 总览 ===== -->
+<div class="section-divider"><div class="section-divider-line"></div><span class="section-divider-label">Card 00 · Overview</span><div class="section-divider-line"></div></div>
+<div class="card card-red">
+  <div class="card-header">
+    <div class="card-eyebrow">
+      <span class="card-num">00 · OVERVIEW</span>
+      <span class="card-tag tag-red">全局框架</span>
+    </div>
+    <div class="card-title">从零开始，三个月打通日语</div>
+    <div class="card-title-jp">ゼロから三ヶ月で日本語をマスター</div>
+    <div class="card-corner-jp">始</div>
+  </div>
+  <div class="card-body">
+    <div class="overview-grid">
+      <div class="phase-tile phase-tile-0" data-jp="前">
+        <div class="phase-step">BEFORE · 开始前</div>
+        <span class="phase-icon">🧠</span>
+        <div class="phase-name" style="color:rgba(247,243,236,0.9)">核心心态</div>
+        <div class="phase-desc">把一座大山切成四块——每一步都有明确目标，不要同时做所有事</div>
+      </div>
+      <div class="phase-tile phase-tile-1" data-jp="字">
+        <div class="phase-step">STEP 01 · 第一步</div>
+        <span class="phase-icon">🔤</span>
+        <div class="phase-name">学会字母表</div>
+        <div class="phase-desc">平假名 + 片假名，共92个字符。这是整个日语里最简单的部分</div>
+        <div class="phase-tools">
+          <span class="phase-tool-chip">联想记忆法</span>
+          <span class="phase-tool-chip">Kana App</span>
+        </div>
+      </div>
+      <div class="phase-tile phase-tile-2" data-jp="基">
+        <div class="phase-step">STEP 02 · 第二步</div>
+        <span class="phase-icon">📗</span>
+        <div class="phase-name">教材打基础</div>
+        <div class="phase-desc">用《Genki》建立语法框架，每天20-30分钟，3-4个月搞定N5</div>
+        <div class="phase-tools">
+          <span class="phase-tool-chip">Genki教材</span>
+          <span class="phase-tool-chip">语法学习</span>
+        </div>
+      </div>
+      <div class="phase-tile phase-tile-3" data-jp="詞">
+        <div class="phase-step">STEP 03 · 第三步</div>
+        <span class="phase-icon">🃏</span>
+        <div class="phase-name">Anki刷词汇</div>
+        <div class="phase-desc">间隔重复系统，N5词汇 + 100个汉字，每天5-10个新词不贪多</div>
+        <div class="phase-tools">
+          <span class="phase-tool-chip">Anki App</span>
+          <span class="phase-tool-chip">N5卡组</span>
+        </div>
+      </div>
+      <div class="phase-tile phase-tile-4" data-jp="話">
+        <div class="phase-step">STEP 04 · 第四步</div>
+        <span class="phase-icon">🎌</span>
+        <div class="phase-name">真实内容沉浸</div>
+        <div class="phase-desc">刷动漫、看综艺、听播客——但必须开口说，被动输入不够</div>
+        <div class="phase-tools">
+          <span class="phase-tool-chip">动漫/剧集</span>
+          <span class="phase-tool-chip">语言伙伴</span>
+        </div>
+      </div>
+    </div>
+    <div class="overview-banner">
+      <div class="overview-stat">
+        <span class="overview-stat-num">3</span>
+        <span class="overview-stat-label">个月达到对话能力</span>
+      </div>
+      <div class="overview-stat">
+        <span class="overview-stat-num">20~30</span>
+        <span class="overview-stat-label">分钟 / 每日最低投入</span>
+      </div>
+      <div class="overview-stat">
+        <span class="overview-stat-num">N5</span>
+        <span class="overview-stat-label">基础目标：700词 100汉字</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CARD 01: 假名 ===== -->
+<div class="section-divider"><div class="section-divider-line"></div><span class="section-divider-label">Card 01 · Kana</span><div class="section-divider-line"></div></div>
+<div class="card card-red">
+  <div class="card-header">
+    <div class="card-eyebrow">
+      <span class="card-num">01 · STEP ONE</span>
+      <span class="card-tag tag-red">第一步</span>
+    </div>
+    <div class="card-title">学会平假名 + 片假名</div>
+    <div class="card-title-jp">ひらがな & カタカナ — 日语字母表</div>
+    <div class="card-corner-jp">字</div>
+  </div>
+  <div class="card-body">
+    <div class="kana-split">
+      <div class="kana-block kana-block-hira">
+        <div class="kana-block-title">ひらがな · 平假名</div>
+        <div class="kana-sample-row">
+          <div class="kana-char kana-char-hira">あ</div>
+          <div class="kana-char kana-char-hira">い</div>
+          <div class="kana-char kana-char-hira">う</div>
+          <div class="kana-char kana-char-hira">え</div>
+          <div class="kana-char kana-char-hira">お</div>
+          <div class="kana-char kana-char-hira">か</div>
+          <div class="kana-char kana-char-hira">き</div>
+          <div class="kana-char kana-char-hira">く</div>
+        </div>
+        <span class="kana-count-badge">46</span>
+        <span class="kana-count-sub">个字符 · 动词变位/语法</span>
+      </div>
+      <div class="kana-block kana-block-kata">
+        <div class="kana-block-title">カタカナ · 片假名</div>
+        <div class="kana-sample-row">
+          <div class="kana-char kana-char-kata">ア</div>
+          <div class="kana-char kana-char-kata">イ</div>
+          <div class="kana-char kana-char-kata">ウ</div>
+          <div class="kana-char kana-char-kata">エ</div>
+          <div class="kana-char kana-char-kata">オ</div>
+          <div class="kana-char kana-char-kata">カ</div>
+          <div class="kana-char kana-char-kata">キ</div>
+          <div class="kana-char kana-char-kata">ク</div>
+        </div>
+        <span class="kana-count-badge">46</span>
+        <span class="kana-count-sub">个字符 · 外来语/拟声词</span>
+      </div>
+    </div>
+
+    <div class="label-sm" style="color:var(--charcoal)">三步学习法</div>
+    <div class="kana-method-row">
+      <div class="kana-method-card">
+        <span class="kana-method-icon">🎬</span>
+        <div class="kana-method-title">看联想视频</div>
+        <div class="kana-method-desc">每个字符配一个形象联想，让发音和字形绑定</div>
+      </div>
+      <div class="kana-method-card">
+        <span class="kana-method-icon">✍️</span>
+        <div class="kana-method-title">练习笔顺</div>
+        <div class="kana-method-desc">日语笔顺有规范，写对了有助于记忆和辨认</div>
+      </div>
+      <div class="kana-method-card">
+        <span class="kana-method-icon">📱</span>
+        <div class="kana-method-title">App测试</div>
+        <div class="kana-method-desc">「看到就认出」≠ 「学会了」，要用App反复测到0.5秒反应</div>
+      </div>
+    </div>
+
+    <div class="kana-mnemonic-box">
+      <div class="kana-mnemonic-char">わ</div>
+      <div class="kana-mnemonic-arrow">→</div>
+      <div class="kana-mnemonic-text">
+        <div class="kana-mnemonic-title">联想记忆示例 · 「わ」(wa)</div>
+        <div class="kana-mnemonic-desc">这个字符看起来像一个人站在<em>冲浪板上</em>——想象冲浪者喊出「哇~」的声音。形状 + 读音 + 画面感三合一，再也不会忘记</div>
+      </div>
+    </div>
+
+    <div class="note note-red" style="margin-top:14px">
+      💡 <strong>通关心态：</strong>平假名片假名是整个日语里最简单的部分。大多数人倒在这里不是因为难，而是因为觉得枯燥。过了这关，你已经超过了大多数半途而废的人。
+    </div>
+  </div>
+</div>
+
+<!-- ===== CARD 02: Anki + 汉字 ===== -->
+<div class="section-divider"><div class="section-divider-line"></div><span class="section-divider-label">Card 02 · Anki & Kanji</span><div class="section-divider-line"></div></div>
+<div class="card card-gold">
+  <div class="card-header">
+    <div class="card-eyebrow">
+      <span class="card-num">02 · STEP THREE</span>
+      <span class="card-tag tag-gold">词汇 & 汉字</span>
+    </div>
+    <div class="card-title">Anki 间隔重复 + 汉字分级攻略</div>
+    <div class="card-title-jp">アンキ & 漢字 — 語彙と文字を制する</div>
+    <div class="card-corner-jp">漢</div>
+  </div>
+  <div class="card-body">
+    <div class="label-sm" style="color:var(--charcoal)">Anki 是什么 · 为什么比背单词本强</div>
+    <div class="anki-split">
+      <div class="anki-side anki-side-a">
+        <div class="anki-side-title">📱 Anki 智能闪卡示例</div>
+        <div class="vocab-cards-mini">
+          <div class="vocab-card-mini">
+            <div>
+              <div class="vocab-jp">食べる</div>
+              <div class="vocab-reading">たべる · taberu</div>
+            </div>
+            <div>
+              <div class="vocab-zh">吃（动词）</div>
+              <span class="vocab-interval interval-new">今日NEW</span>
+            </div>
+          </div>
+          <div class="vocab-card-mini">
+            <div>
+              <div class="vocab-jp">学校</div>
+              <div class="vocab-reading">がっこう · gakkou</div>
+            </div>
+            <div>
+              <div class="vocab-zh">学校</div>
+              <span class="vocab-interval interval-soon">3天后</span>
+            </div>
+          </div>
+          <div class="vocab-card-mini">
+            <div>
+              <div class="vocab-jp">友達</div>
+              <div class="vocab-reading">ともだち · tomodachi</div>
+            </div>
+            <div>
+              <div class="vocab-zh">朋友</div>
+              <span class="vocab-interval interval-done">21天后</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="anki-side anki-side-b">
+        <div class="anki-side-title">⚙️ 间隔重复原理</div>
+        <p style="font-size:12px; color:var(--charcoal); line-height:1.7; margin-bottom:12px">系统根据你的记忆状态，<strong>智能决定</strong>下次复习时间——记得好的词隔久一点，容易忘的词马上再出现</p>
+        <div style="background:white; border-radius:2px; padding:12px; font-size:11px; color:var(--charcoal); line-height:1.7">
+          ✅ 推荐卡组：<strong>Nihongo Shark</strong> N5词汇包<br>
+          ✅ 含：发音 + 例句 + 汉字写法<br>
+          ✅ 每天新词量：<strong>5~10个</strong>（不要贪多！）<br>
+          ⚠️ 每天20个新词 → 一个月后复习量崩溃
+        </div>
+      </div>
+    </div>
+
+    <div class="label-sm" style="color:var(--charcoal)">推荐节奏</div>
+    <div class="anki-pace-row">
+      <div class="pace-tile">
+        <span class="pace-num pace-num-gold">5~10</span>
+        <div class="pace-label">个新词 / 天</div>
+      </div>
+      <div class="pace-tile">
+        <span class="pace-num pace-num-red">15~20</span>
+        <div class="pace-label">分钟 / 天（含复习）</div>
+      </div>
+      <div class="pace-tile">
+        <span class="pace-num pace-num-teal">3~4</span>
+        <div class="pace-label">个月覆盖N5词汇</div>
+      </div>
+    </div>
+
+    <div class="label-sm" style="color:var(--charcoal)">汉字分级攻略 · 先别怕两千个字</div>
+    <div class="kanji-levels">
+      <div class="kanji-level-row">
+        <span class="kanji-level-tag">N5</span>
+        <div class="kanji-level-bar-track">
+          <div class="kanji-level-bar-fill" style="width:36%; background:var(--red)">36%</div>
+        </div>
+        <span class="kanji-count">80字</span>
+        <span class="kanji-pct" style="color:var(--red)">认出36%</span>
+      </div>
+      <div class="kanji-level-row">
+        <span class="kanji-level-tag">N4</span>
+        <div class="kanji-level-bar-track">
+          <div class="kanji-level-bar-fill" style="width:62%; background:var(--gold)">62%</div>
+        </div>
+        <span class="kanji-count">+166字</span>
+        <span class="kanji-pct" style="color:var(--gold)">认出62%</span>
+      </div>
+      <div class="kanji-level-row">
+        <span class="kanji-level-tag">N3</span>
+        <div class="kanji-level-bar-track">
+          <div class="kanji-level-bar-fill" style="width:85%; background:var(--teal)">85.5%</div>
+        </div>
+        <span class="kanji-count">+370字</span>
+        <span class="kanji-pct" style="color:var(--teal)">认出85.5%</span>
+      </div>
+      <div class="kanji-level-row">
+        <span class="kanji-level-tag">N2</span>
+        <div class="kanji-level-bar-track">
+          <div class="kanji-level-bar-fill" style="width:94%; background:var(--indigo)">94.4%</div>
+        </div>
+        <span class="kanji-count">+370字</span>
+        <span class="kanji-pct" style="color:var(--indigo)">认出94.4%</span>
+      </div>
+      <div class="kanji-level-row">
+        <span class="kanji-level-tag">N1</span>
+        <div class="kanji-level-bar-track">
+          <div class="kanji-level-bar-fill" style="width:100%; background:var(--ink)">约100%</div>
+        </div>
+        <span class="kanji-count">2200字</span>
+        <span class="kanji-pct" style="color:var(--ink); font-weight:700">全覆盖</span>
+      </div>
+    </div>
+
+    <div class="note note-gold">
+      💡 <strong>拆偏旁编故事技巧：</strong>「晴」= 左边「日」（太阳）+ 右边「青」（蓝色）→ 今天天是蓝色的，晴天！用故事联结偏旁，比死写死背高效十倍
+    </div>
+  </div>
+</div>
+
+<!-- ===== CARD 03: 语法教材 ===== -->
+<div class="section-divider"><div class="section-divider-line"></div><span class="section-divider-label">Card 03 · Grammar</span><div class="section-divider-line"></div></div>
+<div class="card card-teal">
+  <div class="card-header">
+    <div class="card-eyebrow">
+      <span class="card-num">03 · STEP TWO</span>
+      <span class="card-tag tag-teal">语法基础</span>
+    </div>
+    <div class="card-title">《Genki》教材 + 日语语法框架</div>
+    <div class="card-title-jp">げんき教科書 — 文法の基礎を固める</div>
+    <div class="card-corner-jp">文</div>
+  </div>
+  <div class="card-body">
+    <div class="grammar-split">
+      <div class="genki-card">
+        <div class="genki-title">げんき</div>
+        <div class="genki-subtitle">GENKI · 初级日语综合教程</div>
+        <ul class="genki-features">
+          <li class="genki-feature"><span class="genki-feature-dot"></span>全球日语学习者口碑最佳入门教材</li>
+          <li class="genki-feature"><span class="genki-feature-dot"></span>循序渐进：先学什么，再学什么，一清二楚</li>
+          <li class="genki-feature"><span class="genki-feature-dot"></span>大量例句，边学语法边学词汇</li>
+          <li class="genki-feature"><span class="genki-feature-dot"></span>覆盖N5-N4语法内容</li>
+          <li class="genki-feature"><span class="genki-feature-dot"></span>每天20-30分钟，3-4个月打好基础</li>
+        </ul>
+      </div>
+      <div class="grammar-points">
+        <div class="grammar-point-card">
+          <div class="grammar-point-jp">〜は〜です</div>
+          <div class="grammar-point-zh">基础判断句型「……是……」</div>
+          <div class="grammar-example">
+            <div class="grammar-example-jp">わたしは学生です。</div>
+            <div class="grammar-example-zh">我是学生。</div>
+          </div>
+        </div>
+        <div class="grammar-point-card">
+          <div class="grammar-point-jp">〜を〜ます</div>
+          <div class="grammar-point-zh">宾语 + 动词的基本句型</div>
+          <div class="grammar-example">
+            <div class="grammar-example-jp">ごはんを食べます。</div>
+            <div class="grammar-example-zh">吃饭。（敬体）</div>
+          </div>
+        </div>
+        <div class="grammar-point-card">
+          <div class="grammar-point-jp">〜に行きます</div>
+          <div class="grammar-point-zh">「去某处」的方向助词用法</div>
+          <div class="grammar-example">
+            <div class="grammar-example-jp">学校に行きます。</div>
+            <div class="grammar-example-zh">去学校。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="label-sm" style="color:var(--charcoal)">重要：敬语 vs 普通体 — 一开始就要分清楚</div>
+    <div class="grammar-vs-box">
+      <div class="vs-card vs-card-polite">
+        <div class="vs-card-label">🎌 敬体（正式场合）</div>
+        <span class="vs-example">食べます</span>
+        <div class="vs-reading">たべます · tabemasu</div>
+        <div class="vs-meaning">「吃」—— 对长辈/陌生人/工作场合使用</div>
+      </div>
+      <div class="vs-card vs-card-casual">
+        <div class="vs-card-label">😊 普通体（朋友之间）</div>
+        <span class="vs-example">食べる</span>
+        <div class="vs-reading">たべる · taberu</div>
+        <div class="vs-meaning">「吃」—— 对朋友/平辈/熟人使用</div>
+      </div>
+    </div>
+
+    <div class="note note-teal">
+      🔑 <strong>日语语序提醒：</strong>中文「我吃饭」→ 日语「私はご飯を<strong>食べます</strong>」（我饭吃）动词永远在句子最后！这是最需要适应的思维转换
+    </div>
+  </div>
+</div>
+
+<!-- ===== CARD 04: 沉浸输入 ===== -->
+<div class="section-divider"><div class="section-divider-line"></div><span class="section-divider-label">Card 04 · Immersion</span><div class="section-divider-line"></div></div>
+<div class="card card-indigo">
+  <div class="card-header">
+    <div class="card-eyebrow">
+      <span class="card-num">04 · STEP FOUR</span>
+      <span class="card-tag tag-indigo">沉浸输入</span>
+    </div>
+    <div class="card-title">真实内容沉浸 + 开口说才是关键</div>
+    <div class="card-title-jp">インプット & アウトプット — 実践あるのみ</div>
+    <div class="card-corner-jp">話</div>
+  </div>
+  <div class="card-body">
+    <div class="label-sm" style="color:var(--charcoal)">五种工具评测 · 哪个最有用？</div>
+    <div class="immersion-grid">
+      <div class="immersion-tool top-pick">
+        <div class="immersion-badge">推荐</div>
+        <span class="immersion-tool-icon">📺</span>
+        <div class="immersion-tool-name">动漫 / 剧集</div>
+        <div class="immersion-rating">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span>
+        </div>
+        <div class="immersion-score">8.5/10</div>
+      </div>
+      <div class="immersion-tool top-pick">
+        <div class="immersion-badge">推荐</div>
+        <span class="immersion-tool-icon">▶️</span>
+        <div class="immersion-tool-name">YouTube日语</div>
+        <div class="immersion-rating">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span>
+        </div>
+        <div class="immersion-score">8.8/10</div>
+      </div>
+      <div class="immersion-tool">
+        <span class="immersion-tool-icon">📱</span>
+        <div class="immersion-tool-name">TikTok街采</div>
+        <div class="immersion-rating">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span><span class="star-empty">☆</span>
+        </div>
+        <div class="immersion-score">7/10</div>
+      </div>
+      <div class="immersion-tool">
+        <span class="immersion-tool-icon">🃏</span>
+        <div class="immersion-tool-name">Anki App</div>
+        <div class="immersion-rating">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span><span class="star-empty">☆</span>
+        </div>
+        <div class="immersion-score">7.3/10</div>
+      </div>
+      <div class="immersion-tool">
+        <span class="immersion-tool-icon">📗</span>
+        <div class="immersion-tool-name">教材</div>
+        <div class="immersion-rating">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span>
+        </div>
+        <div class="immersion-score">8.3/10</div>
+      </div>
+    </div>
+
+    <div class="speak-vs-box">
+      <div class="speak-side speak-passive">
+        <div class="speak-type">❌ 被动输入</div>
+        <div class="speak-title">只听，不说</div>
+        <div class="speak-desc">把日语视频当背景音乐、看剧不开口——三个月过去，到了真实对话时脑子一片空白</div>
+      </div>
+      <div class="speak-vs-divider">VS</div>
+      <div class="speak-side speak-active">
+        <div class="speak-type">✅ 主动输出</div>
+        <div class="speak-title">听完就要说出来</div>
+        <div class="speak-desc">哪怕是对着家人说「今日は何を食べますか？」——开口的瞬间，你的大脑才真正开始建立语言回路</div>
+      </div>
+    </div>
+
+    <div class="label-sm" style="color:var(--charcoal)">三个实用技巧</div>
+    <div class="immersion-tips">
+      <div class="immersion-tip">
+        <div class="immersion-tip-num">TIP · 01</div>
+        <div class="immersion-tip-title">找语言交换伙伴</div>
+        <div class="immersion-tip-desc">找一个想学中文的日本人，每周一次语言交换——你教中文，他教日语，免费还真实有效</div>
+      </div>
+      <div class="immersion-tip">
+        <div class="immersion-tip-num">TIP · 02</div>
+        <div class="immersion-tip-title">开双语字幕刷剧</div>
+        <div class="immersion-tip-desc">日语字幕 + 中文字幕同时开，优先尝试读日语字幕，遇到不认识的立刻点开翻译</div>
+      </div>
+      <div class="immersion-tip">
+        <div class="immersion-tip-num">TIP · 03</div>
+        <div class="immersion-tip-title">从动漫学到真实语言</div>
+        <div class="immersion-tip-desc">动漫能学到词汇，但注意：动漫多用普通体。真实场合要用敬体，别把风格搞混</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CARD 05: 三个月时间线 ===== -->
+<div class="section-divider"><div class="section-divider-line"></div><span class="section-divider-label">Card 05 · Timeline</span><div class="section-divider-line"></div></div>
+<div class="card card-moss">
+  <div class="card-header">
+    <div class="card-eyebrow">
+      <span class="card-num">05 · ROADMAP</span>
+      <span class="card-tag tag-moss">三个月计划</span>
+    </div>
+    <div class="card-title">三个月日程规划 · 每月做什么</div>
+    <div class="card-title-jp">三ヶ月ロードマップ — 月ごとの目標</div>
+    <div class="card-corner-jp">月</div>
+  </div>
+  <div class="card-body">
+    <div class="timeline-months">
+      <div class="month-card month-card-1" data-month="1">
+        <div class="month-label">MONTH 01 · 第一个月</div>
+        <div class="month-title">打字母 + 打基础</div>
+        <ul class="month-tasks">
+          <li class="month-task"><span class="month-task-dot"></span>学完平假名 46个字符（约1-2周）</li>
+          <li class="month-task"><span class="month-task-dot"></span>学完片假名 46个字符（约1-2周）</li>
+          <li class="month-task"><span class="month-task-dot"></span>App测试到秒级反应</li>
+          <li class="month-task"><span class="month-task-dot"></span>开始《Genki》第一章</li>
+          <li class="month-task"><span class="month-task-dot"></span>Anki导入N5词汇卡组</li>
+        </ul>
+        <div class="month-daily">每日：20~30分钟 · 字符 + 词汇</div>
+      </div>
+      <div class="month-card month-card-2" data-month="2">
+        <div class="month-label">MONTH 02 · 第二个月</div>
+        <div class="month-title">啃语法 + 刷汉字</div>
+        <ul class="month-tasks">
+          <li class="month-task"><span class="month-task-dot"></span>《Genki》第2-5章语法</li>
+          <li class="month-task"><span class="month-task-dot"></span>N5汉字 80个完成初学</li>
+          <li class="month-task"><span class="month-task-dot"></span>Anki词汇持续每天刷</li>
+          <li class="month-task"><span class="month-task-dot"></span>开始听日语YouTube视频</li>
+          <li class="month-task"><span class="month-task-dot"></span>练习读日语短句（出声！）</li>
+        </ul>
+        <div class="month-daily">每日：30分钟 · 语法 + 汉字 + 词汇</div>
+      </div>
+      <div class="month-card month-card-3" data-month="3">
+        <div class="month-label">MONTH 03 · 第三个月</div>
+        <div class="month-title">开口说 + 真实内容</div>
+        <ul class="month-tasks">
+          <li class="month-task"><span class="month-task-dot"></span>找语言交换伙伴开始对话</li>
+          <li class="month-task"><span class="month-task-dot"></span>刷日语综艺/动漫（双字幕）</li>
+          <li class="month-task"><span class="month-task-dot"></span>每天开口说至少5分钟日语</li>
+          <li class="month-task"><span class="month-task-dot"></span>继续Anki，开始N4词汇</li>
+          <li class="month-task"><span class="month-task-dot"></span>尝试做5分钟日语对话</li>
+        </ul>
+        <div class="month-daily">每日：40~60分钟 · 输入 + 输出并重</div>
+      </div>
+    </div>
+
+    <div class="final-banner">
+      <div class="final-banner-jp">頑張れ！</div>
+      <div class="final-banner-content">
+        <div class="final-banner-title">三个月后你能做到什么</div>
+        <div class="final-banner-desc">
+          能用日语进行<em>简单日常对话</em>，认识约<em>80个汉字</em>、掌握<em>700+词汇</em>、理解基础语法结构。<br>
+          不完美，但真实可用——这才是三个月的合理目标
+        </div>
+      </div>
+      <div class="final-banner-stat">
+        <span class="final-banner-stat-num">N5</span>
+        <span class="final-banner-stat-label">三个月目标</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

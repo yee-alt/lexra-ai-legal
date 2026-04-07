@@ -11,6 +11,7 @@ import Products from "./pages/Products";
 import Training from "./pages/Training";
 import Careers from "./pages/Careers";
 import NotFound from "./pages/NotFound";
+import Language from "./pages/Language";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
           <Route path="/training" element={<Training />} />
+          <Route path="/language" element={<Language />} />
           <Route path="/projects" element={<Navigate to="/training" replace />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
