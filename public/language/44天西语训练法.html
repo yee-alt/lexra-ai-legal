@@ -783,7 +783,32 @@
   }
 
   .note-box strong { color: var(--ink); }
+/* ===== Unified Responsive Layer ===== */
+@media (max-width: 600px) {
+  body { padding: 20px 12px 40px; }
+  .page-title { font-size: 11px; letter-spacing: 3px; }
+  .page-subtitle { font-size: 22px; margin-bottom: 28px; letter-spacing: 1px; }
+  .card { margin-bottom: 16px; }
+  .card-header, .card-body { padding: 16px !important; }
+  .card-title { font-size: 18px; }
+  .ted-flow { flex-direction: column; gap: 10px; }
+  .ted-step::after, .ted-step:not(:last-child)::after { display: none; }
+  .ted-videos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  body { padding: 28px 16px 56px; }
+  .card { max-width: 960px; }
+  .card-header, .card-body { padding: 22px 24px 24px; }
+  .ted-videos-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1440px) {
+  .card { max-width: 1120px; }
+  .page-subtitle { font-size: 34px; }
+}
 </style>
+<link rel="stylesheet" href="shared-responsive.css">
 </head>
 <body>
 

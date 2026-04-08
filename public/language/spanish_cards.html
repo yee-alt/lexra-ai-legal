@@ -700,6 +700,8 @@
 
   /* ── RESPONSIVE ──────────────────────────── */
   @media (max-width: 680px) {
+    body { padding: 22px 12px 52px; }
+    .cards-grid { grid-template-columns: 1fr; }
     .overview-steps { flex-direction: column; gap: 16px; }
     .overview-steps::before { display: none; }
     .topics-grid { grid-template-columns: repeat(2,1fr); }
@@ -707,7 +709,17 @@
     .mm-branches { flex-direction: column; align-items: center; }
     .mm-branch { max-width: 100%; }
   }
+  @media (min-width: 681px) and (max-width: 1024px) {
+    body { padding: 30px 16px 64px; }
+    .cards-section, .site-header { max-width: 980px; margin-left: auto; margin-right: auto; }
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+  @media (min-width: 1440px) {
+    .cards-section, .site-header { max-width: 1240px; margin-left: auto; margin-right: auto; }
+    .site-header h1 { font-size: clamp(52px, 5vw, 84px); }
+  }
 </style>
+<link rel="stylesheet" href="shared-responsive.css">
 </head>
 <body>
 

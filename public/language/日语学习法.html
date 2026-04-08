@@ -1120,7 +1120,30 @@ body {
   display: block;
   margin-top: 4px;
 }
+/* ===== Unified Responsive Layer ===== */
+@media (max-width: 600px) {
+  body { padding: 20px 12px 40px; }
+  .site-header { margin-bottom: 28px; }
+  .site-header-title { font-size: 24px; letter-spacing: 2px; }
+  .site-header-kana { letter-spacing: 4px; }
+  .card { margin-bottom: 18px; }
+  .card-header, .card-body { padding: 16px !important; }
+  .card-corner-jp { display: none; }
+  .card-title { font-size: 19px; }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  body { padding: 28px 16px 56px; }
+  .card, .section-divider { max-width: 940px; }
+  .card-header, .card-body { padding-left: 28px; padding-right: 24px; }
+}
+
+@media (min-width: 1440px) {
+  .card, .section-divider { max-width: 1120px; }
+  .site-header-title { font-size: 40px; }
+}
 </style>
+<link rel="stylesheet" href="shared-responsive.css">
 </head>
 <body>
 

@@ -1168,7 +1168,33 @@ body::before {
 .sb-dash { flex-shrink: 0; font-weight: 700; }
 .strategy-early .sb-dash { color: var(--gray-3); }
 .strategy-late .sb-dash { color: var(--yellow); }
+/* ===== Unified Responsive Layer ===== */
+@media (max-width: 600px) {
+  body { padding: 20px 12px 40px; }
+  .site-header { margin-bottom: 32px; gap: 12px; padding-bottom: 16px; grid-template-columns: 1fr; }
+  .header-right { text-align: left; }
+  .header-title { font-size: 38px; }
+  .header-de-word { font-size: 52px; }
+  .card { margin-bottom: 16px; }
+  .card-inner, .card-header, .card-body { padding: 16px !important; }
+  .card-head { grid-template-columns: 1fr; gap: 10px; margin-bottom: 16px; padding-bottom: 12px; }
+  .card-title-zh { font-size: 18px; }
+  .card-title-de { font-size: 14px; }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  body { padding: 28px 16px 56px; }
+  .site-header, .card, .section-label { max-width: 920px; }
+  .card-inner, .card-header, .card-body { padding: 24px 26px 26px; }
+}
+
+@media (min-width: 1440px) {
+  body { padding-top: 56px; }
+  .site-header, .card, .section-label { max-width: 1160px; }
+  .header-title { font-size: 64px; }
+}
 </style>
+<link rel="stylesheet" href="shared-responsive.css">
 </head>
 <body>
 

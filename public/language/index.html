@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Language Learning Hub — Aletheia</title>
+<meta name="description" content="Aletheia's curated language learning resource hub — structured methods and vocabulary tools for German, French, Spanish, and Japanese.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Bebas+Neue&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Barlow+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0d0d0d;
+  --white: #f5f5f0;
+  --gray-1: #1a1a1a;
+  --gray-2: #2e2e2e;
+  --gray-3: #5a5a5a;
+  --gray-4: #8a8a8a;
+  --gray-5: #c8c8c0;
+  --gray-6: #e8e8e0;
+  --red:   #e63020;
+  --red-dark: #b52418;
+  --blue:  #1a3a8f;
+  --blue-mid: #2850c8;
+  --yellow: #f5c800;
+  --green: #1a6b3c;
+  --green-mid: #2a9050;
+  --orange: #e07820;
+  --purple: #7030a8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  font-family: 'Noto Sans SC', sans-serif;
+  color: var(--white);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Grid texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--gray-1); }
+::-webkit-scrollbar-thumb { background: var(--gray-2); border-radius: 3px; }
+
+/* ── WRAPPER ── */
+.wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(13,13,13,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  z-index: 100;
+  padding: 0 24px;
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 4px;
+  color: var(--white);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--yellow); }
+.nav-links {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  padding: 6px 12px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  transition: 0.3s;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 80px 24px 72px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-overline {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 6px;
+  color: var(--yellow);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: block;
+}
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 10vw, 96px);
+  letter-spacing: 4px;
+  line-height: 0.95;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+.hero-title em { color: var(--yellow); font-style: normal; }
+.hero-subtitle {
+  font-size: clamp(13px, 2vw, 15px);
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1px;
+  max-width: 540px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.hero-stat {
+  flex: 1;
+  padding: 16px 20px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat-n {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  color: var(--yellow);
+  display: block;
+  line-height: 1;
+}
+.hero-stat-l {
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 1px;
+  margin-top: 4px;
+  display: block;
+}
+
+/* ── SECTION LABEL ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-top: 60px;
+}
+.section-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  color: rgba(255,255,255,0.06);
+  flex-shrink: 0;
+  user-select: none;
+}
+.section-lang {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 3px;
+  line-height: 1;
+  color: var(--white);
+}
+.section-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.section-divider {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+}
+.section-flag {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+/* ── CARD GRID ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.cards-grid.cards-wide {
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+}
+
+/* ── RESOURCE CARD ── */
+.res-card {
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  transition: transform 0.2s cubic-bezier(.22,1,.36,1), box-shadow 0.2s;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+.res-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+}
+.res-card-bar {
+  height: 5px;
+  width: 100%;
+}
+.bar-de { background: linear-gradient(90deg, #000, #e63020, #f5c800); }
+.bar-es { background: linear-gradient(90deg, #c60b1e, #f1bf00, #c60b1e); }
+.bar-fr { background: linear-gradient(90deg, #002395, #fff, #ed2939); }
+.bar-jp { background: linear-gradient(90deg, #bc002d, #9d0022); }
+
+.res-card-inner { padding: 24px 28px 28px; }
+
+.res-card-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray-3);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.res-card-eyebrow .badge {
+  padding: 2px 8px;
+  font-size: 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: white;
+}
+.badge-method { background: var(--blue); }
+.badge-vocab { background: var(--green-mid); }
+.badge-new {
+  background: var(--red);
+  animation: pulse-badge 2s ease-in-out infinite;
+}
+@keyframes pulse-badge {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.res-card-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--black);
+  line-height: 1.2;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.res-card-zh {
+  font-size: 13px;
+  color: var(--gray-3);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.res-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.res-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  padding: 3px 8px;
+  background: rgba(0,0,0,0.06);
+  color: var(--gray-2);
+  letter-spacing: 1px;
+}
+.res-card-arrow {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  color: rgba(0,0,0,0.12);
+  transition: color 0.2s, transform 0.2s;
+}
+.res-card:hover .res-card-arrow {
+  color: rgba(0,0,0,0.35);
+  transform: translateX(3px);
+}
+
+/* German card accent */
+.res-card.de .res-card-eyebrow .type-icon { color: var(--red); }
+.res-card.de:hover { border-left: 4px solid var(--red); }
+/* Spanish */
+.res-card.es:hover { border-left: 4px solid #c60b1e; }
+/* French */
+.res-card.fr:hover { border-left: 4px solid var(--blue); }
+/* Japanese */
+.res-card.jp:hover { border-left: 4px solid #bc002d; }
+
+/* Featured card (new/highlighted) */
+.res-card.featured {
+  background: var(--black);
+  border: 1px solid rgba(245,200,0,0.2);
+}
+.res-card.featured .res-card-title { color: var(--white); }
+.res-card.featured .res-card-zh { color: rgba(255,255,255,0.45); }
+.res-card.featured .res-card-eyebrow { color: rgba(255,255,255,0.3); }
+.res-card.featured .res-tag { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.4); }
+.res-card.featured .res-card-bar { background: linear-gradient(90deg, var(--yellow), var(--orange)); }
+.res-card.featured .res-card-arrow { color: rgba(255,255,255,0.15); }
+.res-card.featured:hover .res-card-arrow { color: var(--yellow); }
+.res-card.featured:hover { border-left: 4px solid var(--yellow); box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 40px rgba(245,200,0,0.08); }
+
+/* ── FOOTER ── */
+footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 24px;
+  margin-top: 80px;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 5px;
+  color: rgba(255,255,255,0.12);
+  margin-bottom: 8px;
+  display: block;
+}
+.footer-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.15);
+}
+
+/* ── MOBILE NAV MENU ── */
+.nav-mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: rgba(13,13,13,0.98);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 12px 24px 20px;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-menu a {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .hero { padding: 60px 0 56px; }
+  .hero-stats { max-width: 100%; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .cards-grid.cards-wide { grid-template-columns: 1fr; }
+  .section-header { padding-top: 48px; }
+  .section-lang { font-size: 28px; }
+  .section-num { font-size: 36px; }
+}
+@media (min-width: 641px) and (max-width: 900px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .cards-grid.cards-wide { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1440px) {
+  .wrapper, .nav-inner { max-width: 1280px; }
+  .cards-grid.cards-wide { grid-template-columns: repeat(3, 1fr); }
+}
+</style>
+<link rel="stylesheet" href="shared-responsive.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">ALETHEIA <span>·</span> LANGUAGES</a>
+    <ul class="nav-links">
+      <li><a href="#german" data-i18n-en="German" data-i18n-zh="德语">German</a></li>
+      <li><a href="#spanish" data-i18n-en="Spanish" data-i18n-zh="西班牙语">Spanish</a></li>
+      <li><a href="#french" data-i18n-en="French" data-i18n-zh="法语">French</a></li>
+      <li><a href="#japanese" data-i18n-en="Japanese" data-i18n-zh="日语">Japanese</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <a href="#german" onclick="toggleMenu()" data-i18n-en="🇩🇪 German" data-i18n-zh="🇩🇪 德语">🇩🇪 German</a>
+    <a href="#spanish" onclick="toggleMenu()" data-i18n-en="🇪🇸 Spanish" data-i18n-zh="🇪🇸 西班牙语">🇪🇸 Spanish</a>
+    <a href="#french" onclick="toggleMenu()" data-i18n-en="🇫🇷 French" data-i18n-zh="🇫🇷 法语">🇫🇷 French</a>
+    <a href="#japanese" onclick="toggleMenu()" data-i18n-en="🇯🇵 Japanese" data-i18n-zh="🇯🇵 日语">🇯🇵 Japanese</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero wrapper">
+  <span class="hero-overline" data-i18n-en="Language Learning Resources" data-i18n-zh="语言学习资源">Language Learning Resources</span>
+  <h1 class="hero-title"><span data-i18n-en="LEARN A" data-i18n-zh="学习一门">LEARN A</span><br><em data-i18n-en="LANGUAGE" data-i18n-zh="语言">LANGUAGE</em></h1>
+  <p class="hero-subtitle" data-i18n-en="Structured methods, high-frequency vocabulary, and immersive techniques — curated and battle-tested." data-i18n-zh="结构化方法、高频词汇与沉浸式技巧——精选并验证有效。">Structured methods, high-frequency vocabulary, and immersive techniques — curated and battle-tested.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-n">4</span>
+      <span class="hero-stat-l" data-i18n-en="Languages" data-i18n-zh="语言数">Languages</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-n">8</span>
+      <span class="hero-stat-l" data-i18n-en="Resources" data-i18n-zh="资源数">Resources</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-n">1.2K+</span>
+      <span class="hero-stat-l" data-i18n-en="DE Vocab" data-i18n-zh="德语词汇">DE Vocab</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- GERMAN -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="german" class="wrapper">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div class="section-info">
+      <div class="section-lang" data-i18n-en="GERMAN" data-i18n-zh="德语">GERMAN</div>
+      <div class="section-sub" style="color: var(--red);" data-i18n-en="Deutsch" data-i18n-zh="Deutsch · 德语">Deutsch</div>
+    </div>
+    <div class="section-divider"></div>
+    <div class="section-flag">🇩🇪</div>
+  </div>
+
+  <div class="cards-grid cards-wide">
+
+    <!-- German Cards Method -->
+    <a href="german_cards.html" class="res-card de">
+      <div class="res-card-bar bar-de"></div>
+      <div class="res-card-inner">
+        <div class="res-card-eyebrow">
+          <span class="type-icon">■</span><span data-i18n-en="Method Guide" data-i18n-zh="方法指南">Method Guide</span>
+          <span class="badge badge-method" data-i18n-en="METHOD" data-i18n-zh="方法">METHOD</span>
+        </div>
+      <div class="res-card-title" data-i18n-en="5-Month German Breakthrough" data-i18n-zh="五个月德语突破计划">5-Month German Breakthrough</div>
+      <div class="res-card-zh" data-i18n-en="A complete zero-to-B2 roadmap with tools, structure, and daily study planning." data-i18n-zh="从零到B2的完整路线，含工具、结构与每日学习计划。">A complete zero-to-B2 roadmap with tools, structure, and daily study planning.</div>
+        <div class="res-card-tags">
+          <span class="res-tag">A1 → B2</span>
+          <span class="res-tag">ANKI</span>
+          <span class="res-tag">CONJUGATION</span>
+          <span class="res-tag">IMMERSION</span>
+        </div>
+        <div class="res-card-arrow">→</div>
+      </div>
+    </a>
+
+    <!-- German 100 Days -->
+    <a href="german_cards_100days.html" class="res-card de">
+      <div class="res-card-bar bar-de"></div>
+      <div class="res-card-inner">
+        <div class="res-card-eyebrow">
+          <span class="type-icon">■</span><span data-i18n-en="Sprint Plan" data-i18n-zh="冲刺计划">Sprint Plan</span>
+          <span class="badge badge-method" data-i18n-en="METHOD" data-i18n-zh="方法">METHOD</span>
+        </div>
+      <div class="res-card-title" data-i18n-en="100-Day German Intensive" data-i18n-zh="100天德语冲刺计划">100-Day German Intensive</div>
+      <div class="res-card-zh" data-i18n-en="A 100-day intensive schedule to rapidly build listening, speaking, reading, and writing." data-i18n-zh="100天高强度安排，快速建立听说读写能力。">A 100-day intensive schedule to rapidly build listening, speaking, reading, and writing.</div>
+        <div class="res-card-tags">
+          <span class="res-tag">100 DAYS</span>
+          <span class="res-tag">INTENSIVE</span>
+          <span class="res-tag">SCHEDULE</span>
+        </div>
+        <div class="res-card-arrow">→</div>
+      </div>
+    </a>
+
+    <!-- German Vocab 3000 — FEATURED -->
+    <a href="german_vocab_3000.html" class="res-card de featured">
+      <div class="res-card-bar"></div>
+      <div class="res-card-inner">
+        <div class="res-card-eyebrow">
+          <span class="type-icon" style="color:var(--yellow)">★</span><span data-i18n-en="Vocabulary" data-i18n-zh="词汇">Vocabulary</span>
+          <span class="badge badge-vocab" data-i18n-en="VOCAB" data-i18n-zh="词汇">VOCAB</span>
+          <span class="badge badge-new" data-i18n-en="NEW" data-i18n-zh="新">NEW</span>
+        </div>
+      <div class="res-card-title" data-i18n-en="German 3000 High-Frequency Words" data-i18n-zh="德语3000高频词汇">German 3000 High-Frequency Words</div>
+      <div class="res-card-zh" data-i18n-en="High-frequency German vocabulary with conjugations, noun gender, examples, search, and filters." data-i18n-zh="高频德语词汇，含动词变位、名词性别、例句、搜索和筛选。">High-frequency German vocabulary with conjugations, noun gender, examples, search, and filters.</div>
+        <div class="res-card-tags">
+          <span class="res-tag">VERBEN</span>
+          <span class="res-tag">NOMEN</span>
+          <span class="res-tag">ADJEKTIVE</span>
+          <span class="res-tag">KONJUGATION</span>
+          <span class="res-tag">SÄTZE</span>
+        </div>
+        <div class="res-card-arrow" style="color:rgba(245,200,0,0.3)">→</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SPANISH -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="spanish" class="wrapper">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div class="section-info">
+      <div class="section-lang" data-i18n-en="SPANISH" data-i18n-zh="西班牙语">SPANISH</div>
+      <div class="section-sub" style="color: #c60b1e;" data-i18n-en="Español" data-i18n-zh="Español · 西班牙语">Español</div>
+    </div>
+    <div class="section-divider"></div>
+    <div class="section-flag">🇪🇸</div>
+  </div>
+
+  <div class="cards-grid">
+
+    <a href="spanish_cards.html" class="res-card es">
+      <div class="res-card-bar bar-es"></div>
+      <div class="res-card-inner">
+        <div class="res-card-eyebrow">
+          <span data-i18n-en="Method Guide" data-i18n-zh="方法指南">Method Guide</span>
+          <span class="badge badge-method" data-i18n-en="METHOD" data-i18n-zh="方法">METHOD</span>
+        </div>
+      <div class="res-card-title" data-i18n-en="44-Day Spanish Fluency" data-i18n-zh="44天西语流利计划">44-Day Spanish Fluency</div>
+      <div class="res-card-zh" data-i18n-en="44-day fluency method with TED immersion, 50 core verbs, and a 10x10 speaking framework." data-i18n-zh="44天流利方法：TED沉浸、50核心动词、10x10口语框架。">44-day fluency method with TED immersion, 50 core verbs, and a 10x10 speaking framework.</div>
+        <div class="res-card-tags">
+          <span class="res-tag">44 DAYS</span>
+          <span class="res-tag">TED METHOD</span>
+          <span class="res-tag">SPEAKING</span>
+        </div>
+        <div class="res-card-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="44天西语训练法.html" class="res-card es">
+      <div class="res-card-bar bar-es"></div>
+      <div class="res-card-inner">
+        <div class="res-card-eyebrow">
+          <span data-i18n-en="Training Plan" data-i18n-zh="训练计划">Training Plan</span>
+          <span class="badge badge-method" data-i18n-en="METHOD" data-i18n-zh="方法">METHOD</span>
+        </div>
+      <div class="res-card-title" data-i18n-en="44-Day Spanish Training System" data-i18n-zh="44天西语训练系统">44-Day Spanish Training System</div>
+      <div class="res-card-zh" data-i18n-en="A full 44-day training plan from pronunciation basics to free conversation." data-i18n-zh="完整44天训练方案，从发音基础到自由对话。">A full 44-day training plan from pronunciation basics to free conversation.</div>
+        <div class="res-card-tags">
+          <span class="res-tag">DAILY PLAN</span>
+          <span class="res-tag">PRONUNCIATION</span>
+          <span class="res-tag">DIALOGUE</span>
+        </div>
+        <div class="res-card-arrow">→</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FRENCH -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="french" class="wrapper">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div class="section-info">
+      <div class="section-lang" data-i18n-en="FRENCH" data-i18n-zh="法语">FRENCH</div>
+      <div class="section-sub" style="color: var(--blue-mid);" data-i18n-en="Français" data-i18n-zh="Français · 法语">Français</div>
+    </div>
+    <div class="section-divider"></div>
+    <div class="section-flag">🇫🇷</div>
+  </div>
+
+  <div class="cards-grid">
+    <a href="french_10cards.html" class="res-card fr">
+      <div class="res-card-bar bar-fr"></div>
+      <div class="res-card-inner">
+        <div class="res-card-eyebrow">
+          <span data-i18n-en="Study System" data-i18n-zh="学习系统">Study System</span>
+          <span class="badge badge-method" data-i18n-en="METHOD" data-i18n-zh="方法">METHOD</span>
+        </div>
+      <div class="res-card-title" data-i18n-en="French Self-Study System · 10 Cards" data-i18n-zh="法语自学体系 · 10张卡片">French Self-Study System · 10 Cards</div>
+      <div class="res-card-zh" data-i18n-en="A self-study French system in 10 cards, covering a full A1-to-B1 video-based path." data-i18n-zh="10张卡片构建法语自学体系，覆盖A1到B1完整视频学习路径。">A self-study French system in 10 cards, covering a full A1-to-B1 video-based path.</div>
+        <div class="res-card-tags">
+          <span class="res-tag">A1 → B1</span>
+          <span class="res-tag">LISTENING</span>
+          <span class="res-tag">SPEAKING</span>
+          <span class="res-tag">WRITING</span>
+        </div>
+        <div class="res-card-arrow">→</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- JAPANESE -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="japanese" class="wrapper">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-info">
+      <div class="section-lang" data-i18n-en="JAPANESE" data-i18n-zh="日语">JAPANESE</div>
+      <div class="section-sub" style="color: #bc002d;" data-i18n-en="Japanese" data-i18n-zh="日本語 · 日语">Japanese</div>
+    </div>
+    <div class="section-divider"></div>
+    <div class="section-flag">🇯🇵</div>
+  </div>
+
+  <div class="cards-grid">
+    <a href="日语学习法.html" class="res-card jp">
+      <div class="res-card-bar bar-jp"></div>
+      <div class="res-card-inner">
+        <div class="res-card-eyebrow">
+          <span data-i18n-en="Learning Method" data-i18n-zh="学习方法">Learning Method</span>
+          <span class="badge badge-method" data-i18n-en="METHOD" data-i18n-zh="方法">METHOD</span>
+        </div>
+      <div class="res-card-title" data-i18n-en="Japanese Learning Method" data-i18n-zh="日语学习方法">Japanese Learning Method</div>
+      <div class="res-card-zh" data-i18n-en="A structured Japanese learning path covering kana, kanji, listening, and speaking." data-i18n-zh="系统化日语学习路径，覆盖假名、汉字、听力与口语。">A structured Japanese learning path covering kana, kanji, listening, and speaking.</div>
+        <div class="res-card-tags">
+          <span class="res-tag">HIRAGANA</span>
+          <span class="res-tag">KANJI</span>
+          <span class="res-tag">N5 → N3</span>
+        </div>
+        <div class="res-card-arrow">→</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo" data-i18n-en="ALETHEIA LANGUAGE HUB" data-i18n-zh="ALETHEIA 语言中心">ALETHEIA LANGUAGE HUB</span>
+  <div class="footer-note" data-i18n-en="Deutsch · Español · Français · 日本語" data-i18n-zh="德语 · 西班牙语 · 法语 · 日语">Deutsch · Español · Français · 日本語</div>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
+}
+// Close mobile menu on scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('mobileMenu').classList.remove('open');
+});
+</script>
+<script src="lang-toggle.js"></script>
+
+</body>
+</html>
