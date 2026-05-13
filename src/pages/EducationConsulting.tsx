@@ -59,25 +59,26 @@ const EducationConsulting = () => {
               Education & Consulting
             </motion.p>
             <motion.h1 variants={fadeUp} custom={1} className="mt-4 font-display text-4xl font-bold text-foreground md:text-6xl">
-              Advisory, learning,
+              Teaching, coaching,
               <br />
-              <span className="text-gradient">and technical partnership.</span>
+              <span className="text-gradient">and consulting services.</span>
             </motion.h1>
             <motion.p variants={fadeUp} custom={2} className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Aletheia concentrates on three interlocking lines of business:{" "}
-              <span className="text-foreground/90">AI and information technology consulting</span>
-              {" "}— architecture, adoption roadmaps, and the engineering judgment required to ship responsibly at enterprise scale;{" "}
-              <span className="text-foreground/90">training and workshops</span>
-              {" "}in career development and substantive AI education, from leadership briefings to hands-on cohorts; and{" "}
-              <span className="text-foreground/90">educational consulting with online AI teaching</span>
-              {" "}for global learning platforms and institutions that treat capability-building as a strategic investment. Engagements are framed as advisory mandates, intensive programmes, and teaching contracts — always explicit in scope and outcome.
+              We lead with <strong className="font-medium text-foreground">AI coaching and consulting</strong>—hands-on guidance from practitioners who ship agents, retrieval systems, and governance patterns in production, not generic slide decks.
             </motion.p>
             <motion.p variants={fadeUp} custom={3} className="mt-4 max-w-2xl text-muted-foreground leading-relaxed">
-              Our product suite carries the same intellectual standard where software can scale methodology. Explore the portfolio on{" "}
+              Our practice is organised around three service lines:{" "}
+              <strong className="font-medium text-foreground">AI and information technology consulting</strong> (architecture, integration, and technical delivery aligned to your stack);{" "}
+              <strong className="font-medium text-foreground">training and workshops</strong> on career development and AI education; and{" "}
+              <strong className="font-medium text-foreground">educational consulting and online AI teaching</strong> for teams, institutions, and education platforms. Engagements are scoped as workshops, programs, or projects—whatever fits your procurement and timelines.
+            </motion.p>
+            <motion.p variants={fadeUp} custom={4} className="mt-4 max-w-2xl text-muted-foreground leading-relaxed">
+              Our product suite (see{" "}
               <Link to="/products" className="text-primary underline-offset-4 hover:underline">
                 Products
               </Link>
-              {" "}— then invite us where judgement, facilitation, and depth in the room still matter.
+              ) carries the same engineering standards into software you can run alongside advisory work. We often combine products with custom workshops, curricula, or co-delivery with your{" "}
+              {"L&D"} and engineering teams.
             </motion.p>
           </motion.div>
         </div>
@@ -91,7 +92,7 @@ const EducationConsulting = () => {
               <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">What we deliver</h2>
             </motion.div>
             <motion.p variants={fadeUp} custom={1} className="mt-4 max-w-2xl text-muted-foreground">
-              Representative capabilities — available as standalone mandates or as part of a broader transformation programme.
+              Clear, service-based offerings you can contract for directly or through partner platforms.
             </motion.p>
           </motion.div>
 
