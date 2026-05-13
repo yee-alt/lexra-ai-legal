@@ -59,20 +59,25 @@ const EducationConsulting = () => {
               Education & Consulting
             </motion.p>
             <motion.h1 variants={fadeUp} custom={1} className="mt-4 font-display text-4xl font-bold text-foreground md:text-6xl">
-              Teaching, coaching,
+              Advisory, learning,
               <br />
-              <span className="text-gradient">and consulting services.</span>
+              <span className="text-gradient">and technical partnership.</span>
             </motion.h1>
             <motion.p variants={fadeUp} custom={2} className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Our revenue comes from professional services: education, coaching, and contracted delivery — not from unexplained or passive sources.
-              We provide educational consulting and independent contractor teaching services for global education platforms and clients.
+              Aletheia concentrates on three interlocking lines of business:{" "}
+              <span className="text-foreground/90">AI and information technology consulting</span>
+              {" "}— architecture, adoption roadmaps, and the engineering judgment required to ship responsibly at enterprise scale;{" "}
+              <span className="text-foreground/90">training and workshops</span>
+              {" "}in career development and substantive AI education, from leadership briefings to hands-on cohorts; and{" "}
+              <span className="text-foreground/90">educational consulting with online AI teaching</span>
+              {" "}for global learning platforms and institutions that treat capability-building as a strategic investment. Engagements are framed as advisory mandates, intensive programmes, and teaching contracts — always explicit in scope and outcome.
             </motion.p>
             <motion.p variants={fadeUp} custom={3} className="mt-4 max-w-2xl text-muted-foreground leading-relaxed">
-              Alongside our product suite (see{" "}
+              Our product suite carries the same intellectual standard where software can scale methodology. Explore the portfolio on{" "}
               <Link to="/products" className="text-primary underline-offset-4 hover:underline">
                 Products
               </Link>
-              ), paid work includes online teaching, workshops, curriculum development, and technical consulting aligned with our AI and IT practice.
+              {" "}— then invite us where judgement, facilitation, and depth in the room still matter.
             </motion.p>
           </motion.div>
         </div>
@@ -86,7 +91,7 @@ const EducationConsulting = () => {
               <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">What we deliver</h2>
             </motion.div>
             <motion.p variants={fadeUp} custom={1} className="mt-4 max-w-2xl text-muted-foreground">
-              Clear, service-based offerings you can contract for directly or through partner platforms.
+              Representative capabilities — available as standalone mandates or as part of a broader transformation programme.
             </motion.p>
           </motion.div>
 
