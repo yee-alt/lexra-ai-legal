@@ -67,7 +67,7 @@ const EducationConsulting = () => {
               We lead with <strong className="font-medium text-foreground">AI coaching and consulting</strong>—hands-on guidance from practitioners who ship agents, retrieval systems, and governance patterns in production, not generic slide decks.
             </motion.p>
             <motion.p variants={fadeUp} custom={3} className="mt-4 max-w-2xl text-muted-foreground leading-relaxed">
-              Our practice is organised around three service lines:{" "}
+              Our practice is organized around three service lines:{" "}
               <strong className="font-medium text-foreground">AI and information technology consulting</strong> (architecture, integration, and technical delivery aligned to your stack);{" "}
               <strong className="font-medium text-foreground">training and workshops</strong> on career development and AI education; and{" "}
               <strong className="font-medium text-foreground">educational consulting and online AI teaching</strong> for teams, institutions, and education platforms. Engagements are scoped as workshops, programs, or projects—whatever fits your procurement and timelines.
