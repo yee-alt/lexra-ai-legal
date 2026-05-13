@@ -1,58 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Languages, ChevronRight } from "lucide-react";
+import { ArrowRight, Languages } from "lucide-react";
 import { fadeUp } from "@/lib/animations";
-
-const languages = [
-  {
-    id: "german-100-days",
-    title: "German Cards 100 Days",
-    subtitle: "German Learning",
-    description: "Accelerate your German learning with our 100-day structured card system.",
-    tags: ["German", "100 Days", "Flashcards", "Vocabulary"],
-    href: "/language/german_cards_100days.html",
-  },
-  {
-    id: "german-cards",
-    title: "German Cards",
-    subtitle: "German Vocabulary",
-    description: "Essential German vocabulary cards for quick mastery.",
-    tags: ["German", "Flashcards"],
-    href: "/language/german_cards.html",
-  },
-  {
-    id: "spanish-44-days",
-    title: "44天西语训练法 (44 Days Spanish)",
-    subtitle: "Spanish Mastery",
-    description: "A comprehensive 44-day training methodology to master Spanish fundamentals.",
-    tags: ["Spanish", "Methodology", "44 Days"],
-    href: "/language/44天西语训练法.html",
-  },
-  {
-    id: "spanish-cards",
-    title: "Spanish Cards",
-    subtitle: "Spanish Practice",
-    description: "Daily flashcards to improve your Spanish retention.",
-    tags: ["Spanish", "Flashcards"],
-    href: "/language/spanish_cards.html",
-  },
-  {
-    id: "french-10cards",
-    title: "French 10 Cards",
-    subtitle: "French Quick Start",
-    description: "Learn French using our specialized 10-card daily rotation system.",
-    tags: ["French", "Daily Practice"],
-    href: "/language/french_10cards.html",
-  },
-  {
-    id: "japanese-method",
-    title: "日语学习法 (Japanese Method)",
-    subtitle: "Japanese Learning Strategy",
-    description: "Strategic approaches and methodologies for learning Japanese effectively.",
-    tags: ["Japanese", "Strategy"],
-    href: "/language/日语学习法.html",
-  },
-];
+import { languageResources } from "@/data/languageResources";
 
 const LanguageHub = () => {
   return (
@@ -64,12 +14,16 @@ const LanguageHub = () => {
               Aletheia Languages
             </motion.p>
             <motion.h1 variants={fadeUp} custom={1} className="mt-4 font-display text-4xl font-bold text-foreground md:text-6xl">
-              Master new languages.<br />
+              Master new languages.
+              <br />
               <span className="text-gradient">Structured and smart.</span>
             </motion.h1>
             <motion.p variants={fadeUp} custom={2} className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Explore our comprehensive language learning resources, tailored flashcards, and proven 
-              methodologies. We bring the same rigour from our enterprise AI solutions to human learning strategies.
+              These guides support{" "}
+              <Link to="/products#mollytalk" className="text-primary underline-offset-4 hover:underline">
+                Molly Talk
+              </Link>
+              . We bring the same rigour from our enterprise AI solutions to structured language practice.
             </motion.p>
           </motion.div>
         </div>
@@ -87,7 +41,7 @@ const LanguageHub = () => {
           </motion.div>
 
           <div className="mt-12 space-y-6">
-            {languages.map((lang, i) => (
+            {languageResources.map((lang, i) => (
               <motion.div
                 key={lang.id}
                 initial="hidden"
@@ -108,15 +62,9 @@ const LanguageHub = () => {
                         <Languages className="h-6 w-6" />
                       </div>
                       <div>
-                        <h3 className="font-display text-xl font-bold text-foreground sm:text-2xl">
-                          {lang.title}
-                        </h3>
-                        <p className="mt-1 font-display text-sm text-muted-foreground">
-                          {lang.subtitle}
-                        </p>
-                        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                          {lang.description}
-                        </p>
+                        <h3 className="font-display text-xl font-bold text-foreground sm:text-2xl">{lang.title}</h3>
+                        <p className="mt-1 font-display text-sm text-muted-foreground">{lang.subtitle}</p>
+                        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{lang.description}</p>
                         <div className="mt-4 flex flex-wrap gap-2">
                           {lang.tags.map((tag) => (
                             <span

@@ -8,7 +8,8 @@ import Footer from "./components/Footer";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Products from "./pages/Products";
-import Training from "./pages/Training";
+import EducationConsulting from "./pages/EducationConsulting";
+import Contact from "./pages/Contact";
 import Careers from "./pages/Careers";
 import NotFound from "./pages/NotFound";
 import Language from "./pages/Language";
@@ -26,10 +27,12 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/training" element={<Training />} />
-          <Route path="/language" element={<Language />} />
-          <Route path="/projects" element={<Navigate to="/training" replace />} />
+          <Route path="/education-consulting" element={<EducationConsulting />} />
+          <Route path="/training" element={<Navigate to="/education-consulting" replace />} />
+          <Route path="/projects" element={<Navigate to="/education-consulting" replace />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/language" element={<Language />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

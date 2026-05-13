@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-import { Scale, GraduationCap, Brain, Stethoscope, ArrowRight, FileText, Shield, BarChart3, Globe, Gavel, BookOpen, Mic } from "lucide-react";
+import { Scale, GraduationCap, Brain, Stethoscope, ArrowRight, FileText, Shield, BarChart3, Globe, Gavel, BookOpen, Mic, Languages } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { fadeUp } from "@/lib/animations";
+import { languageResources } from "@/data/languageResources";
 
 const products = [
   {
@@ -84,7 +85,7 @@ const Products = () => {
               AI that ships.
             </motion.h1>
             <motion.p variants={fadeUp} custom={2} className="mt-6 max-w-2xl text-lg text-muted-foreground">
-              Enterprise-grade AI products for legal, education, and healthcare — each built with domain expertise and production-ready from day one.
+              We design and ship AI solutions for different industries — legal, education, healthcare, and corporate programs — combining domain expertise with production-ready software. Products sit alongside our IT consulting and education services.
             </motion.p>
           </motion.div>
         </div>
@@ -94,7 +95,7 @@ const Products = () => {
         <section
           key={product.id}
           id={product.id}
-          className={`section-padding ${idx % 2 === 0 ? "bg-card/30" : ""}`}
+          className={`section-padding scroll-mt-24 ${idx % 2 === 0 ? "bg-card/30" : ""}`}
         >
           <div className="container-narrow">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
@@ -159,6 +160,50 @@ const Products = () => {
                 </motion.div>
               ))}
             </div>
+
+            {product.id === "mollytalk" && (
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                custom={0}
+                className="mt-16 rounded-2xl border border-border bg-background/80 p-8"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <Languages className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-lg font-semibold text-foreground">Language learning guides</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      Structured flashcards and study paths that pair with Molly Talk. Open any guide below (hosted static resources).
+                    </p>
+                  </div>
+                </div>
+                <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+                  {languageResources.map((lang) => (
+                    <li key={lang.id}>
+                      <a
+                        href={lang.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between gap-3 rounded-xl border border-border px-4 py-3 text-sm transition-colors hover:border-primary/30 hover:bg-card"
+                      >
+                        <span className="font-medium text-foreground">{lang.title}</span>
+                        <ArrowRight className="h-4 w-4 shrink-0 text-primary" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-6 text-center text-xs text-muted-foreground">
+                  Full hub view:{" "}
+                  <Link to="/language" className="text-primary underline-offset-4 hover:underline">
+                    /language
+                  </Link>
+                </p>
+              </motion.div>
+            )}
           </div>
         </section>
       ))}

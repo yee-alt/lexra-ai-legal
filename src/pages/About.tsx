@@ -17,6 +17,13 @@ const About = () => {
             <motion.p variants={fadeUp} custom={2} className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               Aletheia — from the Greek word for "truth" — is a technology company building autonomous AI systems that bring clarity, structure, and intelligence to complex industries.
             </motion.p>
+            <motion.p variants={fadeUp} custom={3} className="mt-6 max-w-3xl text-muted-foreground leading-relaxed">
+              Our work is centered on IT solutions and AI career education: enterprise software, security-aware architectures, and training that helps professionals adopt AI responsibly.{" "}
+              <strong className="font-medium text-foreground">Aletheia Technology Products</strong> (Lexra AI, Molly Job, Molly Talk, Healio, and related offerings) complement paid consulting and teaching services — so platforms and learners see both productized capability and hands-on delivery.
+            </motion.p>
+            <motion.p variants={fadeUp} custom={4} className="mt-4 max-w-3xl text-sm text-muted-foreground leading-relaxed">
+              Registered scope includes technology services; information technology consulting; technical services, technology development, technical consulting, technical exchange, technology transfer, and technology promotion; consulting and planning; development of network and information security software; sales of information security equipment; information system operation and maintenance; information system integration; information consulting; and educational consulting services.
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -46,20 +53,17 @@ const About = () => {
         <div className="container-narrow max-w-3xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.h2 variants={fadeUp} custom={0} className="font-display text-3xl font-bold text-foreground md:text-4xl">
-              Knowra AI → Molly AI → Aletheia
+              Our Story
             </motion.h2>
             <motion.div variants={fadeUp} custom={1} className="mt-8 space-y-6 text-muted-foreground leading-relaxed">
               <p>
-                Our journey began as <strong className="text-foreground">Knowra AI</strong> — an education-focused AI platform built on the belief that intelligent tutoring and personalised learning could unlock human potential at scale. Knowra laid the foundation: domain-specific AI that genuinely understands context.
+                Originally known as Molly AI, we started with a simple belief: AI should work for people, not the other way around. Our first products — Molly Job and Molly Talk — proved that AI could transform education and career development.
               </p>
               <p>
-                We evolved into <strong className="text-foreground">Molly AI</strong>, expanding the vision into career intelligence and language learning. Molly Job and Molly Talk proved that AI could transform how people prepare for work and communicate across borders — making world-class coaching accessible to everyone.
+                As we expanded into legal AI with Lexra, and began exploring medical AI, we realized we weren't just building products. We were building a new kind of technology company — one where autonomous AI agents solve real problems in regulated, high-stakes industries.
               </p>
               <p>
-                As we expanded into legal AI with Lexra and began building Healio for healthcare, we realised we weren't just building products. We were building a new kind of technology company — one where autonomous AI agents solve real problems in regulated, high-stakes industries.
-              </p>
-              <p>
-                We became <strong className="text-foreground">Aletheia Technology</strong> to reflect this evolution. Aletheia is the Greek word for "truth" and "disclosure" — because we believe the best AI doesn't obscure reality. It reveals it.
+                We became Aletheia Technology to reflect this evolution. Our name means "truth" — because we believe the best AI doesn't obscure reality. It reveals it.
               </p>
             </motion.div>
           </motion.div>

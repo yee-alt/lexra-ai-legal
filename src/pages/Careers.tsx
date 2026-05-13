@@ -51,28 +51,6 @@ const roles = [
     ],
   },
   {
-    title: "AI Agent Developer",
-    location: "Remote",
-    type: "Full-time",
-    responsibilities: [
-      "Design and build autonomous AI agent systems",
-      "Implement complex reasoning chains and tool-use patterns",
-      "Optimize agent performance, reliability, and cost efficiency",
-      "Define evaluation frameworks for agent behavior",
-    ],
-    requirements: [
-      "2+ years building production AI systems",
-      "Deep understanding of LLMs, prompting, and fine-tuning",
-      "Experience with agent frameworks and tool orchestration",
-      "Strong systems design skills",
-    ],
-    niceToHave: [
-      "Published research in AI agents or multi-agent systems",
-      "Experience in legal, education, or healthcare domains",
-      "Track record of shipping AI products at scale",
-    ],
-  },
-  {
     title: "AI Marketing Intern",
     location: "Remote",
     type: "Internship · Part-time",
@@ -96,7 +74,7 @@ const roles = [
   },
 ];
 
-const RoleCard = ({ role }: { role: typeof roles[0] }) => {
+const RoleCard = ({ role }: { role: (typeof roles)[0] }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -109,19 +87,22 @@ const RoleCard = ({ role }: { role: typeof roles[0] }) => {
       className="rounded-2xl border border-border bg-card"
     >
       <button
+        type="button"
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between p-6 text-left md:p-8"
       >
         <div>
           <h3 className="font-display text-xl font-semibold text-foreground">{role.title}</h3>
           <div className="mt-2 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-            <span className="flex items-center gap-1"><MapPin size={14} /> {role.location}</span>
-            <span className="flex items-center gap-1"><Clock size={14} /> {role.type}</span>
+            <span className="flex items-center gap-1">
+              <MapPin size={14} /> {role.location}
+            </span>
+            <span className="flex items-center gap-1">
+              <Clock size={14} /> {role.type}
+            </span>
           </div>
         </div>
-        <ChevronDown
-          className={`h-5 w-5 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`}
-        />
+        <ChevronDown className={`h-5 w-5 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
 
       <AnimatePresence>
@@ -139,7 +120,9 @@ const RoleCard = ({ role }: { role: typeof roles[0] }) => {
                   <h4 className="font-display text-xs font-semibold uppercase tracking-wider text-primary">Responsibilities</h4>
                   <ul className="mt-3 space-y-2">
                     {role.responsibilities.map((r) => (
-                      <li key={r} className="text-sm text-muted-foreground">• {r}</li>
+                      <li key={r} className="text-sm text-muted-foreground">
+                        • {r}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -147,7 +130,9 @@ const RoleCard = ({ role }: { role: typeof roles[0] }) => {
                   <h4 className="font-display text-xs font-semibold uppercase tracking-wider text-primary">Requirements</h4>
                   <ul className="mt-3 space-y-2">
                     {role.requirements.map((r) => (
-                      <li key={r} className="text-sm text-muted-foreground">• {r}</li>
+                      <li key={r} className="text-sm text-muted-foreground">
+                        • {r}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -155,7 +140,9 @@ const RoleCard = ({ role }: { role: typeof roles[0] }) => {
                   <h4 className="font-display text-xs font-semibold uppercase tracking-wider text-primary">Nice to Have</h4>
                   <ul className="mt-3 space-y-2">
                     {role.niceToHave.map((r) => (
-                      <li key={r} className="text-sm text-muted-foreground">• {r}</li>
+                      <li key={r} className="text-sm text-muted-foreground">
+                        • {r}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -186,11 +173,12 @@ const Careers = () => {
               Careers
             </motion.p>
             <motion.h1 variants={fadeUp} custom={1} className="mt-4 font-display text-4xl font-bold text-foreground md:text-6xl">
-              Build the future of AI<br />
+              Build the future of AI
+              <br />
               <span className="text-gradient">with us.</span>
             </motion.h1>
             <motion.p variants={fadeUp} custom={2} className="mt-6 max-w-2xl text-lg text-muted-foreground">
-              We're a remote-first team building autonomous AI systems. High ownership, flexible hours, and the chance to work on products that matter.
+              We're a remote-first team. We currently recruit interns across engineering, software, and marketing — apply with your resume and a short note on what you want to build.
             </motion.p>
           </motion.div>
 
@@ -223,7 +211,7 @@ const Careers = () => {
         <div className="container-narrow">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.h2 variants={fadeUp} custom={0} className="font-display text-3xl font-bold text-foreground md:text-4xl">
-              Open Positions
+              Intern openings
             </motion.h2>
           </motion.div>
 
