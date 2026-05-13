@@ -34,24 +34,24 @@ const Footer = () => (
         <div>
           <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-foreground">Company</h4>
           <div className="mt-4 flex flex-col gap-3">
-            <Link to="/about" className="text-sm text-muted-foreground transition-colors hover:text-primary">
-              About
-            </Link>
             <Link to="/education-consulting" className="text-sm text-muted-foreground transition-colors hover:text-primary">
               Education & Consulting
             </Link>
             <Link to="/careers" className="text-sm text-muted-foreground transition-colors hover:text-primary">
               Careers
             </Link>
-            <a href="/lexra-legal-rag-blog.html" className="text-sm text-muted-foreground transition-colors hover:text-primary">
-              Blog
-            </a>
           </div>
         </div>
 
         <div>
           <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-foreground">Connect</h4>
           <div className="mt-4 flex flex-col gap-3">
+            <Link to="/about" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+              About
+            </Link>
+            <Link to="/blog" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+              Blog & resources
+            </Link>
             <Link to="/contact" className="text-sm text-muted-foreground transition-colors hover:text-primary">
               Contact page
             </Link>

@@ -6,10 +6,9 @@ import { motion, AnimatePresence } from "framer-motion";
 const navItems = [
   { label: "Products", href: "/products" },
   { label: "Education & Consulting", href: "/education-consulting" },
-  { label: "About", href: "/about" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
-  { label: "Blog", href: "/lexra-legal-rag-blog.html" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const Navbar = () => {
@@ -25,27 +24,17 @@ const Navbar = () => {
 
         {/* Desktop */}
         <div className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) =>
-            item.href.endsWith(".html") ? (
-              <a
-                key={item.href}
-                href={item.href}
-                className="font-display text-sm tracking-wide text-muted-foreground transition-colors hover:text-primary"
-              >
-                {item.label}
-              </a>
-            ) : (
-              <Link
-                key={item.href}
-                to={item.href}
-                className={`font-display text-sm tracking-wide transition-colors hover:text-primary ${
-                  location.pathname === item.href ? "text-primary" : "text-muted-foreground"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ),
-          )}
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              to={item.href}
+              className={`font-display text-sm tracking-wide transition-colors hover:text-primary ${
+                location.pathname === item.href ? "text-primary" : "text-muted-foreground"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
           <Link
             to="/contact"
             className="rounded-lg bg-primary px-4 py-2 font-display text-sm font-medium text-primary-foreground transition-all hover:opacity-90"
@@ -70,27 +59,16 @@ const Navbar = () => {
             className="border-b border-border bg-background md:hidden"
           >
             <div className="flex flex-col gap-4 px-6 py-6">
-              {navItems.map((item) =>
-                item.href.endsWith(".html") ? (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="font-display text-lg text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    {item.label}
-                  </a>
-                ) : (
-                  <Link
-                    key={item.href}
-                    to={item.href}
-                    onClick={() => setOpen(false)}
-                    className="font-display text-lg text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    {item.label}
-                  </Link>
-                ),
-              )}
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  onClick={() => setOpen(false)}
+                  className="font-display text-lg text-muted-foreground transition-colors hover:text-primary"
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </motion.div>
         )}
