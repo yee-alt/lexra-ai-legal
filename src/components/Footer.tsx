@@ -67,14 +67,14 @@ const Footer = () => (
         <div className="mx-auto max-w-3xl text-sm text-muted-foreground">
           <h4 className="font-display text-center text-xs font-semibold uppercase tracking-wider text-foreground">Business information</h4>
           <ul className="mt-4 list-none space-y-2 text-center leading-relaxed">
-            <li>Sole proprietorship / individual business · Based in China</li>
+            <li>Based in China</li>
             <li>Educational & technology consulting services</li>
           </ul>
           <div className="mt-8 space-y-4 text-left leading-relaxed">
             <p>
               <span className="font-display text-xs font-semibold uppercase tracking-wider text-foreground">Business entity</span>
               <br />
-              Haikou Longhua Zhide Information Consulting Studio (Individual Business / Sole Proprietorship)
+              Haikou Longhua Zhide Information Consulting Studio
             </p>
             <p>
               <span className="font-display text-xs font-semibold uppercase tracking-wider text-foreground">Registered address</span>

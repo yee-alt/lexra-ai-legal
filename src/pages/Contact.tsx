@@ -59,7 +59,7 @@ const Contact = () => {
               <div>
                 <p className="font-display text-xs font-semibold uppercase tracking-wider text-foreground">Business entity</p>
                 <p className="mt-2">
-                  Haikou Longhua Zhide Information Consulting Studio (Individual Business / Sole Proprietorship)
+                  Haikou Longhua Zhide Information Consulting Studio
                 </p>
               </div>
               <div>
@@ -73,7 +73,6 @@ const Contact = () => {
             <div className="rounded-2xl border border-border bg-card/50 p-8">
               <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-foreground">Business information</h3>
               <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                <li>Sole proprietorship / individual business</li>
                 <li>Based in China</li>
                 <li>Educational and technology consulting services; software and AI solutions for professional clients</li>
               </ul>
