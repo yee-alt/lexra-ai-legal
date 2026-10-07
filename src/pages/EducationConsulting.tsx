@@ -45,7 +45,6 @@ const engagements = [
 ];
 
 const technicalRefs = [
-  { title: "Smart Responder — GraphRAG", href: "/projects/smart-responder-graphrag.html", note: "Project example: a human-approved banking email assistant using a Neo4j knowledge graph, Qdrant retrieval, and a LangGraph workflow." },
   { title: "AI Agent Memory — Deep Dive", href: "/training/episode-01-agent-memory.html", note: "Technical reference for coaching on agent memory and RAG." },
   { title: "Evaluating an AI Sales Intelligence Agent", href: "/training/episode-02-agent-evaluation.html", note: "Reference material on evaluation and production AI systems." },
 ];

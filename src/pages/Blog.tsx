@@ -7,6 +7,14 @@ import { languageResources } from "@/data/languageResources";
 
 const legalAndEngineering = [
   {
+    title: "Smart Responder — GraphRAG",
+    subtitle: "Project in finance · GraphRAG",
+    description:
+      "A human-approved banking email assistant combining a Neo4j knowledge graph, Qdrant retrieval, and a LangGraph workflow.",
+    href: "/projects/smart-responder-graphrag.html",
+    icon: Cpu,
+  },
+  {
     title: "Authority-aware legal RAG",
     subtitle: "Lexra · Technical essay",
     description:
