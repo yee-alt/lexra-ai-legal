@@ -7,6 +7,14 @@ import { languageResources } from "@/data/languageResources";
 
 const legalAndEngineering = [
   {
+    title: "Smart Responder — Architecture",
+    subtitle: "Project in finance · System architecture",
+    description:
+      "A bilingual English–German architecture walkthrough for the Smart Responder, covering its workflow, safety controls, and system components.",
+    href: "/projects/smart-responder-architecture.html",
+    icon: Cpu,
+  },
+  {
     title: "Smart Responder — GraphRAG",
     subtitle: "Project in finance · GraphRAG",
     description:
